@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Resubmit', function (Blueprint $table) {
+        Schema::create('resubmit', function (Blueprint $table) {
             $table->id();
             $table->integer('resubmitCode');
             $table->string('status');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-            Schema::dropIfExists('Resubmit');
+            Schema::dropIfExists('resubmit');
     }
 };
