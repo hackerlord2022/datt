@@ -31,10 +31,8 @@ return new class extends Migration
      *
      * @return void
      */
-    // down
     public function down()
     {
             Schema::dropIfExists('submission');
-
     }
 };
