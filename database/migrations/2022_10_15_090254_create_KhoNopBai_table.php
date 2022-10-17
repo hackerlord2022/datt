@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('khonopbai', function (Blueprint $table) {
             $table->id();
-            $table->string('cardCode');
-            $table->string('cardName');
+            $table->string('card_code');
+            $table->string('card_name');
             $table->date('deadline');
-            $table->string('classCode');
+            $table->string('class_code');
             $table->rememberToken();
             $table->timestamps();
         });
