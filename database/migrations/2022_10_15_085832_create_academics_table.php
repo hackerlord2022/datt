@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('academics', function (Blueprint $table) {
             $table->id();
-            $table->string('academicsCode');
-            $table->string('academicsName');
+            $table->string('academics_code');
+            $table->string('academics_name');
             $table->rememberToken();
             $table->timestamps();
         });
