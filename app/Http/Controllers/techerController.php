@@ -8,6 +8,7 @@ class techerController extends Controller
 {
     //
     function index(){
+        // fchasjkccdsjann
         return "đây là tranh quản lý tài khoản cá nhân của giảng viên";
     }
 
