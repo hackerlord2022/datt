@@ -18,6 +18,10 @@ Thêm học kỳ
                           <label>Tên học kỳ</label>
                           <input type="text" class="form-control"placeholder="Học kỳ">
                         </div>
+                        <div class="form-group">
+                          <label>Mã học kỳ</label>
+                          <input type="text" class="form-control"placeholder="Mã học kỳ">
+                        </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
                         <a href="admin/hocky/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>

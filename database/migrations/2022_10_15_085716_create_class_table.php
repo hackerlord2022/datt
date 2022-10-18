@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('class_code');
             $table->string('class_name');
             $table->string('academics_code');
+            $table->string('teacher_code');
             $table->rememberToken();
             $table->timestamps();
         });

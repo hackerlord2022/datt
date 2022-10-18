@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('khonopbai', function (Blueprint $table) {
+        Schema::create('archives', function (Blueprint $table) {
             $table->id();
-            $table->string('card_code');
-            $table->string('card_name');
+            $table->string('archives_code');
+            $table->string('archives_name');
             $table->date('deadline');
             $table->string('class_code');
             $table->rememberToken();

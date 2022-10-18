@@ -22,16 +22,12 @@ Thêm môn học
                                 <option value="">Summer 2022</option>
                               </select>
                           </div>
-                          <div class="form-group">
-                            <label>Lớp học</label>
-                            <select class="custom-select tm-select-accounts" name="lophoc" id="lophoc">
-                                <option value="">CNTT</option>
-                                <option value="">DL-LH</option>
-                                <option value="">ĐH</option>
-                              </select>
-                          </div>
                         <div class="form-group">
                           <label>Tên môn học</label>
+                          <input type="text" class="form-control"placeholder="môn học">
+                        </div>
+                        <div class="form-group">
+                          <label>Mã môn học</label>
                           <input type="text" class="form-control"placeholder="môn học">
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
