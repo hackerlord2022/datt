@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexDashboardController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\techerController;
+use App\Http\Controllers\adminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,7 @@ Route::get('/class_join', [indexDashboardController::class, 'joinclass'])->middl
 Route::get('/uploadfile', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
 // 
 // admin
-//Route::get('/admin', [indexDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/admin', [adminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 // 
 // giảng viên
 Route::get('/teacher', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
