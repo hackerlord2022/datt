@@ -5,6 +5,11 @@ use App\Http\Controllers\indexDashboardController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\techerController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\bainopController;
+use App\Http\Controllers\hockyController;
+use App\Http\Controllers\monhocController;
+use App\Http\Controllers\lophocController;
+use App\Http\Controllers\userController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,10 +31,37 @@ Route::get('/list_class', [indexDashboardController::class, 'class'])->middlewar
 Route::get('/class_detail', [indexDashboardController::class, 'classdetail'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/class_join', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/uploadfile', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
-// 
+//
 // admin
-// Route::get('/admin', [adminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-// 
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('/', [adminController::class, 'admin'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::group(['prefix'=>'bainop'],function(){
+        Route::get('ds', [bainopController::class, 'ds']);
+        Route::get('them', [bainopController::class, 'them']);
+        Route::get('sua', [bainopController::class, 'sua']);
+    });
+    Route::group(['prefix'=>'hocky'],function(){
+        Route::get('ds', [hockyController::class, 'ds']);
+        Route::get('them', [hockyController::class, 'them']);
+        Route::get('sua', [hockyController::class, 'sua']);
+    });
+    Route::group(['prefix'=>'monhoc'],function(){
+        Route::get('ds', [monhocController::class, 'ds']);
+        Route::get('them', [monhocController::class, 'them']);
+        Route::get('sua', [monhocController::class, 'sua']);
+    });
+    Route::group(['prefix'=>'lophoc'],function(){
+        Route::get('ds', [lophocController::class, 'ds']);
+        Route::get('them', [lophocController::class, 'them']);
+        Route::get('sua', [lophocController::class, 'sua']);
+    });
+    Route::group(['prefix'=>'user'],function(){
+        Route::get('ds', [userController::class, 'ds']);
+        Route::get('them', [userController::class, 'them']);
+        Route::get('sua', [userController::class, 'sua']);
+    });
+});
+//
 // giảng viên
 Route::get('/teacher', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_account', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
