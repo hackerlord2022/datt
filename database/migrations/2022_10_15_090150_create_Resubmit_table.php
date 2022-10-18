@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('resubmit', function (Blueprint $table) {
             $table->id();
-            $table->integer('resubmitCode');
+            $table->integer('resubmit_code');
             $table->string('status');
             $table->text('content');
-            $table->string('classCode');
-            $table->string('userCode');
+            $table->string('class_code');
+            $table->string('user_code');
             $table->rememberToken();
             $table->timestamps();
         });

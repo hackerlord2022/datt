@@ -34,7 +34,7 @@ Route::get('/uploadfile', [indexDashboardController::class, 'uploadfile'])->midd
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){
-    Route::get('/', [adminController::class, 'admin'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/', [adminController::class, 'admin']);
     Route::group(['prefix'=>'bainop'],function(){
         Route::get('ds', [bainopController::class, 'ds']);
         Route::get('them', [bainopController::class, 'them']);

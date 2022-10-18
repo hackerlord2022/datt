@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('semester', function (Blueprint $table) {
             $table->id();
-            $table->string('semesterCode');
-            $table->string('semesterName');
+            $table->string('semester_code');
+            $table->string('semester_name');
             $table->rememberToken();
             $table->timestamps();
         });

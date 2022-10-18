@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('submission', function (Blueprint $table) {
             $table->id();
-            $table->string('submissionCode');
+            $table->string('submission_code');
             $table->string('submission');
-            $table->string('classCode');
-            $table->string('userCode');
+            $table->string('class_code');
+            $table->string('user_code');
             $table->date('deadline');
             $table->integer('resubmit');
             $table->rememberToken();
