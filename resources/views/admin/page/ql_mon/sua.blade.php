@@ -22,6 +22,10 @@ Sửa môn học: A
                           <label>Tên môn học</label>
                           <input type="text" class="form-control"placeholder="môn học">
                         </div>
+                        <div class="form-group">
+                          <label>Mã môn học</label>
+                          <input type="text" class="form-control"placeholder="môn học">
+                        </div>
                         <button type="submit" class="btn btn-primary">Sửa</button>
                         <a href="admin/monhoc/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>

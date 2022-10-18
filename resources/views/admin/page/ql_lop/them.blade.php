@@ -15,16 +15,28 @@ Thêm lớp học
                 <div class="card-body">
                     <form>
                         <div class="form-group">
+                          <label>Tên lớp học</label>
+                          <input type="text" class="form-control"placeholder="Lớp học">
+                        </div>
+                        <div class="form-group">
+                          <label>Mã lớp học</label>
+                          <input type="text" class="form-control"placeholder="Lớp học">
+                        </div>
+                        <div class="form-group">
                             <label>Học kỳ</label>
                             <select class="custom-select tm-select-accounts" id="" name="">
                                 <option value="">Fall 2022</option>
                                 <option value="">Spring 2022</option>
                                 <option value="">Summer 2022</option>
                               </select>
-                          </div>
+                        </div>
                         <div class="form-group">
-                          <label>Tên lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học">
+                            <label>Giảng viên của lớp</label>
+                            <select class="custom-select tm-select-accounts" id="" name="">
+                                <option value="">Giảng viên 1</option>
+                                <option value="">Giảng viên 2</option>
+                                <option value="">Giảng viên 3</option>
+                              </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
                         <a href="admin/lophoc/ds" type="submit" class="btn btn-primary">Danh sách</a>
