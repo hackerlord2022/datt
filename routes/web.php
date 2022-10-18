@@ -37,8 +37,6 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/', [adminController::class, 'admin']);
     Route::group(['prefix'=>'bainop'],function(){
         Route::get('ds', [bainopController::class, 'ds']);
-        Route::get('them', [bainopController::class, 'them']);
-        Route::get('sua', [bainopController::class, 'sua']);
     });
     Route::group(['prefix'=>'hocky'],function(){
         Route::get('ds', [hockyController::class, 'ds']);
@@ -69,6 +67,7 @@ Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middlewa
 Route::get('/addclass', [techerController::class, 'addclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_myclass', [techerController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_class_detail', [techerController::class, 'classdeatail'])->middleware(['auth', 'verified'])->name('dashboard');
+
 //
 // học sinh
 Route::get('/account', [studentController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');

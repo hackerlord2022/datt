@@ -11,7 +11,9 @@ class studentController extends Controller
         return "đây là trang quản lý tài khoản cá nhân sinh viên";
     }
 
+
     function account(){
+        
         return view("student.page.account");
     }
     function myclass(){
@@ -22,4 +24,5 @@ class studentController extends Controller
     }
     // đường dẫn vào giao diện sau khi có layout
     // return view("student.page.index");
+
 }
