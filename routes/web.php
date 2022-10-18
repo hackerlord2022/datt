@@ -59,6 +59,8 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('ds', [userController::class, 'ds']);
         Route::get('them', [userController::class, 'them']);
         Route::get('sua', [userController::class, 'sua']);
+        Route::get('capnhat', [userController::class, 'capnhat']);
+        Route::get('thongtin', [userController::class, 'thongtin']);
     });
 });
 //
