@@ -24,8 +24,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Thời gian bắt đầu</th>
-                                    <th class="text-center text-dark">Thời gian kết thúc</th>
+                                    <th class="text-center text-dark">Mã môn học</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -36,41 +35,23 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Thời gian bắt đầu</th>
-                                    <th class="text-center text-dark">Thời gian kết thúc</th>
+                                    <th class="text-center text-dark">Mã Học kỳ</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
 
                             </tfoot>
                             <tbody>
+                                @foreach ($class as $i=>$lh)
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td class="text-center ">11/11/2022 11:22</td>
-                                    <td class="text-center ">12/11/2022 23:59</td>
-                                    <td class="text-center text-primary"><a href="admin/hocky/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
+                                    <td class="text-center">{{$i++}}</td>
+                                    <td>{{$lh->ClassCode}}</td>
+                                    <td>{{$lh->ClassName}}</td>
+                                    <td class="text-center ">{{$lh->SemesterCode}}</td>
+                                    <td class="text-center text-primary"><a href="admin/lophoc/sua/{{$lh->id}}"><i class="fas fa-edit"></i></a></td>
+                                    <td class="text-center text-primary"><a href="admin/lophoc/xoa/{{$lh->id}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td class="text-center ">11/11/2022 11:22</td>
-                                    <td class="text-center ">12/11/2022 23:59</td>
-                                    <td class="text-center text-primary"><a href="admin/hocky/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td class="text-center ">11/11/2022 11:22</td>
-                                    <td class="text-center ">12/11/2022 23:59</td>
-                                    <td class="text-center text-primary"><a href="admin/hocky/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <a href="admin/lophoc/them" type="submit" class="btn btn-primary">Thêm lớp học</a>

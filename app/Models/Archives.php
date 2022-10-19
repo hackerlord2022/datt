@@ -9,10 +9,11 @@ class Archives extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'archives_code',
-        'archives_name',
-        'deadline',
-        'class_code',
-    ];
+    protected $table ='archives';
+    public function classstudents(){
+        return $this->belongsTo('App\Models\ClassStudent','id');
+    }
+    public function binhluan(){
+        return $this->hasMany('App\Models\binhluan','idTin','id');
+    }
 }

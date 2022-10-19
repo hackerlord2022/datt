@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('academics_code');
             $table->string('academics_name');
+            $table->string('SemesterCode');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -10,35 +10,46 @@ Sửa lớp học: A
             <!-- Circle Buttons -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa lớp học: </h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa lớp học:{{$lophoc->ClassName}}</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="/admin/lophoc/sua/{{$lophoc->id}}" method="POST">
                     <div class="form-group">
                           <label>Tên lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học">
+                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" value="{{$lophoc->ClassName}}">
                         </div>
                         <div class="form-group">
                           <label>Mã lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học">
+                          <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->ClassCode}}">
                         </div>
                         <div class="form-group">
                             <label>Học kỳ</label>
-                            <select class="custom-select tm-select-accounts" id="" name="">
-                                <option value="">Fall 2022</option>
-                                <option value="">Spring 2022</option>
-                                <option value="">Summer 2022</option>
+                            <select class="custom-select tm-select-accounts" id="" name="hocky">
+                                @foreach ($hocky as $hk)
+                                <option
+                                @if ($lophoc->SemesterCode == $hk->id)
+                                {{"selected"}}
+                                @endif
+                                value="{{$hk->id}}">{{$hk->SemesterName}}</option>
+                                @endforeach
                               </select>
                         </div>
                         <div class="form-group">
                             <label>Giảng viên của lớp</label>
-                            <select class="custom-select tm-select-accounts" id="" name="">
-                                <option value="">Giảng viên 1</option>
-                                <option value="">Giảng viên 2</option>
-                                <option value="">Giảng viên 3</option>
+                            <select class="custom-select tm-select-accounts" id="" name="role">
+                                @foreach ($user as $u)
+                                    @if ($u->role == 0)
+                                        <option
+                                        @if ($lophoc->UserCode == $u->id)
+                                        {{"selected"}}
+                                        @endif
+                                        value="{{$u->id}}">{{$u->name}}</option>
+                                    @endif
+                                @endforeach
                               </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Sửa</button>
+                        @csrf
                         <a href="admin/lophoc/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>
                 </div>
