@@ -7,7 +7,7 @@ Xin nộp bài lại
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Tài khoản cá nhân</h1>
+                <h1>XIn nộp lại bài</h1>
             </div>
         </div>
     </div>

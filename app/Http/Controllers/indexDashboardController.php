@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class indexDashboardController extends Controller
 {
     //
-    function index(){
+    function index(){   
         return view("student.page.listsemester");//học kì
     }
     function majors(){
