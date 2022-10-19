@@ -13,18 +13,19 @@ Thêm học kỳ
                     <h3 class="m-0 font-weight-bold text-primary text-center">Thêm học kỳ</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="admin/hocky/them" method="post">
                         <div class="form-group">
                           <label>Tên học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Học kỳ">
+                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk">
                         </div>
                         <div class="form-group">
                           <label>Mã học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Mã học kỳ">
+                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk">
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
+                        @csrf
                         <a href="admin/hocky/ds" type="submit" class="btn btn-primary">Danh sách</a>
-                      </form>
+                    </form>
                 </div>
             </div>
         </div>

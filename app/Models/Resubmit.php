@@ -9,11 +9,11 @@ class Resubmit extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-            'resubmit_code',
-            'status',
-            'content',
-            'class_code',
-            'user_code', 
-        ];
+    protected $table ='resubmit';
+    public function resubmit(){
+        return $this->belongsTo('App\Models\Resubmit','id');
+    }
+    public function binhluan(){
+        return $this->hasMany('App\Models\binhluan','idTin','id');
+    }
 }

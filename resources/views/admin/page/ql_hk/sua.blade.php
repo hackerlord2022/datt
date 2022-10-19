@@ -10,23 +10,24 @@ Sửa học kỳ: A
             <!-- Circle Buttons -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa học kỳ: A</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa học kỳ: {{$hocky->SemesterName}}</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="/admin/hocky/sua/{{$hocky->id}}" method="post">
                         <div class="form-group">
-                            <label>Mã học kỳ</label>
-                            <input type="text" class="form-control"disabled>
+                            <label>Id</label>
+                            <input type="text" class="form-control"disabled value="{{$hocky->id}}">
                           </div>
                         <div class="form-group">
                           <label>Tên học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Học kỳ">
+                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk" value="{{$hocky->SemesterName}}">
                         </div>
                         <div class="form-group">
                           <label>Mã học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Mã học kỳ">
+                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" value="{{$hocky->SemesterCode}}">
                         </div>
                         <button type="submit" class="btn btn-primary">Sửa</button>
+                        @csrf
                         <a href="admin/hocky/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>
                 </div>

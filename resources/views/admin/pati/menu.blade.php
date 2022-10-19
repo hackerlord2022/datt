@@ -96,7 +96,6 @@
         <div id="collapseBainop" class="collapse" aria-labelledby="headingbainop" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Quản lý bài nộp:</h6>
-                <a class="collapse-item" href="admin/bainop/them">Thêm</a>
                 <a class="collapse-item" href="admin/bainop/ds">Danh sách</a>
             </div>
         </div>

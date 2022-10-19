@@ -43,24 +43,25 @@ Danh sách Username
                                 </tr>
                             </tfoot>
                             <tbody>
+                                @foreach ($user as $i=>$u)
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td>PC01</td>
-                                    <td>Doe</td>
-                                    <td class="text-center">doe1234@gmail.com</td>
-                                    <td class="text-center">Sinh viên</td>
-                                    <td class="text-center text-primary"><a href="admin/user/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
+                                    <td class="text-center">{{$i++}}</td>
+                                    <td>{{$u->id}}</td>
+                                    <td>{{$u->name}}</td>
+                                    <td class="text-center">{{$u->email}}</td>
+                                    <td class="text-center">
+                                        @if ($u->role == 0)
+                                        {{"Giảng viên"}}
+                                        @elseif ($u->role == 1)
+                                        {{"Sinh Viên"}}
+                                        @else
+                                        {{"Admin"}}
+                                        @endif
+                                    </td>
+                                    <td class="text-center text-primary"><a href="admin/user/sua/{{$u->id}}"><i class="fas fa-edit"></i></a></td>
+                                    <td class="text-center text-primary"><a href="admin/user/xoa/{{$u->id}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>PC01</td>
-                                    <td>Jone</td>
-                                    <td class="text-center">jone1234@gmail.com</td>
-                                    <td class="text-center">Giảng viên</td>
-                                    <td class="text-center text-primary"><a href="admin/user/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                  </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <a href="admin/user/them" type="submit" class="btn btn-primary">Thêm Username</a>

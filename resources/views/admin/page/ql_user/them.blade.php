@@ -13,32 +13,33 @@ Thêm người dùng
                     <h3 class="m-0 font-weight-bold text-primary text-center">Thêm người dùng</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="admin/user/them" method="Post">
                         <div class="form-group">
                           <label>Họ Tên</label>
-                          <input type="text" class="form-control"placeholder="Họ tên">
+                          <input type="text" class="form-control"placeholder="Họ tên" name="hoten">
                         </div>
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="email" class="form-control"placeholder="Email">
+                          <input type="email" class="form-control"placeholder="Email" name="email">
                         </div>
                         <div class="form-group">
                           <label>Password</label>
-                          <input type="password" class="form-control"placeholder="Pasword">
+                          <input type="password" class="form-control"placeholder="Pasword" name="password">
                         </div>
                         <div class="form-group ">
                             <label>Vai trò :</label><br>
                             <div class="form-check-inline">
-                                <input name="noiBat" value="0" class="form-check-input" checked="" type="radio">Giảng viên
+                                <input name="role" value="0" class="form-check-input" checked="" type="radio">Giảng viên
                             </div>
                             <div class="form-check-inline">
-                              <input name="noiBat" value="1" class="form-check-input" checked="" type="radio">Sinh viên
+                              <input name="role" value="1" class="form-check-input" checked="" type="radio">Sinh viên
                             </div>
                             <div class="form-check-inline">
-                              <input name="noiBat" value="3" class="form-check-input" checked="" type="radio">Admin
+                              <input name="role" value="2" class="form-check-input" checked="" type="radio">Admin
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
+                        @csrf
                         <a href="admin/user/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>
                 </div>

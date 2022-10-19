@@ -37,30 +37,38 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/', [adminController::class, 'admin']);
     Route::group(['prefix'=>'bainop'],function(){
         Route::get('ds', [bainopController::class, 'ds']);
-        Route::get('them', [bainopController::class, 'them']);
-        Route::get('sua', [bainopController::class, 'sua']);
     });
     Route::group(['prefix'=>'hocky'],function(){
         Route::get('ds', [hockyController::class, 'ds']);
         Route::get('them', [hockyController::class, 'them']);
-        Route::get('sua', [hockyController::class, 'sua']);
+        Route::post('them', [hockyController::class, 'them_']);
+        Route::get('sua/{id}', [hockyController::class, 'sua']);
+        Route::post('sua/{id}', [hockyController::class, 'sua_']);
+        Route::get('xoa/{id}', [hockyController::class, 'xoa']);
     });
     Route::group(['prefix'=>'monhoc'],function(){
         Route::get('ds', [monhocController::class, 'ds']);
         Route::get('them', [monhocController::class, 'them']);
-        Route::get('sua', [monhocController::class, 'sua']);
+        Route::post('them', [monhocController::class, 'them_']);
+        Route::get('sua/{id}', [monhocController::class, 'sua']);
+        Route::post('sua/{id}', [monhocController::class, 'sua_']);
+        Route::get('xoa/{id}', [monhocController::class, 'xoa']);
     });
     Route::group(['prefix'=>'lophoc'],function(){
         Route::get('ds', [lophocController::class, 'ds']);
         Route::get('them', [lophocController::class, 'them']);
-        Route::get('sua', [lophocController::class, 'sua']);
+        Route::post('them', [lophocController::class, 'them_']);
+        Route::post('sua/{id}', [lophocController::class, 'sua_']);
+        Route::get('sua/{id}', [lophocController::class, 'sua']);
+        Route::get('xoa/{id}', [lophocController::class, 'xoa']);
     });
     Route::group(['prefix'=>'user'],function(){
         Route::get('ds', [userController::class, 'ds']);
         Route::get('them', [userController::class, 'them']);
-        Route::get('sua', [userController::class, 'sua']);
-        Route::get('capnhat', [userController::class, 'capnhat']);
-        Route::get('thongtin', [userController::class, 'thongtin']);
+        Route::post('them', [userController::class, 'them_']);
+        Route::get('sua/{id}', [userController::class, 'sua']);
+        Route::post('sua/{id}', [userController::class, 'sua_']);
+        Route::get('xoa/{id}', [userController::class, 'xoa']);
     });
 });
 //
