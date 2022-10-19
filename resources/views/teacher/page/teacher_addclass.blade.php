@@ -7,12 +7,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h1>Tài khoản cá nhân</h1>
+                    <h1>Thêm lớp học mới</h1>
                 </div>
             </div>
         </div>
     </section>
-    
     <section class="white section">
         <div class="container">
             <div class="row">
@@ -39,23 +38,35 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="teacher" method="post" role="form">
+                            <form action="teacher_addclass" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Họ tên</label>
-                                    <input type="text" class="form-control" name="name" value="{{Auth::User()->name}}">
+                                    <label>Mã lớp học</label>
+                                    <input type="text" class="form-control" name="class_code" placeholder="Mã lớp học">
                                 </div>
                                 <div class="form-group">
-                                    <label>Địa chỉ mail</label>
-                                    <input type="email" class="form-control" name="email" value="{{Auth::User()->email}}">
+                                    <label>Tên lớp học</label>
+                                    <input type="text" class="form-control" name="class_name" placeholder="Tên lớp học">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                <div class="form-group">
+                                    <label>Học kì</label>
+                                    <select name="academics_code" class="form-control">
+                                        @foreach ($hk as $item)
+                                        <option value="{{$item->academics_code}}">{{$item->academics_code}} - {{$item->academics_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Giáo viên</label>
+                                    <input type="text" class="form-control" name="teacher_code" value="{{Auth()->User()->name}}" readonly>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tạo lớp học</button>
                                 @csrf
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- <hr class="invis"> --}}
+            <hr class="invis">
         </div>
     </section>
 @endsection

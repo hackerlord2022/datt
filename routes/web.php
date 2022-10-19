@@ -64,9 +64,11 @@ Route::group(['prefix'=>'admin'],function(){
 //
 // giảng viên
 Route::get('/teacher', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/teacher_account', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/teacher', [techerController::class, 'account_'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/teacher_account', [techerController::class, 'teacher_account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/addclass', [techerController::class, 'addclass'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_addclass', [techerController::class, 'teacher_addclass'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/teacher_addclass', [techerController::class, 'teacher_addclass_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_myclass', [techerController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_class_detail', [techerController::class, 'classdeatail'])->middleware(['auth', 'verified'])->name('dashboard');
 //
