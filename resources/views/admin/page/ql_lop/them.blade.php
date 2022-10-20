@@ -26,13 +26,13 @@ Thêm lớp học
                             <label>Học kỳ</label>
                             <select class="custom-select tm-select-accounts" name="hocky" id="hocky">
                                 @foreach ($hocky as $mh)
-                                <option value="{{$mh->id}}">{{$mh->SemesterName}}</option>
+                                <option value="{{$mh->id}}">{{$mh->semester_name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Giảng viên của lớp</label>
-                            <select class="custom-select tm-select-accounts" name="user" id="hocky">
+                            <select class="custom-select tm-select-accounts" name="user" >
                                 @foreach ($user as $u)
                                     @if ($u->role == 0)
                                         <option value="{{$u->id}}">{{$u->name}}</option>

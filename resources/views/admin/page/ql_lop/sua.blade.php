@@ -10,27 +10,27 @@ Sửa lớp học: A
             <!-- Circle Buttons -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa lớp học:{{$lophoc->ClassName}}</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa lớp học:{{$lophoc->class_name}}</h3>
                 </div>
                 <div class="card-body">
                     <form action="/admin/lophoc/sua/{{$lophoc->id}}" method="POST">
                     <div class="form-group">
                           <label>Tên lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" value="{{$lophoc->ClassName}}">
+                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" value="{{$lophoc->class_name}}">
                         </div>
                         <div class="form-group">
                           <label>Mã lớp học</label>
-                          <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->ClassCode}}">
+                          <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->class_code}}">
                         </div>
                         <div class="form-group">
                             <label>Học kỳ</label>
                             <select class="custom-select tm-select-accounts" id="" name="hocky">
                                 @foreach ($hocky as $hk)
                                 <option
-                                @if ($lophoc->SemesterCode == $hk->id)
+                                @if ($lophoc->semester_code == $hk->id)
                                 {{"selected"}}
                                 @endif
-                                value="{{$hk->id}}">{{$hk->SemesterName}}</option>
+                                value="{{$hk->id}}">{{$hk->semester_name}}</option>
                                 @endforeach
                               </select>
                         </div>
@@ -40,7 +40,7 @@ Sửa lớp học: A
                                 @foreach ($user as $u)
                                     @if ($u->role == 0)
                                         <option
-                                        @if ($lophoc->UserCode == $u->id)
+                                        @if ($lophoc->teacher_code == $u->id)
                                         {{"selected"}}
                                         @endif
                                         value="{{$u->id}}">{{$u->name}}</option>

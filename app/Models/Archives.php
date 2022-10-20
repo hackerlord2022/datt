@@ -11,9 +11,6 @@ class Archives extends Model
 
     protected $table ='archives';
     public function classstudents(){
-        return $this->belongsTo('App\Models\ClassStudent','id');
-    }
-    public function binhluan(){
-        return $this->hasMany('App\Models\binhluan','idTin','id');
+        return $this->belongsTo('App\Models\class_student','id');
     }
 }

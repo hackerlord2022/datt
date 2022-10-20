@@ -9,11 +9,11 @@ class Academics extends Model
 {
     use HasFactory;
 
-    protected $table ='academics';
+    protected $table ='subject';
     public function semester(){
-        return $this->belongsTo('App\Models\Semester','SemesterCode','id');
+        return $this->belongsTo('App\Models\Semester','semester_code','id');
     }
     public function class(){
-        return $this->hasMany('App\Models\Classes','AcademicsCode','id');
+        return $this->hasMany('App\Models\Classes','subject_code','id');
     }
 }

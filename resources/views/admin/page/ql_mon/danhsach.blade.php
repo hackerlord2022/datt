@@ -43,8 +43,8 @@ Danh sách môn học
                                 @foreach ($monhoc as $i=>$mh )
                                     <tr>
                                         <td class="text-center">{{$i++}}</td>
-                                        <td>{{$mh->AcademicsCode}}</td>
-                                        <td>{{$mh->AcademicsName}}</td>
+                                        <td>{{$mh->subject_code}}</td>
+                                        <td>{{$mh->subject_name}}</td>
                                         <td class="text-center text-primary"><a href="admin/monhoc/sua/{{$mh->id}}"><i class="fas fa-edit"></i></a></td>
                                         <td class="text-center text-primary"><a href="admin/monhoc/xoa/{{$mh->id}}"><i class="fa fa-trash"></i></a></td>
                                     </tr>

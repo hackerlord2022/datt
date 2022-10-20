@@ -12,9 +12,9 @@ class monhocController extends Controller
     }
     function them_(){
         $monhoc = new mh ;
-        $monhoc->SemesterCode = $_POST['hocky'];
-        $monhoc->AcademicsCode = $_POST['mamh'];
-        $monhoc->AcademicsName = $_POST['tenmh'];
+        $monhoc->semester_code = $_POST['hocky'];
+        $monhoc->subject_code = $_POST['mamh'];
+        $monhoc->subject_name = $_POST['tenmh'];
         $monhoc->save();
         return redirect('admin/monhoc/them')->with('thongbao','Thêm Thành Công');
     }
@@ -25,9 +25,9 @@ class monhocController extends Controller
     }
     function sua_($id){
         $monhoc = mh::find($id);
-        $monhoc->SemesterCode = $_POST['hocky'];
-        $monhoc->AcademicsCode = $_POST['mamh'];
-        $monhoc->AcademicsName = $_POST['tenmh'];
+        $monhoc->semester_code = $_POST['hocky'];
+        $monhoc->subject_code = $_POST['mamh'];
+        $monhoc->subject_name = $_POST['tenmh'];
         $monhoc->save();
         return redirect('admin/monhoc/sua/'.$monhoc->id)->with('thongbao','Thêm Thành Công');
     }

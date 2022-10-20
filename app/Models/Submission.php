@@ -11,9 +11,9 @@ class Submission extends Model
 
     protected $table ='submission';
     public function Class(){
-        return $this->hasMany('App\Models\Classes','ClassCode','id');
+        return $this->hasMany('App\Models\Classes','class_code','id');
     }
     public function user(){
-        return $this->belongsTo('App\Models\User','UserCode','id');
+        return $this->belongsTo('App\Models\User','user_code','id');
     }
 }
