@@ -34,6 +34,7 @@ class techerController extends Controller
     }
     function teacher_addclass(){
         $hk = Academics::all();
+        // dd($hk);
         return view("teacher.page.teacher_addclass", ['hk'=> $hk]); 
     }
     function teacher_addclass_(){
@@ -42,7 +43,7 @@ class techerController extends Controller
         $addClass->class_name = $_POST['class_name'];
         $addClass->teacher_code = Auth()->User()->id;
         // dd($addClass->teacher_code);
-        $addClass->academics_code = $_POST['academics_code'];
+        $addClass->subject_code = $_POST['subject_code'];
         $addClass->save();
         $alert = 'Thêm lớp học thành công!';return redirect()->back()->with('alert',$alert);
         // return view("teacher.page.teacher_addclass"); 

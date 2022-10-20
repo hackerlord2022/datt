@@ -12,7 +12,7 @@ class Class_Lop extends Model
     protected $fillable = [
         'class_code',
         'class_name',
-        'academics_code',
+        'subject_code',
         'teacher_code',
         
     ];

@@ -10,6 +10,12 @@ class Academics extends Model
     use HasFactory;
 
     protected $table ='subject';
+    protected $fillable = [
+        'subject_code',
+        'subject_name',
+        'semester_code',
+    ];
+    
     public function semester(){
         return $this->belongsTo('App\Models\Semester','semester_code','id');
     }

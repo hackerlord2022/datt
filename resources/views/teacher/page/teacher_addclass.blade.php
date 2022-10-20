@@ -49,9 +49,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Học kì</label>
-                                    <select name="academics_code" class="form-control">
+                                    <select name="subject_code" class="form-control">
                                         @foreach ($hk as $item)
-                                        <option value="{{$item->academics_code}}">{{$item->academics_code}} - {{$item->academics_name}}</option>
+                                        <option value="{{$item->subject_code}}">{{$item->subject_code}} - {{$item->subject_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
