@@ -14,9 +14,10 @@ class lophocController extends Controller
     }
     function them_(){
         $lophoc = new lh ;
-        $lophoc->ClassCode = $_POST['malh'];
-        $lophoc->ClassName = $_POST['tenlh'];
-        $lophoc->SemesterCode = $_POST['hocky'];
+        $lophoc->class_code = $_POST['malh'];
+        $lophoc->class_name = $_POST['tenlh'];
+        $lophoc->semester_code = $_POST['hocky'];
+        $lophoc->teacher_code = $_POST['user'];
         $lophoc->save();
         return redirect('admin/lophoc/them')->with('thongbao','Thêm Thành Công');
     }
@@ -29,15 +30,17 @@ class lophocController extends Controller
     }
     function sua_($id){
         $lophoc =lh::find($id);
-        $lophoc->ClassCode = $_POST['malh'];
-        $lophoc->ClassName = $_POST['tenlh'];
-        $lophoc->SemesterCode = $_POST['hocky'];
+        $lophoc->class_code = $_POST['malh'];
+        $lophoc->class_name = $_POST['tenlh'];
+        $lophoc->semester_code = $_POST['hocky'];
+        $lophoc->teacher_code = $_POST['user'];
         $lophoc->save();
         return redirect('admin/lophoc/sua/'.$lophoc->id)->with('thongbao','Sửa Thành Công');
     }
     function ds(){
         $class = \App\Models\Classes::all();
-        return view('admin.page.ql_lop.danhsach',['class'=>$class]);
+        $user =user::all();
+        return view('admin.page.ql_lop.danhsach',['class'=>$class,'user'=>$user]);
     }
 }
 ?>

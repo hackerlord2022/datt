@@ -24,7 +24,8 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã môn học</th>
+                                    <th class="text-center text-dark">Mã học kỳ</th>
+                                    <th class="text-center text-dark">Giảng Viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -36,6 +37,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
                                     <th class="text-center text-dark">Mã Học kỳ</th>
+                                    <th class="text-center text-dark">Giảng Viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -45,9 +47,12 @@ Danh sách lớp học
                                 @foreach ($class as $i=>$lh)
                                 <tr>
                                     <td class="text-center">{{$i++}}</td>
-                                    <td>{{$lh->ClassCode}}</td>
-                                    <td>{{$lh->ClassName}}</td>
-                                    <td class="text-center ">{{$lh->SemesterCode}}</td>
+                                    <td>{{$lh->class_code}}</td>
+                                    <td>{{$lh->class_name}}</td>
+                                    <td class="text-center ">{{$lh->semester_code}}</td>
+                                    <td class="text-center ">
+                                        {{$lh->teacher_code}}
+                                    </td>
                                     <td class="text-center text-primary"><a href="admin/lophoc/sua/{{$lh->id}}"><i class="fas fa-edit"></i></a></td>
                                     <td class="text-center text-primary"><a href="admin/lophoc/xoa/{{$lh->id}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>

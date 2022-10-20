@@ -37,8 +37,8 @@ Danh sách bài nộp
                                 @foreach ($bainop as $i=>$bn)
                                 <tr>
                                     <td class=" text-center">{{$i++}}</td>
-                                    <td>{{$bn->SubmissionCode}}</td>
-                                    <td>{{$bn->Submission}}</td>
+                                    <td>{{$bn->submission_code}}</td>
+                                    <td>{{$bn->submission}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

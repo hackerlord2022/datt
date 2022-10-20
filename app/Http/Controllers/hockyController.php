@@ -10,8 +10,8 @@ class hockyController extends Controller
     }
     function them_(){
         $hocky = new hk ;
-        $hocky->SemesterCode = $_POST['mahk'];
-        $hocky->SemesterName = $_POST['tenhk'];
+        $hocky->semester_code = $_POST['mahk'];
+        $hocky->semester_name = $_POST['tenhk'];
         $hocky->save();
         return redirect('admin/hocky/them')->with('thongbao','Thêm Thành Công');
     }
@@ -22,8 +22,8 @@ class hockyController extends Controller
     }
     function sua_($id){
         $hocky = hk::find($id);
-        $hocky->SemesterCode = $_POST['mahk'];
-        $hocky->SemesterName = $_POST['tenhk'];
+        $hocky->semester_code = $_POST['mahk'];
+        $hocky->semester_name = $_POST['tenhk'];
         $hocky->save();
         return redirect('admin/hocky/sua/'.$hocky->id)->with('thongbao','Sửa Thành Công');
     }

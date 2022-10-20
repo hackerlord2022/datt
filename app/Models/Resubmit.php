@@ -13,7 +13,5 @@ class Resubmit extends Model
     public function resubmit(){
         return $this->belongsTo('App\Models\Resubmit','id');
     }
-    public function binhluan(){
-        return $this->hasMany('App\Models\binhluan','idTin','id');
-    }
+  
 }

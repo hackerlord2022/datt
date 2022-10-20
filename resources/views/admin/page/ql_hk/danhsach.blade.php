@@ -46,8 +46,8 @@ Danh sách học kỳ
                                 <tr>
                                     <td class="text-center">{{++$i}}</td>
                                     <td class="text-center">{{$hk->id}}</td>
-                                    <td>{{$hk->SemesterCode}}</td>
-                                    <td>{{$hk->SemesterName}}</td>
+                                    <td>{{$hk->semester_code}}</td>
+                                    <td>{{$hk->semester_name}}</td>
                                     <td class="text-center text-primary"><a href="admin/hocky/sua/{{$hk->id}}"><i class="fas fa-edit"></i></a></td>
                                     <td class="text-center text-primary"><a href="admin/hocky/xoa/{{$hk->id}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>
