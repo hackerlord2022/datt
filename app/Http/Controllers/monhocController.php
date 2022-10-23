@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Academics as mh;
+use App\Models\Subject as mh;
 use App\Models\Semester as hk;
 class monhocController extends Controller
 {
@@ -32,7 +32,7 @@ class monhocController extends Controller
         return redirect('admin/monhoc/sua/'.$monhoc->id)->with('thongbao','Thêm Thành Công');
     }
     function ds(){
-        $monhoc = \App\Models\Academics::all();
+        $monhoc = mh::all();
         return view('admin.page.ql_mon.danhsach',['monhoc'=>$monhoc]);
     }
 }
