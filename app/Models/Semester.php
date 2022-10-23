@@ -11,7 +11,7 @@ class Semester extends Model
     use HasFactory;
 
     protected $table ='semester';
-     public function academices(){
-        return $this->hasMany('App\Models\Academices','semester_code','id');
+     public function Subject(){
+        return $this->hasMany('App\Models\Subject','semester_code','id');
     }
 }

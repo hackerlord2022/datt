@@ -13,7 +13,7 @@ class Classes extends Model
     public function submission(){
         return $this->belongsTo('App\Models\Submission','class_code','id');
     }
-    public function Semester(){
-        return $this->belongsTo('App\Models\Semester','semester_code','id');
+    public function subject(){
+        return $this->belongsTo('App\Models\Subject','subject_code','id');
     }
 }
