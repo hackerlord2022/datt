@@ -48,7 +48,7 @@
                                     <input type="text" class="form-control" name="class_name" placeholder="Tên lớp học">
                                 </div>
                                 <div class="form-group">
-                                    <label>Học kì</label>
+                                    <label>Môn học</label>
                                     <select name="subject_code" class="form-control">
                                         @foreach ($hk as $item)
                                         <option value="{{$item->subject_code}}">{{$item->subject_code}} - {{$item->subject_name}}</option>

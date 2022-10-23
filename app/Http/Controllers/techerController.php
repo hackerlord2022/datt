@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Academics;
+use App\Models\Subject;
 use App\Models\Class_Lop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class techerController extends Controller
         return view("teacher.page.myclass", ['myClass' => $myClass]);
     }
     function teacher_addclass(){
-        $hk = Academics::all();
+        $hk = Subject::all();
         // dd($hk);
         return view("teacher.page.teacher_addclass", ['hk'=> $hk]); 
     }
@@ -49,12 +49,14 @@ class techerController extends Controller
         // return view("teacher.page.teacher_addclass"); 
     }
     function classdeatail(){
+        // liệt kê danh sách sinh viên của lớp
         return view("teacher.page.detail");
     }
     function addclass(){
         return view("teacher.page.addclass");
     }
     function reupload(){
+        // liệt lê yêu cầu xin nộp lại
         return view("teacher.page.reupload");
     }
     // đường dẫn vào giao diện sau khi có layout

@@ -38,7 +38,7 @@ class lophocController extends Controller
         return redirect('admin/lophoc/sua/'.$lophoc->id)->with('thongbao','Sửa Thành Công');
     }
     function ds(){
-        $class = \App\Models\Classes::all();
+        $class = lh::leftJoin('users', 'users.id', '=', 'class.teacher_code')->get();       
         $user =user::all();
         return view('admin.page.ql_lop.danhsach',['class'=>$class,'user'=>$user]);
     }
