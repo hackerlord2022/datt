@@ -26,8 +26,8 @@ Route::get('/', function () {
 });
 // trang chủ
 Route::get('/dashboard', [indexDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/list_majors', [indexDashboardController::class, 'majors'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/list_class', [indexDashboardController::class, 'class'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/list_majors/{id}', [indexDashboardController::class, 'majors'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/list_class/{id}', [indexDashboardController::class, 'class'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/class_detail', [indexDashboardController::class, 'classdetail'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/class_join', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/uploadfile', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -80,7 +80,8 @@ Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middlewa
 Route::get('/teacher_addclass', [techerController::class, 'teacher_addclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/teacher_addclass', [techerController::class, 'teacher_addclass_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_myclass', [techerController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/teacher_class_detail/{id}', [techerController::class, 'classdeatail'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_myclass_list/{id}', [techerController::class, 'list_student'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_myclass_list', [techerController::class, 'list_student_'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //
 // học sinh

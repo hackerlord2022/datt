@@ -9,7 +9,7 @@ class ClassStudent extends Model
 {
     use HasFactory;
 
-    protected $table ='classstudents';
+    protected $table ='class_students';
     public function classstudents(){
         return $this->belongsTo('App\Models\ClassStudent','id');
     }
