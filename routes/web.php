@@ -80,7 +80,7 @@ Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middlewa
 Route::get('/teacher_addclass', [techerController::class, 'teacher_addclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/teacher_addclass', [techerController::class, 'teacher_addclass_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_myclass', [techerController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/teacher_class_detail', [techerController::class, 'classdeatail'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_class_detail/{id}', [techerController::class, 'classdeatail'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //
 // học sinh

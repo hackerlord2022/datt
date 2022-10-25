@@ -7,6 +7,7 @@ use App\Models\Class_Lop;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class techerController extends Controller
 {
@@ -42,14 +43,19 @@ class techerController extends Controller
         $addClass->class_code = $_POST['class_code'];
         $addClass->class_name = $_POST['class_name'];
         $addClass->teacher_code = Auth()->User()->id;
-        // dd($addClass->teacher_code);
         $addClass->subject_code = $_POST['subject_code'];
         $addClass->save();
         $alert = 'Thêm lớp học thành công!';return redirect()->back()->with('alert',$alert);
         // return view("teacher.page.teacher_addclass"); 
     }
-    function classdeatail(){
+    function classdeatail($id){
         // liệt kê danh sách sinh viên của lớp
+        $classDeatail = DB::table('class_students')
+        ->join('users', 'users.id', '=', 'class_students.user_code')
+        ->join('class', 'class.class_code', '=', 'class_students.class_code')
+        ->where('class_students.class_code', '=', $id)
+        ->get();
+        // dd($classDeatail);
         return view("teacher.page.detail");
     }
     function addclass(){
