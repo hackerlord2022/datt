@@ -15,7 +15,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <title>LearnPLUS | Learning Management System HTML Template</title>
+    <title>LearnPLUS | 
+    @yield('titel')
+    </title>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}" />
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/apple-touch-icon-57x57.png')}}" />

@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
+use App\Models\Class_Lop;
+use App\Models\User;
+use App\Models\ClassStudent;
+use App\Models\Semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class indexDashboardController extends Controller
 {
     //
     function index(){   
-        return view("student.page.listsemester");//học kì
+        $semester = Semester::all();
+        return view("student.page.listsemester",['semester'=>$semester]);
     }
-    function majors(){
-        return view("student.page.listmajors");// ngành học
+    function majors($id){
+        $subject = Subject::where('semester_code', "=" ,$id)->get();
+        return view("student.page.listmajors", ["subject" => $subject]);// ngành học
     }
     function class(){
         return view("student.page.listclass");// lớp hoc

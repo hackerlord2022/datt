@@ -1,6 +1,6 @@
 @extends('student.layout.index')
 @section('titel')
-Trang chủ
+    Tải file lên
 @endsection
 @section('main')
 

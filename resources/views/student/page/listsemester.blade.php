@@ -16,31 +16,16 @@
 <section class="white section">
 <div class="container">
     <!--  -->
+    @foreach ($semester as $item)
     <div class="row course-list">
         <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
             <div class="shop-list-desc">
-                <h4><a href="list_majors?id=">Học Kỳ Falls 2022</a></h4>
-                    
+                <h4><a href="list_majors/{{$item->id}}">{{$item->semester_name}}</a></h4>                 
             </div>
         </div>
     </div>
+    @endforeach 
     <!--  -->
-    <div class="row course-list">
-        <div class="col-md-12 col-md-12" style="min-height:50px; background-color: #f2f2f2; border-radius: 10px;">
-            <div class="shop-list-desc">
-                <h4><a href="list_majors?id=">Học Kỳ Falls 2029</a></h4>
-               
-            </div>
-        </div>
-    </div>
-    <div class="row course-list">
-        <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
-            <div class="shop-list-desc">
-                <h4><a href="course-single.html">Học Kỳ Falls 2022</a></h4>
-                    
-            </div>
-        </div>
-    </div>
 </div>
 </section>
 @endsection

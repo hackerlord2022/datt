@@ -1,6 +1,6 @@
 @extends('student.layout.index')
 @section('titel')
-    Trang chủ
+    Danh sách lớp
 @endsection
 @section('main')
 

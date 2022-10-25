@@ -15,7 +15,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <title>LearnPLUS | Learning Management System HTML Template</title>
+    <title>LearnPLUS | 
+    @yield('titel')
+    </title>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}" />
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/apple-touch-icon-57x57.png')}}" />
@@ -65,8 +67,8 @@
                                 <span class="fa fa-bars"></span>
                             </button>
                             <div class="logo">
-                                <a class="navbar-brand" href="dashboard"><img
-                                        src="images/xlogo.png.pagespeed.ic.vap6Ukaf0i.png" alt=""></a>
+                                <a class="navbar-brand" href="{{asset('dashboard')}}"><img
+                                        src="{{asset('images/xlogo.png.pagespeed.ic.vap6Ukaf0i.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="navbar-collapse collapse">
