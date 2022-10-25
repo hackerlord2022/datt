@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User as user;
+use Illuminate\Support\Facades\Hash;
+
 class userController extends Controller
 {
     function them(){
@@ -12,7 +14,7 @@ class userController extends Controller
         $user = new user ;
         $user->name = $_POST['hoten'];
         $user->email = $_POST['email'];
-        $user->password = $_POST['password'];
+        $user->password = Hash::make($_POST['password']);
         $user->role = $_POST['role'];
         $user->save();
         return redirect('admin/user/them')->with('thongbao','Thêm Thành Công');
@@ -26,7 +28,7 @@ class userController extends Controller
         $user = user::find($id);
         $user->name = $_POST['hoten'];
         $user->email = $_POST['email'];
-        $user->password = $_POST['password'];
+        $user->password = Hash::make($_POST['password']);
         $user->role = $_POST['role'];
         $user->save();
         return redirect('admin/user/sua/'.$user->id)->with('thongbao','Sửa Thành Công');
