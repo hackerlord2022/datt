@@ -23,7 +23,7 @@ Xin nộp bài lại
                 <div class="course-meta">
                 <p>Trần Chi Pha Ke</p>
                     <hr>
-                    <p><a href="teacher_account">Tài khoản của tôi</a></p>
+                    <p><a href="teacher">Tài khoản của tôi</a></p>
                     <hr>
                     <p><a href="teacher_myclass">Lớp học của tôi</a></p>
                     <hr>
