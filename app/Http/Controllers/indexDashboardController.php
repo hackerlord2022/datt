@@ -28,14 +28,43 @@ class indexDashboardController extends Controller
         $SubjectName = Subject::where('subject_code', "=" ,$id)->first();
         return view("student.page.listclass", ['class' => $class, 'SubjectName' => $SubjectName]);// lớp hoc
     }
-    function joinclass(){ // tham gia lớp học
+    function joinclass($id){ // tham gia lớp học
         //Thêm gì đó để push main
-        return view("student.page.joinclass");
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->first();
+        if($checkUser == null){
+            $class = Classes::where('class_code', $id)->join('users', 'users.id', 'class.teacher_code')->first();
+            return view("student.page.joinclass", ['class' => $class]);
+        }
+        else{
+            return redirect('/class_detail/'.$id);
+        }
+    }
+    function joinclass_($id){
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->first();
+        if($checkUser == null){
+            $joinclass = new ClassStudent;
+            $joinclass->class_code = $id;
+            $joinclass->user_code = auth()->user()->id;
+            $joinclass->save();
+            return redirect('/class_detail/'.$id);
+        }
+        else{
+            return redirect('/joinclass/'.$id);
+        }
     }
     function classdetail($id){ // danh sách bài lab
-        $lab = Archives::where('class_code', "=" ,$id)->get();
-        $className = Classes::where('class_code', "=" ,$id)->first();
-        return view("student.page.detailclass", ['lab' => $lab, 'className' => $className]);
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->first();
+        if($checkUser == null){
+            return redirect('/joinclass/'.$id);
+        }
+        else{
+            $lab = Archives::where('class_code', "=" ,$id)->get();
+            $className = Classes::where('class_code', "=" ,$id)->first();
+            return view("student.page.detailclass", ['lab' => $lab, 'className' => $className]);
+        }
     }
     function uploadfile($id){
         // 
@@ -45,9 +74,15 @@ class indexDashboardController extends Controller
         $dateNow = date($formatDate, time());
         $timeNow = date($formatTime, time());
         // 
-        
-        $labdeatail = Archives::where('archives_code', "=" ,$id)->first();
-        $className = Classes::where('class_code', "=" ,$labdeatail->class_code)->first();
-        return view("student.page.upload", ['labdeatail' => $labdeatail, 'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className]);
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->get();
+        if($checkUser == null){
+            return redirect('/joinclass');
+        }
+        else{
+            $labdeatail = Archives::where('archives_code', "=" ,$id)->first();
+            $className = Classes::where('class_code', "=" ,$labdeatail->class_code)->first();
+            return view("student.page.upload", ['labdeatail' => $labdeatail, 'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className]);
+        }
     }
 }
