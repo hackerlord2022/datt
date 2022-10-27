@@ -28,9 +28,9 @@ Route::get('/', function () {
 Route::get('/dashboard', [indexDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/list_majors/{id}', [indexDashboardController::class, 'majors'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/list_class/{id}', [indexDashboardController::class, 'class'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/class_detail', [indexDashboardController::class, 'classdetail'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/class_detail/{id}', [indexDashboardController::class, 'classdetail'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/class_join', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/uploadfile', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){
