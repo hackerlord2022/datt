@@ -27,6 +27,7 @@ class indexDashboardController extends Controller
         return view("student.page.listclass", ['class' => $class]);// lớp hoc
     }
     function joinclass(){ // tham gia lớp học
+        //Thêm gì đó để push main
         return view("student.page.joinclass");
     }
     function classdetail(){ // danh sách bài lab
