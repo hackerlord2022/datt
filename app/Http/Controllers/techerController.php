@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archives;
 use App\Models\Subject;
 use App\Models\Class_Lop;
 use App\Models\User;
@@ -73,6 +74,18 @@ class techerController extends Controller
         }
         return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
     }
+    function teacher_listexercise(){
+        $list = Archives::all();
+        return view("teacher.page.list_exercise", ['list' => $list]);
+    }
+    function teacher_addexercise(){
+        return view("teacher.page.teacher_addexercise");
+    }
+
+
+
+
+
     function addclass(){
         return view("teacher.page.addclass");
     }
