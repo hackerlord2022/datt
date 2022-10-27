@@ -15,6 +15,8 @@
 </section>
 <section class="white section">
 <div class="container">
+    <a class="btn btn-info" href="../dashboard">Trở lại</a>
+    <hr>
     <!--  -->
     @foreach ($subject as $item)
     <div class="row course-list">
