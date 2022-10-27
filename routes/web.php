@@ -84,6 +84,7 @@ Route::get('/teacher_myclass_list/{id}', [techerController::class, 'list_student
 Route::get('/teacher_myclass_list', [techerController::class, 'list_student_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_listexercise', [techerController::class, 'teacher_listexercise'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_addexercise', [techerController::class, 'teacher_addexercise'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/teacher_addexercise', [techerController::class, 'teacher_addexercise_'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //
 // học sinh
