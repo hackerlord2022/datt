@@ -51,10 +51,6 @@ class techerController extends Controller
     }
     function list_student($id){
         // liệt kê danh sách sinh viên của lớp
-        $classDeatail = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
-        ->where('class_students.class_code', '=', $id)->get();
-        $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
-        ->where('class_students.class_code', '=', $id)->first();
         //return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className]);
         return redirect('/teacher_myclass_list')->with('id', $id);
     }
@@ -67,11 +63,11 @@ class techerController extends Controller
             ->where('class_students.class_code', '=', session('id'))->count();
             $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
             ->where('class_students.class_code', '=', session('id'))->first();
+            return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
         }
         else{
             return redirect('/teacher_myclass');
         }
-        return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
     }
     function addclass(){
         return view("teacher.page.addclass");

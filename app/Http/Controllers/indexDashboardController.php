@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
-use App\Models\Class_Lop;
+use App\Models\Classes;
 use App\Models\User;
 use App\Models\ClassStudent;
 use App\Models\Semester;
@@ -20,10 +20,11 @@ class indexDashboardController extends Controller
     }
     function majors($id){
         $subject = Subject::where('semester_code', "=" ,$id)->get();
-        return view("student.page.listmajors", ["subject" => $subject]);// ngành học
+        return view("student.page.listmajors", ['subject' => $subject]);// ngành học
     }
-    function class(){
-        return view("student.page.listclass");// lớp hoc
+    function class($id){
+        $class = Classes::where('subject_code', "=" ,$id)->get();
+        return view("student.page.listclass", ['class' => $class]);// lớp hoc
     }
     function joinclass(){ // tham gia lớp học
         return view("student.page.joinclass");
