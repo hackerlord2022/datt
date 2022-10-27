@@ -23,10 +23,10 @@ Thêm lớp học
                           <input type="text" class="form-control"placeholder="Lớp học" name="malh">
                         </div>
                         <div class="form-group">
-                            <label>Học kỳ</label>
-                            <select class="custom-select tm-select-accounts" name="hocky" id="hocky">
-                                @foreach ($hocky as $mh)
-                                <option value="{{$mh->id}}">{{$mh->semester_name}}</option>
+                            <label>Môn học</label>
+                            <select class="custom-select tm-select-accounts" name="monhoc" id="hocky">
+                                @foreach ($monhoc as $mh)
+                                <option value="{{$mh->id}}">{{$mh->subject_name}}</option>
                                 @endforeach
                             </select>
                         </div>
