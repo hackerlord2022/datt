@@ -15,6 +15,8 @@
 </section>
 <section class="white section">
 <div class="container">
+    <a class="btn btn-info" href="../list_majors/{{$SubjectName->semester_code}}">Trở lại</a>
+    <hr>
     <!--  -->
     @foreach ($class as $item)
     <div class="row course-list">

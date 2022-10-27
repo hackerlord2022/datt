@@ -25,7 +25,8 @@ class indexDashboardController extends Controller
     }
     function class($id){
         $class = Classes::where('subject_code', "=" ,$id)->get();
-        return view("student.page.listclass", ['class' => $class]);// lớp hoc
+        $SubjectName = Subject::where('subject_code', "=" ,$id)->first();
+        return view("student.page.listclass", ['class' => $class, 'SubjectName' => $SubjectName]);// lớp hoc
     }
     function joinclass(){ // tham gia lớp học
         //Thêm gì đó để push main
