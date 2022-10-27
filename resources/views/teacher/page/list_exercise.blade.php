@@ -40,7 +40,7 @@ Lớp của tôi
                             <div class="row course-list">
                                 <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                     <div class="shop-list-desc">
-                                        <h4><a href="teacher_myclass_list/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a></h4>
+                                        <h4><a href="uploadfile/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a></h4>
                                     </div>
                                 </div>
                             </div>
