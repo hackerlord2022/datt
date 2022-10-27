@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('archives_code');
             $table->string('archives_name');
             $table->date('deadline');
+            $table->text('note');
             $table->string('class_code');
             $table->rememberToken();
             $table->timestamps();
