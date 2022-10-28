@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Class_Lop;
-use App\Models\ClassStudent;
+use App\Models\ClassStudent_;
 
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
@@ -35,8 +35,15 @@ class studentController extends Controller
         return redirect()->back()->with('alert',$alert);
         return view("student.page.account");
     }
-    function myclass(){    
-        $Class = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
+    function myclass(){      
+      
+        $Class = DB::table('class_students')
+        ->join('class', 'class_students.class_code', '=', 'class.class_code')
+        ->select('class_students.*', 'class.class_name')
+        ->where('user_code', '=', (Auth()->User()->id))
+        ->get();
+        
+
         return view("student.page.myclass", ['Class' => $Class]);
     }
     function reupload(){
