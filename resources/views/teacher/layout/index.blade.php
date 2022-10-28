@@ -15,7 +15,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <title>LearnPLUS | Learning Management System HTML Template</title>
+    <title>LearnPLUS | 
+    @yield('titel')
+    </title>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{asset('images/apple-touch-icon.png')}}" />
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/apple-touch-icon-57x57.png')}}" />
@@ -114,8 +116,8 @@
             </div>
         </section>
     </div>
-    <script src="js/jquery.min.js.pagespeed.jm.iDyG3vc4gw.js"></script>
-    <script src="js/bootstrap.min.js%2bretina.js%2bwow.js.pagespeed.jc.pMrMbVAe_E.js"></script>
+    <script src="{{asset('js/jquery.min.js.pagespeed.jm.iDyG3vc4gw.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js%2bretina.js%2bwow.js.pagespeed.jc.pMrMbVAe_E.js')}}"></script>
     <script>
     eval(mod_pagespeed_gFRwwUbyVc);
     </script>
@@ -125,13 +127,13 @@
     <script>
     eval(mod_pagespeed_U0OPgGhapl);
     </script>
-    <script src="js/carousel.js%2bcustom.js.pagespeed.jc.nVhk-UfDsv.js"></script>
+    <script src="{{asset('js/carousel.js%2bcustom.js.pagespeed.jc.nVhk-UfDsv.js')}}"></script>
     <script>
     eval(mod_pagespeed_6Ja02QZq$f);
     </script>
     <script>
     eval(mod_pagespeed_KxQMf5X6rF);
-    </script>
+    </script>   
 </body>
 
 <!-- course-list39:59  -->

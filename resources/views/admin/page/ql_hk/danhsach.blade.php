@@ -22,10 +22,9 @@ Danh sách học kỳ
                             <thead>
                                 <tr style="background-color: cornflowerblue">
                                     <th class="text-center text-dark">STT</th>
+                                    <th class="text-center text-dark">ID</th>
                                     <th class="text-center text-dark">Mã học kỳ</th>
                                     <th class="text-center text-dark">Tên học kỳ</th>
-                                    <th class="text-center text-dark">Thời gian bắt đầu</th>
-                                    <th class="text-center text-dark">Thời gian kết thúc</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -34,43 +33,25 @@ Danh sách học kỳ
                             <tfoot>
                                 <tr style="background-color: cornflowerblue">
                                     <th class="text-center text-dark">STT</th>
+                                    <th class="text-center text-dark">ID</th>
                                     <th class="text-center text-dark">Mã học kỳ</th>
                                     <th class="text-center text-dark">Tên học kỳ</th>
-                                    <th class="text-center text-dark">Thời gian bắt đầu</th>
                                     <th class="text-center text-dark">Sửa</th>
-                                    <th class="text-center text-dark">Thời gian kết thúc</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
 
                             </tfoot>
                             <tbody>
+                                @foreach ($hocky as $i=>$hk)
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td class="text-center ">11/11/2022 11:22</td>
-                                    <td class="text-center ">12/11/2022 23:59</td>
-                                    <td class="text-center text-primary"><a href="admin/hocky/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
+                                    <td class="text-center">{{++$i}}</td>
+                                    <td class="text-center">{{$hk->id}}</td>
+                                    <td>{{$hk->semester_code}}</td>
+                                    <td>{{$hk->semester_name}}</td>
+                                    <td class="text-center text-primary"><a href="admin/hocky/sua/{{$hk->id}}"><i class="fas fa-edit"></i></a></td>
+                                    <td class="text-center text-primary"><a href="admin/hocky/xoa/{{$hk->id}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td class="text-center ">11/11/2022 11:22</td>
-                                    <td class="text-center ">12/11/2022 23:59</td>
-                                    <td class="text-center text-primary"><a href="admin/hocky/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td class="text-center ">11/11/2022 11:22</td>
-                                    <td class="text-center ">12/11/2022 23:59</td>
-                                    <td class="text-center text-primary"><a href="admin/hocky/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <a href="admin/hocky/them" type="submit" class="btn btn-primary">Thêm học kỳ</a>

@@ -7,7 +7,7 @@ Xin nộp bài lại
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Tài khoản cá nhân</h1>
+                <h1>XIn nộp lại bài</h1>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@ Xin nộp bài lại
                 <div class="course-meta">
                 <p>Trần Chi Pha Ke</p>
                     <hr>
-                    <p><a href="teacher_account">Tài khoản của tôi</a></p>
+                    <p><a href="teacher">Tài khoản của tôi</a></p>
                     <hr>
                     <p><a href="teacher_myclass">Lớp học của tôi</a></p>
                     <hr>

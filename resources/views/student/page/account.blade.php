@@ -1,6 +1,6 @@
 @extends('student.layout.index')
 @section('titel')
-    Chỉnh sửa
+    Tài khoản của tui
 @endsection
 @section('main')
 <section class="grey page-title">

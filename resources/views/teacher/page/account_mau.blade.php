@@ -1,4 +1,4 @@
-@extends('student.layout.index')
+{{-- @extends('student.layout.index')
 @section('titel')
     Chỉnh sửa
 @endsection
@@ -58,4 +58,4 @@
             {{-- <hr class="invis"> --}}
         </div>
     </section>
-@endsection
+@endsection --}}

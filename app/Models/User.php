@@ -23,7 +23,10 @@ class User extends Authenticatable
         'password',
         'role',
     ];
-
+    protected $table ='users';
+    public function submission(){
+        return $this->hasMany('App\Models\Submission','user_code','id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

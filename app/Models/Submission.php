@@ -9,12 +9,11 @@ class Submission extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'submission_code',
-        'submission',
-        'class_code',
-        'user_code',
-        'deadline',
-        'resubmit',
-    ];
+    protected $table ='submission';
+    public function Class(){
+        return $this->hasMany('App\Models\Classes','class_code','id');
+    }
+    public function user(){
+        return $this->belongsTo('App\Models\User','user_code','id');
+    }
 }

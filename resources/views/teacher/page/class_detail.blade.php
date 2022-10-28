@@ -1,6 +1,6 @@
-@extends('student.layout.index')
+@extends('teacher.layout.index')
 @section('titel')
-    Chỉnh sửa
+    Danh sách sinh viên
 @endsection
 @section('main')
 <section class="grey page-title">
@@ -22,7 +22,7 @@
                 <div class="course-meta">
                     <p>Trần Chi Pha Ke</p>
                     <hr>
-                    <p><a href="teacher_account">Tài khoản của tôi</a></p>
+                    <p><a href="teacher">Tài khoản của tôi</a></p>
                     <hr>
                     <p><a href="teacher_myclass">Lớp học của tôi</a></p>
                     <hr>
@@ -33,19 +33,17 @@
                 </div>
             </div>
             <div id="course-content" class="col-md-9">
-                <h3>Lớp: WD16301</h3>
+                <h3>Lớp: {{$className->class_name}} | Số lượng: {{$classCount}}</h3>
                 <div class="course-description">
                 <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                    @foreach ($classDeatail as $item)
+                <li class="list-group-item">{{$item->name}}</li>
+                    @endforeach
                 </ul>
                 </div>
             </div>
         </div>
-        <hr class="invis">
+        
     </div>
 </section>
 @endsection
