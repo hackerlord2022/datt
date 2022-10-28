@@ -34,13 +34,20 @@ Lớp của tôi
             </div>
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
+                    @if(session('alert'))
+                        <section class='alert alert-success'>{{session('alert')}}</section>
+                    @endif
                     <div class="edit-profile">
                         <h4><a href="teacher_addexercise" class="btn btn-warning">Thêm lab mới</a></h4>
                         @foreach ($list as $item)
                             <div class="row course-list">
                                 <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                     <div class="shop-list-desc">
-                                        <h4><a href="uploadfile/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a></h4>
+                                        <h4>
+                                            <a href="uploadfile/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
+                                            <a href="teacher_editexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
+                                            <a href="teacher_deleteexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
