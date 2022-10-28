@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archives;
 use App\Models\Subject;
 use App\Models\Class_Lop;
+use App\Models\Classes;
 use App\Models\User;
 use App\Models\ClassStudent;
 use Illuminate\Http\Request;
@@ -69,6 +71,30 @@ class techerController extends Controller
             return redirect('/teacher_myclass');
         }
     }
+    function teacher_listexercise(){
+        $list = Archives::all();
+        return view("teacher.page.list_exercise", ['list' => $list]);
+    }
+    function teacher_addexercise(){
+        $classCode = Classes::all();
+        return view("teacher.page.teacher_addexercise", ['classCode' => $classCode]);
+    }
+    function teacher_addexercise_(){
+        $exercise = new Archives();
+        $exercise->archives_code = $_POST['archives_code'];
+        $exercise->archives_name = $_POST['archives_name'];
+        $exercise->deadline = $_POST['deadline'];
+        $exercise->deadlinetime = $_POST['deadlinetime'];
+        $exercise->class_code = $_POST['class_code'];
+        $exercise->note = $_POST['note'];
+        $exercise->save();
+        $alert = 'Thêm Lab thành công!';return redirect()->back()->with('alert',$alert);
+    }
+
+
+
+
+
     function addclass(){
         return view("teacher.page.addclass");
     }

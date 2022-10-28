@@ -24,16 +24,19 @@
                     <h4><a href="#">{{$labdeatail->archives_name}}</a></h4>
                     <p>{{$labdeatail->note}}</p>
                     <form action="" method="post">
-                        <div class="mb-3" style="margin-bottom: 5px">
-                            <label for="formFile" class="form-label">Tải lên file của bạn</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-
                             @if ($dateNow <= $labdeatail->deadline AND $timeNow <= $labdeatail->deadlinetime)
+                                <div class="mb-3" style="margin-bottom: 5px">
+                                    <label for="formFile" class="form-label">Tải lên file của bạn</label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
                                 <button type="submit" class="btn btn-success col-md-12 col-md-12" style="margin-bottom: 5px">Nộp
                             bài</button>
                             
                             @else
+                                <div class="mb-3" style="margin-bottom: 5px">
+                                    <label for="formFile" class="form-label">Đã hết thời gian nộp bài</label>
+                                    <input class="form-control" type="text" id="formFile" readonly placeholder="Đã hết thời gian nộp bài">
+                                </div>
                                 <button class="btn btn-warning col-md-12 col-md-12" style="margin-bottom: 5px">Đã hết thời gian nộp bài</button>
                             @endif
                     </form>
