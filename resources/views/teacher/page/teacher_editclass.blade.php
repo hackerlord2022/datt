@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h1>Thêm Lab mới</h1>
+                    <h1>Cập nhật lớp học</h1>
                 </div>
             </div>
         </div>
@@ -22,13 +22,13 @@
                     <div class="course-meta">
                         <p>{{Auth::User()->name}}</p>
                         <hr>
-                        <p><a href="teacher">Tài khoản của tôi</a></p>
+                        <p><a href="/teacher">Tài khoản của tôi</a></p>
                         <hr>
-                        <p><a href="teacher_myclass">Lớp học của tôi</a></p>
+                        <p><a href="/teacher_myclass">Lớp học của tôi</a></p>
                         <hr>
-                        <p><a href="teacher_addclass">Thêm lớp học</a></p>
+                        <p><a href="/teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="/teacher_reupload">Nộp lại bài</a></p>
                         <hr>
                     </div>
                 </div>
@@ -38,37 +38,29 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="teacher_addexercise" method="post" enctype="multipart/form-data">
+                            <form action="#" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Mã Lab</label>
-                                    <input type="text" class="form-control" name="archives_code" placeholder="Mã Lab">
+                                    <label>Mã lớp học</label>
+                                    <input type="text" class="form-control" name="class_code" value="{{$teacher_editclass->class_code}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Tên Lab</label>
-                                    <input type="text" class="form-control" name="archives_name" placeholder="Tên Lab">
+                                    <label>Tên lớp học</label>
+                                    <input type="text" class="form-control" name="class_name" value="{{$teacher_editclass->class_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Lớp học</label>
-                                    <select name="class_code" class="form-control">
-                                        @foreach ($classCode as $item)
-                                        <option value="{{$item->class_code}}">{{$item->class_code}} - {{$item->class_name}}</option>
+                                    <label>Môn học</label>
+                                    <select name="subject_code" class="form-control">
+                                        @foreach ($hk as $hk)
+                                            <option value="{{$hk->subject_code}}" @if ($hk->subject_code == $teacher_editclass->subject_code) selected  
+                                            @endif>{{$hk->subject_code}} - {{$hk->subject_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Deadline</label>
-                                    <input type="date" class="form-control" name="deadline" required>
+                                    <label>Giáo viên</label>
+                                    <input type="text" class="form-control" name="teacher_code" value="{{Auth()->User()->name}}" readonly>
                                 </div>
-                                <div class="form-group">
-                                    <label>Deadline Time</label>
-                                    <input type="time" class="form-control" name="deadlinetime" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Ghi chú</label>
-                                    <textarea class="form-control" name="note" rows="4" cols="50"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Tạo lab</button>
-                                <a href="/teacher_listexercise" class="btn btn-primary">Danh sách bài lab</a>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 @csrf
                             </form>
                         </div>
