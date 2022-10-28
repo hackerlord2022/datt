@@ -31,10 +31,11 @@ class studentController extends Controller
             $data->save();
 
       
-        $alert = 'Cập nhật thông tin thành công!';return redirect()->back()->with('alert',$alert);
+        $alert = 'Cập nhật thông tin thành công!';
+        return redirect()->back()->with('alert',$alert);
         return view("student.page.account");
     }
-    function myclass(){
+    function myclass(){    
         $Class = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
         return view("student.page.myclass", ['Class' => $Class]);
     }
