@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\ClassStudent;
 use App\Models\Semester;
 use App\Models\Archives;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +22,11 @@ class indexDashboardController extends Controller
     }
     function majors($id){
         $subject = Subject::where('semester_code', "=" ,$id)->get();
-        return view("student.page.listmajors", ['subject' => $subject]);// ngành học
+        $semester = Semester::where('semester_code', "=" ,$id)->first();
+        return view("student.page.listmajors", ['subject' => $subject, 'semester' => $semester]);// ngành học
     }
     function class($id){
-        $class = Classes::where('subject_code', "=" ,$id)->get();
+        $class = Classes::where('subject_code', "=" ,$id)->join('users', 'users.id', 'teacher_code')->get();
         $SubjectName = Subject::where('subject_code', "=" ,$id)->first();
         return view("student.page.listclass", ['class' => $class, 'SubjectName' => $SubjectName]);// lớp hoc
     }
@@ -62,7 +64,8 @@ class indexDashboardController extends Controller
         }
         else{
             $lab = Archives::where('class_code', "=" ,$id)->get();
-            $className = Classes::where('class_code', "=" ,$id)->first();
+            $className = Classes::where('class_code', "=" ,$id)
+                                ->join('users', 'users.id', 'teacher_code')->first();
             return view("student.page.detailclass", ['lab' => $lab, 'className' => $className]);
         }
     }
@@ -80,9 +83,42 @@ class indexDashboardController extends Controller
             return redirect('/joinclass');
         }
         else{
-            $labdeatail = Archives::where('archives_code', "=" ,$id)->first();
-            $className = Classes::where('class_code', "=" ,$labdeatail->class_code)->first();
-            return view("student.page.upload", ['labdeatail' => $labdeatail, 'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className]);
+            $labdeatail = Archives::where('archives_code', $id)->first();
+            $className = Classes::where('class_code', $labdeatail->class_code)
+                                ->join('users', 'users.id', 'teacher_code')->first();
+            $labUploaded = Submission::join('archives', 'archives.archives_code', 'submission.archives_code')
+                                ->where('archives.class_code', $labdeatail->class_code)->first();
+            return view("student.page.upload", ['labdeatail' => $labdeatail, 'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
+        }
+    }
+
+    function uploadfile_($id, Request $request){
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $formatTime = "G:i:s";
+        $formatDate = "Y-m-d";
+        $dateNow = date($formatDate, time());
+        if(!isset($_POST['btn'])){
+            $submission = new Submission;
+            $submission->submission_code = 'SM'.mt_rand(1, 10000);
+            //
+            $submission->submission = $_FILES['file']['name'];
+            $submission->archives_code = $id;
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                $file_name = $file->getClientOriginalName();
+                $file->move(public_path('/upload/filelab'),$file_name);
+            
+                $file_path = "/upload/imgNews/" . $file_name;
+            }
+            //
+            $submission->user_code = auth()->user()->id;
+            $submission->deadline = $dateNow;
+            $submission->resubmit = 0;
+            $submission->save();
+            return redirect('/uploadfile/'.$id);
+        }
+        else{
+            return "thiếu file";
         }
     }
 }
