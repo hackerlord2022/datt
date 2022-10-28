@@ -90,6 +90,8 @@ Route::post('/teacher_addexercise', [techerController::class, 'teacher_addexerci
 //
 // học sinh
 Route::get('/account', [studentController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/account', [studentController::class, 'account_update'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/myclass', [studentController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/reupload', [studentController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
 //

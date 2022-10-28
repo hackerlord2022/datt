@@ -21,7 +21,7 @@ Lớp của tôi
                         alt="" class="img-responsive">
                 </div>
                 <div class="course-meta">
-                    <p>Trần Chi Pha Ke</p>
+                    <p>{{Auth::User()->name}}</p>
                     <hr>
                     <p><a href="account">Tài khoản của tôi</a></p>
                     <hr>
@@ -35,30 +35,18 @@ Lớp của tôi
                 <div class="course-description">
                     <div class="edit-profile">
                         <!--  -->
+                        @foreach ($Class as $item)
                         <div class="row course-list">
                             <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                 <div class="shop-list-desc">
-                                    <h4><a href="class_detail?id=">WEB16301</a></h4>
+                                    <h4><a href="class_detail?id={{$item->class_code}}">{{$item->class_name}}</a></h4>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
                         <!--  -->
-                        <div class="row course-list">
-                            <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
-                                <div class="shop-list-desc">
-                                    <h4><a href="class_detail?id=">WEB16301</a></h4>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row course-list">
-                            <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
-                                <div class="shop-list-desc">
-                                    <h4><a href="class_detail?id=">WEB16301</a></h4>
-
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
                 </div>
             </div>
