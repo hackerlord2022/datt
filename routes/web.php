@@ -32,6 +32,8 @@ Route::get('/class_detail/{id}', [indexDashboardController::class, 'classdetail'
 Route::get('/joinclass/{id}', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/joinclass/{id}', [indexDashboardController::class, 'joinclass_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile_'])->middleware(['auth', 'verified'])->name('dashboard');
+
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){

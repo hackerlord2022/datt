@@ -81,8 +81,15 @@
                                 <button type="button" class="btn btn-outline-primary">Tìm kiếm</button>
                             </ul>
                         <ul class="nav navbar-nav navbar-right" style="margin-left:5px">
-                                <li><a class="btn btn-warning" href="/account">
-                                        Quản lý</a></li>
+                                <li>
+                                    @if (auth()->user()->role == 0)
+                                        <a class="btn btn-warning" href="/teacher">Quản lý</a>
+                                    @elseif (auth()->user()->role == 1)
+                                        <a class="btn btn-success" href="/account">Quản lý</a>
+                                    @elseif (auth()->user()->role == 2)
+                                        <a class="btn btn-danger" href="/admin">Quản lý</a>
+                                    @endif
+                                </li>
                             </ul>
                             
                             <ul class="nav navbar-nav navbar-right">

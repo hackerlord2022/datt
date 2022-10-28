@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <h1>Đây là lớp: {{$className->class_name}}</h1>
+                        <h1>Đây là lớp: {{$className->class_name}} - {{$className->name}}</h1>
                     </div>
                 </div>
             </div>
