@@ -20,7 +20,7 @@
                     <img src="https://scontent.fvca1-1.fna.fbcdn.net/v/t39.30808-6/311382810_2257046454472957_445878385869231417_n.jpg?stp=dst-jpg_s640x640&_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=mKPkiIlWzH4AX-O1SFU&_nc_ht=scontent.fvca1-1.fna&oh=00_AT8bwKRmF2iw6-PvzW-MiyO_ry4HWAgZIfMpzV6No4qviA&oe=634CB245" alt="" class="img-responsive">
                 </div>
                 <div class="course-meta">
-                    <p>Trần Chi Pha Ke</p>
+                    <p>{{Auth::User()->name}}</p>
                     <hr>
                     <p><a href="teacher">Tài khoản của tôi</a></p>
                     <hr>
@@ -33,6 +33,9 @@
                 </div>
             </div>
             <div id="course-content" class="col-md-9">
+                
+                <h4><a href="teacher_listexercise" class="btn btn-warning">Nộp bài</a></h4>
+                
                 <h3>Lớp: {{$className->class_name}} | Số lượng: {{$classCount}}</h3>
                 <div class="course-description">
                 <ul class="list-group">

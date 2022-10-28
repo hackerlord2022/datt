@@ -31,10 +31,10 @@ Sửa môn học: A
                             <select class="custom-select tm-select-accounts" name="hocky" id="hocky">
                                 @foreach ($hocky as $hk)
                                 <option
-                                @if ($monhoc->semester_code == $hk->id)
+                                @if ($monhoc->semester_code == $hk->semester_code)
                                 {{"selected"}}
                                 @endif
-                                value="{{$hk->id}}">{{$hk->semester_name}}</option>
+                                value="{{$hk->semester_code}}">{{$hk->semester_name}}</option>
                                 @endforeach
                             </select>
                           </div>

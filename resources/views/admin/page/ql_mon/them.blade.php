@@ -18,7 +18,7 @@ Thêm môn học
                             <label>Học kỳ</label>
                             <select class="custom-select tm-select-accounts" name="hocky" id="hocky">
                                 @foreach ($hocky as $mh)
-                                <option value="{{$mh->id}}">{{$mh->semester_name}}</option>
+                                <option value="{{$mh->semester_code}}">{{$mh->semester_name}}</option>
                                 @endforeach
                             </select>
                           </div>

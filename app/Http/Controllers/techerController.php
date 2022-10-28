@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archives;
 use App\Models\Subject;
 use App\Models\Class_Lop;
+use App\Models\Classes;
 use App\Models\User;
 use App\Models\ClassStudent;
 use Illuminate\Http\Request;
@@ -51,10 +53,6 @@ class techerController extends Controller
     }
     function list_student($id){
         // liệt kê danh sách sinh viên của lớp
-        $classDeatail = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
-        ->where('class_students.class_code', '=', $id)->get();
-        $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
-        ->where('class_students.class_code', '=', $id)->first();
         //return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className]);
         return redirect('/teacher_myclass_list')->with('id', $id);
     }
@@ -67,12 +65,36 @@ class techerController extends Controller
             ->where('class_students.class_code', '=', session('id'))->count();
             $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
             ->where('class_students.class_code', '=', session('id'))->first();
+            return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
         }
         else{
             return redirect('/teacher_myclass');
         }
-        return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
     }
+    function teacher_listexercise(){
+        $list = Archives::all();
+        return view("teacher.page.list_exercise", ['list' => $list]);
+    }
+    function teacher_addexercise(){
+        $classCode = Classes::all();
+        return view("teacher.page.teacher_addexercise", ['classCode' => $classCode]);
+    }
+    function teacher_addexercise_(){
+        $exercise = new Archives();
+        $exercise->archives_code = $_POST['archives_code'];
+        $exercise->archives_name = $_POST['archives_name'];
+        $exercise->deadline = $_POST['deadline'];
+        $exercise->deadlinetime = $_POST['deadlinetime'];
+        $exercise->class_code = $_POST['class_code'];
+        $exercise->note = $_POST['note'];
+        $exercise->save();
+        $alert = 'Thêm Lab thành công!';return redirect()->back()->with('alert',$alert);
+    }
+
+
+
+
+
     function addclass(){
         return view("teacher.page.addclass");
     }
