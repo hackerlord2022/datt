@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin/home">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -96,7 +96,6 @@
         <div id="collapseBainop" class="collapse" aria-labelledby="headingbainop" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Quản lý bài nộp:</h6>
-                <a class="collapse-item" href="admin/bainop/them">Thêm</a>
                 <a class="collapse-item" href="admin/bainop/ds">Danh sách</a>
             </div>
         </div>

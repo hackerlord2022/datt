@@ -9,8 +9,8 @@ class ClassStudent extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'class_code',
-        'user_code',
-    ];
+    protected $table ='class_students';
+    public function classstudents(){
+        return $this->belongsTo('App\Models\ClassStudent','id');
+    }
 }

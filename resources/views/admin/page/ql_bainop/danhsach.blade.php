@@ -24,8 +24,6 @@ Danh sách bài nộp
                                     <th class=" text-center text-dark">STT</th>
                                     <th class=" text-center text-dark">Mã bài nộp</th>
                                     <th class=" text-center text-dark">Tên bài nộp</th>
-                                    <th class=" text-center text-dark">Sửa</th>
-                                    <th class=" text-center text-dark">Xóa</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -33,35 +31,18 @@ Danh sách bài nộp
                                     <th class=" text-center text-dark">STT</th>
                                     <th class=" text-center text-dark">Mã bài nộp</th>
                                     <th class=" text-center text-dark">Tên bài nộp</th>
-                                    <th class=" text-center text-dark">Sửa</th>
-                                    <th class=" text-center text-dark">Xóa</th>
                                 </tr>
                             </tfoot>
                             <tbody>
+                                @foreach ($bainop as $i=>$bn)
                                 <tr>
-                                    <td class=" text-center">1</td>
-                                    <td>PC001</td>
-                                    <td>Edinburgh</td>
-                                    <td class="text-center text-primary"><a href="admin/bainop/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
+                                    <td class=" text-center">{{$i++}}</td>
+                                    <td>{{$bn->submission_code}}</td>
+                                    <td>{{$bn->submission}}</td>
                                 </tr>
-                                <tr>
-                                    <td class=" text-center">2</td>
-                                    <td>PC002</td>
-                                    <td>Tokyo</td>
-                                    <td class="text-center text-primary"><a href="admin/bainop/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class=" text-center"> 3</td>
-                                    <td>PC003</td>
-                                    <td>San Francisco</td>
-                                    <td class="text-center text-primary"><a href="admin/bainop/sua"><i class="fas fa-edit"></i></a></td>
-                                    <td class="text-center text-primary"><a href=""><i class="fa fa-trash"></i></a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <a href="admin/bainop/them" type="submit" class="btn btn-primary">Thêm bài nộp</a>
                     </div>
                 </div>
 

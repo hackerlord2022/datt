@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('archives_code');
             $table->string('archives_name');
             $table->date('deadline');
+            $table->time('deadlinetime');
+            $table->text('note');
             $table->string('class_code');
             $table->rememberToken();
             $table->timestamps();
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('konopbai');
+        Schema::dropIfExists('archives');
     }
 };
