@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <title>LearnPLUS | 
+    <title>LearnPLUS |
     @yield('titel')
     </title>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon" />
@@ -91,7 +91,7 @@
                                     @endif
                                 </li>
                             </ul>
-                            
+
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a class="btn btn-primary" href="{{ route('logout') }}"><i class="fa fa-sign-in"></i>
                                         Đăng xuất</a></li>
@@ -101,7 +101,7 @@
                 </div>
             </div>
         </header>
-        
+
             @yield('main')
 
         <section class="copyright">
@@ -140,7 +140,7 @@
     </script>
     <script>
     eval(mod_pagespeed_KxQMf5X6rF);
-    </script>   
+    </script>
 </body>
 
 <!-- course-list39:59  -->
