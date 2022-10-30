@@ -24,7 +24,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã học kỳ</th>
+                                    <th class="text-center text-dark">Mã môn học</th>
                                     <th class="text-center text-dark">Giảng Viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
@@ -36,7 +36,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã Học kỳ</th>
+                                    <th class="text-center text-dark">Mã môn học</th>
                                     <th class="text-center text-dark">Giảng Viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
@@ -44,7 +44,7 @@ Danh sách lớp học
 
                             </tfoot>
                             <tbody>
-                                @foreach ($class as $i=>$lh)
+                                @foreach ($lophoc as $i=>$lh)
                                 <tr>
                                     <td class="text-center">{{$i++}}</td>
                                     <td>{{$lh->class_code}}</td>
