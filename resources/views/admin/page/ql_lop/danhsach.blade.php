@@ -25,7 +25,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
                                     <th class="text-center text-dark">Mã môn học</th>
-                                    <th class="text-center text-dark">Giảng Viên</th>
+                                    <th class="text-center text-dark">Mã giảng viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -37,7 +37,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
                                     <th class="text-center text-dark">Mã môn học</th>
-                                    <th class="text-center text-dark">Giảng Viên</th>
+                                    <th class="text-center text-dark">Mã giảng viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
