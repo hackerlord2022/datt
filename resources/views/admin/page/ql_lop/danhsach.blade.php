@@ -51,7 +51,7 @@ Danh sách lớp học
                                     <td>{{$lh->class_name}}</td>
                                     <td class="text-center ">{{$lh->subject_code}}</td>
                                     <td class="text-center ">
-                                        {{$lh->name}}
+                                        {{$lh->teacher_code }}
                                     </td>
                                     <td class="text-center text-primary"><a href="admin/lophoc/sua/{{$lh->id}}"><i class="fas fa-edit"></i></a></td>
                                     <td class="text-center text-primary"><a href="admin/lophoc/xoa/{{$lh->id}}"><i class="fa fa-trash"></i></a></td>

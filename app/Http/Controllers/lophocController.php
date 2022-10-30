@@ -33,7 +33,7 @@ class lophocController extends Controller
         $lophoc->class_code = $_POST['malh'];
         $lophoc->class_name = $_POST['tenlh'];
         $lophoc->subject_code = $_POST['monhoc'];
-        $lophoc->teacher_code = $_POST['user'];
+        $lophoc->teacher_code = $_POST['role'];
         $lophoc->save();
         return redirect('admin/lophoc/sua/'.$lophoc->id)->with('thongbao','Sửa Thành Công');
     }

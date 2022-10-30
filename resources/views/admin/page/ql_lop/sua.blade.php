@@ -23,14 +23,14 @@ Sửa lớp học: A
                           <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->class_code}}">
                         </div>
                         <div class="form-group">
-                            <label>Học kỳ</label>
-                            <select class="custom-select tm-select-accounts" id="" name="hocky">
-                                @foreach ($hocky as $hk)
+                            <label>Môn học</label>
+                            <select class="custom-select tm-select-accounts" id="" name="monhoc">
+                                @foreach ($monhoc as $mh)
                                 <option
-                                @if ($lophoc->semester_code == $hk->id)
+                                @if ($lophoc->subject_code == $mh->id)
                                 {{"selected"}}
                                 @endif
-                                value="{{$hk->id}}">{{$hk->semester_name}}</option>
+                                value="{{$mh->id}}">{{$mh->subject_name}}</option>
                                 @endforeach
                               </select>
                         </div>
