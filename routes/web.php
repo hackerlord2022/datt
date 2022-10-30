@@ -98,7 +98,7 @@ Route::get('/teacher_editexercise/{id}', [techerController::class, 'teacher_edit
 Route::post('/teacher_editexercise/{id}', [techerController::class, 'teacher_editexercise_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_deleteexercise/{id}', [techerController::class, 'teacher_deleteexercise'])->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::get('/download/{id}', [indexDashboardController::class, 'downloadLab'])->middleware(['auth', 'verified'])->name('dashboard');
 // học sinh
 Route::get('/account', [studentController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/account', [studentController::class, 'account_update'])->middleware(['auth', 'verified'])->name('dashboard');
