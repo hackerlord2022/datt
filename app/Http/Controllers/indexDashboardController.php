@@ -131,4 +131,15 @@ class indexDashboardController extends Controller
         );
         return Response::download($file, $filename, $headers);
     }
+    function downloadLabAll(){
+        $fileLabAll = Submission::where('archives_code', $_POST['archives'])->get();
+        foreach($fileLabAll as $item){
+            $file = public_path(). "/upload/filelab/".$item->submission;
+            $filename = $item->submission;
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+            Response::download($file, $filename, $headers);
+        }
+    }
 }
