@@ -30,7 +30,7 @@ Sửa lớp học: A
                                 @if ($lophoc->subject_code == $mh->id)
                                 {{"selected"}}
                                 @endif
-                                value="{{$mh->id}}">{{$mh->subject_name}}</option>
+                                value="{{$mh->subject_code}}">{{$mh->subject_name}}</option>
                                 @endforeach
                               </select>
                         </div>
