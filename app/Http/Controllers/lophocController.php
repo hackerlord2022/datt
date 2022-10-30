@@ -46,7 +46,7 @@ class lophocController extends Controller
     function xoa($id){
         $lophoc = lh::find($id);
         $lophoc->delete();
-        return redirect('admin/lophoc/ds')->with('thongbao','Xóa Thành Công');
+        return redirect('admin/lophoc/ds')->with('thongbao','Xóa Thành Công ');
     }
 }
 ?>
