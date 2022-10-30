@@ -10,6 +10,7 @@ use App\Models\Semester;
 use App\Models\Archives;
 use App\Models\Submission;
 use Illuminate\Http\Request;
+use Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -119,6 +120,26 @@ class indexDashboardController extends Controller
         }
         else{
             return "thiếu file";
+        }
+    }
+    function downloadLab($id){
+        $fileLab = Submission::find($id);
+        $file = public_path(). "/upload/filelab/".$fileLab->submission;
+        $filename = $fileLab->submission;
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::download($file, $filename, $headers);
+    }
+    function downloadLabAll(){
+        $fileLabAll = Submission::where('archives_code', $_POST['archives'])->get();
+        foreach($fileLabAll as $item){
+            $file = public_path(). "/upload/filelab/".$item->submission;
+            $filename = $item->submission;
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+            Response::download($file, $filename, $headers);
         }
     }
 }
