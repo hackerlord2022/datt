@@ -21,13 +21,21 @@ class studentController extends Controller
         $User = Auth()->User()->id;
         return view("student.page.account");
     }
-    function account_update(Request $request, $id){
+    function account_update(){
         $data = User::find(Auth()->User()->id);
          
             $data->name = $_POST['name'];
             $data->email = $_POST['email'];
-            $data->passwword = $_POST['new_password'];
-            $data->password = (new BcryptHasher)->make($request->get('new_password'));
+            
+            $passwword = $_POST['new_password'];
+            $confirm_passwword = $_POST['confirm_new_password'];
+
+            if($passwword == $confirm_passwword){
+                $data->password =  $_POST['new_password'];
+            }else{
+                $alert = 'Mật khẩu không trùng khớp!';
+                return redirect()->back()->with('alert',$alert);
+            }
             $data->save();
 
       

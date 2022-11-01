@@ -32,6 +32,8 @@ Route::get('/class_detail/{id}', [indexDashboardController::class, 'classdetail'
 Route::get('/joinclass/{id}', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/joinclass/{id}', [indexDashboardController::class, 'joinclass_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile_'])->middleware(['auth', 'verified'])->name('dashboard');
+
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){
@@ -97,6 +99,10 @@ Route::post('/teacher_editexercise/{id}', [techerController::class, 'teacher_edi
 Route::get('/teacher_deleteexercise/{id}', [techerController::class, 'teacher_deleteexercise'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
+//test download
+Route::get('/download/{id}', [indexDashboardController::class, 'downloadLab'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/downloadall/', [indexDashboardController::class, 'downloadLabAll'])->middleware(['auth', 'verified'])->name('dashboard');
+//
 // học sinh
 Route::get('/account', [studentController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/account', [studentController::class, 'account_update'])->middleware(['auth', 'verified'])->name('dashboard');

@@ -26,10 +26,10 @@ Sửa người dùng
                           <label>Email</label>
                           <input type="email" class="form-control" placeholder="Email" name="email" value="{{$user->email}}">
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                           <label>Password</label>
-                          <input type="password" class="form-control" placeholder="Pasword" name="password" value="{{$user->password}}">
-                        </div> --}}
+                          <input type="password" class="form-control" placeholder="Pasword" name="password">
+                        </div>
                         <div class="form-group ">
                             <label>Vai trò :</label><br>
                             <div class="form-check-inline">
