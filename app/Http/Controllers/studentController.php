@@ -60,7 +60,7 @@ class studentController extends Controller
         ->select('class_students.*', 'class.class_name')
         ->where('user_code', '=', (Auth()->User()->id))
         ->get();
-        return view("student.page.myclass", ['Class' => $Class]);
+        return view("student.page.myclassR", ['Class' => $Class]);
     }
     function myclass_reupload($id){
         $lab = Archives::where('class_code', "=" ,$id)->get();

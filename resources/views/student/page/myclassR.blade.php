@@ -23,11 +23,11 @@ Lớp của tôi
                 <div class="course-meta">
                     <p>{{Auth::User()->name}}</p>
                     <hr>
-                    <p><a href="../account">Tài khoản của tôi</a></p>
+                    <p><a href="account">Tài khoản của tôi</a></p>
                     <hr>
-                    <p><a href="../myclass">Lớp học của tôi</a></p>
+                    <p><a href="myclass">Lớp học của tôi</a></p>
                     <hr>
-                    <p><a href="../reupload">Xin nộp lại bài</a></p>
+                    <p><a href="reupload">Xin nộp lại bài</a></p>
                     <hr>
                 </div>
             </div>
@@ -39,7 +39,7 @@ Lớp của tôi
                         <div class="row course-list">
                             <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                 <div class="shop-list-desc">
-                                    <h4><a href="class_detail/{{$item->class_code}}">{{$item->class_name}}</a></h4>
+                                    <h4><a href="myclass_reupload/{{$item->class_code}}">{{$item->class_name}}</a></h4>
                                 </div>
                             </div>
                         </div>

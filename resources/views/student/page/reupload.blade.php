@@ -22,11 +22,11 @@
                 <div class="course-meta">
                     <p>{{Auth()->User()->name}}</p>
                     <hr>
-                    <p><a href="account">Tài khoản của tôi</a></p>
+                    <p><a href="../account">Tài khoản của tôi</a></p>
                     <hr>
-                    <p><a href="myclass">Lớp học của tôi</a></p>
+                    <p><a href="../myclass">Lớp học của tôi</a></p>
                     <hr>
-                    <p><a href="reupload">Xin nộp lại bài</a></p>
+                    <p><a href="../reupload">Xin nộp lại bài</a></p>
                     <hr>
                 </div>
             </div>

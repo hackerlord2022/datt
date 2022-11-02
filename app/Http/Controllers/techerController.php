@@ -8,6 +8,7 @@ use App\Models\Class_Lop;
 use App\Models\Classes;
 use App\Models\User;
 use App\Models\ClassStudent;
+use App\Models\Resubmit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,7 @@ class techerController extends Controller
     }
     function myclass(){
         $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
-        // dd($myClass);
+        //dd($myClass);
         return view("teacher.page.myclass", ['myClass' => $myClass]);
     }
     function teacher_addclass(){
@@ -72,48 +73,27 @@ class techerController extends Controller
         $alert = 'Xóa thành công!';return redirect()->back()->with('alert',$alert);
         return redirect('teacher.page.myclass');
     }
-
-
-
-
     function list_student($id){
         // liệt kê danh sách sinh viên của lớp
-        $lab = Archives::where('class_code', "=" ,$id)->get();
-        $className = Classes::where('class_code', "=" ,$id)
-                            ->join('users', 'users.id', 'teacher_code')->first();
-                            // dd($lab, $className);
-        return redirect('/teacher_myclass_list')->with('id', $id, ['lab' => $lab, 'className' => $className]);
+        $classDeatail = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
+        ->where('class_students.class_code', '=', $id)->get();
+        $classCount = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
+        ->where('class_students.class_code', '=', $id)->count();
+        $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
+        ->where('class_students.class_code', '=', $id)->first();
+        return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
     }
-    function list_student_(){
-        // liệt kê danh sách sinh viên của lớp
-        if(session('id')){
-            $classDeatail = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
-            ->where('class_students.class_code', '=', session('id'))->get();
-            $classCount = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
-            ->where('class_students.class_code', '=', session('id'))->count();
-            $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
-            ->where('class_students.class_code', '=', session('id'))->first();
-            // $myClass = Classes::whereTeacher_code(Auth()->User()->id)->get();
-            // dd($myClass);
-            return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
-        }
-        else{
-            return redirect('/teacher_myclass');
-        }
-    }
-
     function teacher_listexercise($id){
         // $list = Archives::all();
         $list = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
         ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->get();
-        // dd($list);
-        return view("teacher.page.list_exercise", ['list' => $list]);
+        $class_code_class = $id;
+        return view("teacher.page.list_exercise", ['list' => $list, 'class_code_class' => $class_code_class]);
     }
     function teacher_addexercise($id){
         // $classCode = Classes::all();
         $classCode = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
-        ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->get();
-        dd($classCode);
+        ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->first();
         return view("teacher.page.teacher_addexercise", ['classCode' => $classCode]);
     }
     function teacher_addexercise_(){
@@ -154,9 +134,23 @@ class techerController extends Controller
         return view("teacher.page.addclass");
     }
     function reupload(){
-        // liệt lê yêu cầu xin nộp lại
-        return view("teacher.page.reupload");
+        $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
+        return view("teacher.page.myclassRS", ['myClass' => $myClass]);
     }
-    // đường dẫn vào giao diện sau khi có layout
+    function reuploadclass($id){
+        $myArchives = Archives::where("class_code", $id)->get();
+        return view("teacher.page.reuploadR", ['myArchives' => $myArchives]);
+    }
+    function reuploadclassD($id){
+        $resubmit = Resubmit::where("archives_code", $id)->join('users', 'users.id','resubmit.user_code')->orderBy('resubmit.created_at', 'ASC')->get();
+        return view("teacher.page.reupload", ['resubmit' => $resubmit]);
+    }
+    function reuploadclassD_($id){
+        $resubmit = Resubmit::where('resubmit_code', $id)
+                            ->update(['status' => 1]);
+        $alert = 'Đã duyệt!';
+        return redirect()->back()->with('alert',$alert);
+    }
+    // đường dẫn vào giao diện sau khi có layout || 
     // return view("techer.page.index");
 }

@@ -23,13 +23,13 @@
                     <div class="course-meta">
                         <p>{{Auth::User()->name}}</p>
                         <hr>
-                        <p><a href="teacher">Tài khoản của tôi</a></p>
+                        <p><a href="../teacher">Tài khoản của tôi</a></p>
                         <hr>
-                        <p><a href="teacher_myclass">Lớp học của tôi</a></p>
+                        <p><a href="../teacher_myclass">Lớp học của tôi</a></p>
                         <hr>
-                        <p><a href="teacher_addclass">Thêm lớp học</a></p>
+                        <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
                         <hr>
                     </div>
                 </div>

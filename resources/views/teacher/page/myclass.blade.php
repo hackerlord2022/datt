@@ -23,13 +23,14 @@ Lớp của tôi
                 <section class="course-meta">
                     <p>{{Auth::User()->name}}</p>
                     <hr>
-                    <p><a href="/teacher">Tài khoản của tôi</a></p>
-                    <hr>
-                    <p><a href="/teacher_myclass">Lớp học của tôi</a></p>
-                    <hr>
-                    <p><a href="/teacher_addclass">Thêm lớp học</a></p>
-                    <hr>
-                    <p><a href="/teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher">Tài khoản của tôi</a></p>
+                        <hr>
+                        <p><a href="../teacher_myclass">Lớp học của tôi</a></p>
+                        <hr>
+                        <p><a href="../teacher_addclass">Thêm lớp học</a></p>
+                        <hr>
+                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <hr>
                 </section>
             </div>
             <div id="course-content" class="col-md-9">
@@ -38,7 +39,7 @@ Lớp của tôi
                     @endif
                     <div class="course-description">
                     <div class="edit-profile">
-                        <h4><a href="/teacher_addclass" class="btn btn-warning">Thêm lớp học mới</a></h4>
+                        <h4><a href="../teacher_addclass" class="btn btn-warning">Thêm lớp học mới</a></h4>
                         <!--  -->
                         @foreach ($myClass as $item)
                             <div class="row course-list">
