@@ -78,8 +78,11 @@ class techerController extends Controller
 
     function list_student($id){
         // liệt kê danh sách sinh viên của lớp
-        //return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className]);
-        return redirect('/teacher_myclass_list')->with('id', $id);
+        $lab = Archives::where('class_code', "=" ,$id)->get();
+        $className = Classes::where('class_code', "=" ,$id)
+                            ->join('users', 'users.id', 'teacher_code')->first();
+                            // dd($lab, $className);
+        return redirect('/teacher_myclass_list')->with('id', $id, ['lab' => $lab, 'className' => $className]);
     }
     function list_student_(){
         // liệt kê danh sách sinh viên của lớp
@@ -90,6 +93,8 @@ class techerController extends Controller
             ->where('class_students.class_code', '=', session('id'))->count();
             $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
             ->where('class_students.class_code', '=', session('id'))->first();
+            // $myClass = Classes::whereTeacher_code(Auth()->User()->id)->get();
+            // dd($myClass);
             return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
         }
         else{
@@ -97,12 +102,18 @@ class techerController extends Controller
         }
     }
 
-    function teacher_listexercise(){
-        $list = Archives::all();
+    function teacher_listexercise($id){
+        // $list = Archives::all();
+        $list = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
+        ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->get();
+        // dd($list);
         return view("teacher.page.list_exercise", ['list' => $list]);
     }
-    function teacher_addexercise(){
-        $classCode = Classes::all();
+    function teacher_addexercise($id){
+        // $classCode = Classes::all();
+        $classCode = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
+        ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->get();
+        dd($classCode);
         return view("teacher.page.teacher_addexercise", ['classCode' => $classCode]);
     }
     function teacher_addexercise_(){

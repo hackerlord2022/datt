@@ -34,7 +34,7 @@
             </div>
             <div id="course-content" class="col-md-9">
                 
-                <h4><a href="teacher_listexercise" class="btn btn-warning">Nộp bài</a></h4>
+                <h4><a href="/teacher_listexercise/{{$className->class_code}}" class="btn btn-warning">Danh sách bài lab</a></h4>
                 
                 <h3>Lớp: {{$className->class_name}} | Số lượng: {{$classCount}}</h3>
                 <div class="course-description">

@@ -68,7 +68,7 @@
                                     <textarea class="form-control" name="note" rows="4" cols="50"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Tạo lab</button>
-                                <a href="/teacher_listexercise" class="btn btn-primary">Danh sách bài lab</a>
+                                {{-- <a href="/teacher_listexercise{{$classCode->class_code}}" class="btn btn-primary">Danh sách bài lab</a> --}}
                                 @csrf
                             </form>
                         </div>
