@@ -16,15 +16,15 @@ Thêm lớp học
                     <form action="/admin/lophoc/them" method="POST">
                         <div class="form-group">
                           <label>Tên lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh">
+                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh"required>
                         </div>
                         <div class="form-group">
                           <label>Mã lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học" name="malh">
+                          <input type="text" class="form-control"placeholder="Lớp học" name="malh"required>
                         </div>
                         <div class="form-group">
                             <label>Học kỳ</label>
-                            <select class="custom-select tm-select-accounts" name="hocky" id="hocky">
+                            <select class="custom-select tm-select-accounts" name="hocky" id="hocky"required>
                                 @foreach ($hocky as $mh)
                                 <option value="{{$mh->id}}">{{$mh->semester_name}}</option>
                                 @endforeach
@@ -32,7 +32,7 @@ Thêm lớp học
                         </div>
                         <div class="form-group">
                             <label>Giảng viên của lớp</label>
-                            <select class="custom-select tm-select-accounts" name="user" >
+                            <select class="custom-select tm-select-accounts" name="user"required >
                                 @foreach ($user as $u)
                                     @if ($u->role == 0)
                                         <option value="{{$u->id}}">{{$u->name}}</option>
@@ -44,6 +44,10 @@ Thêm lớp học
                         @csrf
                         <a href="admin/lophoc/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>
+                      @if(session('thongbao'))
+                        <section class='alert alert-success'>{{session('thongbao')}}</section>
+                    @endif
+
                 </div>
             </div>
         </div>

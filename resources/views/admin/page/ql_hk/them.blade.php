@@ -16,16 +16,20 @@ Thêm học kỳ
                     <form action="admin/hocky/them" method="post">
                         <div class="form-group">
                           <label>Tên học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk">
+                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk"required>
                         </div>
                         <div class="form-group">
                           <label>Mã học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk">
+                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
                         @csrf
                         <a href="admin/hocky/ds" type="submit" class="btn btn-primary">Danh sách</a>
                     </form>
+                    @if(session('thongbao'))
+                        <section class='alert alert-success'>{{session('thongbao')}}</section>
+                    @endif
+
                 </div>
             </div>
         </div>

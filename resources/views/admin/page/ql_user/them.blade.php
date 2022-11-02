@@ -14,17 +14,17 @@ Thêm người dùng
                 </div>
                 <div class="card-body">
                     <form action="admin/user/them" method="Post">
-                        <div class="form-group">
+                      <div class="form-group">
                           <label>Họ Tên</label>
-                          <input type="text" class="form-control"placeholder="Họ tên" name="hoten">
+                          <input type="text" class="form-control"placeholder="Họ tên" name="hoten" required>
                         </div>
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="email" class="form-control"placeholder="Email" name="email">
+                          <input type="email" class="form-control"placeholder="Email" name="email"required>
                         </div>
                         <div class="form-group">
                           <label>Password</label>
-                          <input type="password" class="form-control"placeholder="Pasword" name="password">
+                          <input type="password" class="form-control"placeholder="Pasword" name="password"required>
                         </div>
                         <div class="form-group ">
                             <label>Vai trò :</label><br>
@@ -42,6 +42,10 @@ Thêm người dùng
                         @csrf
                         <a href="admin/user/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>
+                      @if(session('thongbao'))
+                        <section class='alert alert-success'>{{session('thongbao')}}</section>
+                    @endif
+
                 </div>
             </div>
         </div>

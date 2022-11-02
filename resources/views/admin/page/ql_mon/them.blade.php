@@ -16,7 +16,7 @@ Thêm môn học
                     <form action="/admin/monhoc/them" method="POST">
                         <div class="form-group">
                             <label>Học kỳ</label>
-                            <select class="custom-select tm-select-accounts" name="hocky" id="hocky">
+                            <select class="custom-select tm-select-accounts" name="hocky" id="hocky"required>
                                 @foreach ($hocky as $mh)
                                 <option value="{{$mh->id}}">{{$mh->semester_name}}</option>
                                 @endforeach
@@ -24,16 +24,20 @@ Thêm môn học
                           </div>
                         <div class="form-group">
                           <label>Tên môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="tenmh">
+                          <input type="text" class="form-control"placeholder="môn học" name="tenmh"required>
                         </div>
                         <div class="form-group">
                           <label>Mã môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="mamh">
+                          <input type="text" class="form-control"placeholder="môn học" name="mamh"required>
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm</button>
                         @csrf
                         <a href="admin/monhoc/ds" type="submit" class="btn btn-primary">Danh sách</a>
                       </form>
+                      @if(session('thongbao'))
+                        <section class='alert alert-success'>{{session('thongbao')}}</section>
+                    @endif
+
                 </div>
             </div>
         </div>
