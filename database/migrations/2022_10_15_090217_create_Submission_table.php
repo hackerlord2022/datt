@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('submission_code');
             $table->string('submission');
-            $table->string('class_code');
+            $table->string('archives_code');
             $table->string('user_code');
             $table->date('deadline');
             $table->integer('resubmit');

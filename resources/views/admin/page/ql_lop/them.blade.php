@@ -5,6 +5,13 @@ Thêm lớp học
 @section('noidung')
 <div class="container-fluid">
     <!-- Page Heading -->
+   <!-- Page Heading -->
+   @if (session('thongbao'))
+   <div class="alert alert-success alert-dismissible fade show">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <strong>Success!</strong> {{session('thongbao')}}.
+   </div>
+   @endif
     <div class="row">
         <div class="col-lg-12">
             <!-- Circle Buttons -->
@@ -26,7 +33,7 @@ Thêm lớp học
                             <label>Môn học</label>
                             <select class="custom-select tm-select-accounts" name="monhoc" id="hocky">
                                 @foreach ($monhoc as $mh)
-                                <option value="{{$mh->id}}">{{$mh->subject_name}}</option>
+                                <option value="{{$mh->subject_code}}">{{$mh->subject_name}}</option>
                                 @endforeach
                             </select>
                         </div>

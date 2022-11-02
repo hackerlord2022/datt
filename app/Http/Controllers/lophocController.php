@@ -33,14 +33,20 @@ class lophocController extends Controller
         $lophoc->class_code = $_POST['malh'];
         $lophoc->class_name = $_POST['tenlh'];
         $lophoc->subject_code = $_POST['monhoc'];
-        $lophoc->teacher_code = $_POST['user'];
+        $lophoc->teacher_code = $_POST['role'];
         $lophoc->save();
         return redirect('admin/lophoc/sua/'.$lophoc->id)->with('thongbao','Sửa Thành Công');
     }
     function ds(){
-        $class = lh::leftJoin('users', 'users.id', '=', 'class.teacher_code')->get();
+        // $lophoc = lh::leftJoin('users', 'users.id', '=', 'class.teacher_code')->get();
+        $lophoc =lh::all();
         $user =user::all();
-        return view('admin.page.ql_lop.danhsach',['class'=>$class,'user'=>$user]);
+        return view('admin.page.ql_lop.danhsach',['lophoc'=>$lophoc,'user'=>$user]);
+    }
+    function xoa($id){
+        $lophoc = lh::find($id);
+        $lophoc->delete();
+        return redirect('admin/lophoc/ds')->with('thongbao','Xóa Thành Công ');
     }
 }
 ?>

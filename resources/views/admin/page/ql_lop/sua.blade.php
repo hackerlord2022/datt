@@ -5,6 +5,13 @@ Sửa lớp học: A
 @section('noidung')
 <div class="container-fluid">
     <!-- Page Heading -->
+    <!-- Page Heading -->
+    @if (session('thongbao'))
+    <div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Success!</strong> {{session('thongbao')}}.
+    </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <!-- Circle Buttons -->
@@ -23,14 +30,14 @@ Sửa lớp học: A
                           <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->class_code}}">
                         </div>
                         <div class="form-group">
-                            <label>Học kỳ</label>
-                            <select class="custom-select tm-select-accounts" id="" name="hocky">
-                                @foreach ($hocky as $hk)
+                            <label>Môn học</label>
+                            <select class="custom-select tm-select-accounts" id="" name="monhoc">
+                                @foreach ($monhoc as $mh)
                                 <option
-                                @if ($lophoc->semester_code == $hk->id)
+                                @if ($lophoc->subject_code == $mh->id)
                                 {{"selected"}}
                                 @endif
-                                value="{{$hk->id}}">{{$hk->semester_name}}</option>
+                                value="{{$mh->subject_code}}">{{$mh->subject_name}}</option>
                                 @endforeach
                               </select>
                         </div>

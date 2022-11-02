@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h1>Thêm Lab mới</h1>
+                    <h1>Cập nhật Lab</h1>
                 </div>
             </div>
         </div>
@@ -38,34 +38,38 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="/teacher_addexercise" method="post" enctype="multipart/form-data">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Mã Lab</label>
-                                    <input type="text" class="form-control" name="archives_code" placeholder="Mã Lab">
+                                    <input type="text" class="form-control" name="archives_code" value="{{$editexercise->archives_code}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tên Lab</label>
-                                    <input type="text" class="form-control" name="archives_name" placeholder="Tên Lab">
+                                    <input type="text" class="form-control" name="archives_name" value="{{$editexercise->archives_name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Lớp học</label>
-                                    <input type="text" class="form-control" placeholder="{{$classCode->class_code.'-'.$classCode->class_name}}" readonly>
-                                    <input type="hidden" class="form-control" name="class_code" value="{{$classCode->class_code}}" readonly >
+                                    <select name="class_code" class="form-control">
+                                        @foreach ($classCode as $classCode)
+                                            <option value="{{$classCode->class_code}}" @if ($classCode->class_code == $editexercise->class_code) selected  
+                                            @endif>{{$classCode->class_code}} - {{$classCode->class_name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Deadline</label>
-                                    <input type="date" class="form-control" name="deadline" required>
+                                    <input type="date" class="form-control" name="deadline" value="{{$editexercise->deadline}}" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Deadline Time</label>
-                                    <input type="time" class="form-control" name="deadlinetime" required>
+                                    <input type="time" class="form-control" name="deadlinetime" value="{{$editexercise->deadlinetime}}" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Ghi chú</label>
-                                    <textarea class="form-control" name="note" rows="4" cols="50"></textarea>
+                                    <textarea class="form-control" name="note" rows="4" cols="50">{{$editexercise->note}}</textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Tạo lab</button>
-                                <a href="/teacher_listexercise/{{$classCode->class_code}}" class="btn btn-primary">Danh sách bài lab</a>
+                                <button type="submit" class="btn btn-primary">Cập nhật lab</button>
+                                <a href="/teacher_listexercise" class="btn btn-primary">Danh sách bài lab</a>
                                 @csrf
                             </form>
                         </div>

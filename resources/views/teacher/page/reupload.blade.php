@@ -21,45 +21,38 @@ Xin nộp bài lại
                         alt="" class="img-responsive">
                 </div>
                 <div class="course-meta">
-                <p>Trần Chi Pha Ke</p>
-                    <hr>
-                    <p><a href="teacher">Tài khoản của tôi</a></p>
-                    <hr>
-                    <p><a href="teacher_myclass">Lớp học của tôi</a></p>
-                    <hr>
-                    <p><a href="teacher_addclass">Thêm lớp học</a></p>
-                    <hr>
-                    <p><a href="teacher_reupload">Nộp lại bài</a></p>
-                    <hr>
+                <p>{{Auth::user()->name}}</p>
+                <hr>
+                        <p><a href="../teacher">Tài khoản của tôi</a></p>
+                        <hr>
+                        <p><a href="../teacher_myclass">Lớp học của tôi</a></p>
+                        <hr>
+                        <p><a href="../teacher_addclass">Thêm lớp học</a></p>
+                        <hr>
+                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <hr>
                 </div>
             </div>
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    @if(session('alert'))
+                        <section class='alert alert-success'>{{session('alert')}}</section>
+                    @endif
+                        @foreach ($resubmit as $item)
+                        <div href="#" class="list-group-item list-group-item-action flex-column align-items-start
+                         <?php if($item->status == 0){ echo 'active';} ?>">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Xin nộp lại bài</h5>
-                                <small>21/11/2022</small>
+                                <h4 class="mb-1">Xin nộp lại bài</h4>
+                                <small>{{$item->create_at}}</small>
                             </div>
-                            <p class="mb-1">Vì lý do nào đó liên quan đến tâm linh nên em nộp trể</p>
-                            <small>Hà Quang DU</small>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Xin nộp lại bài</h5>
-                                <small class="text-muted">21/11/2022</small>
-                            </div>
-                            <p class="mb-1">Vì lý do nào đó liên quan đến tâm linh nên em nộp trể</p>
-                            <small class="text-muted">Hà Quang DU</small>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Xin nộp lại bài</h5>
-                                <small class="text-muted">21/11/2022</small>
-                            </div>
-                            <p class="mb-1">Vì lý do nào đó liên quan đến tâm linh nên em nộp trể</p>
-                            <small class="text-muted">Hà Quang DU</small>
-                        </a>
+                            <p class="mb-1">{{$item->content}}</p>
+                            <small>{{$item->name}}</small>
+                            <?php if($item->status == 0){ echo '<a href="../teacher_listReuploadT/'.$item->resubmit_code.'" class="btn btn-primary">Duyệt</a>';}
+                                  else{ echo '<button class="btn btn-primary">Đã duyệt</button>';} ?>
+                            
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-{{-- @extends('student.layout.index')
+@extends('student.layout.index')
 @section('titel')
     Chỉnh sửa
 @endsection
@@ -7,12 +7,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h1>Tài khoản cá nhân</h1>
+                    <h1>Cập nhật lớp học</h1>
                 </div>
             </div>
         </div>
     </section>
-    
     <section class="white section">
         <div class="container">
             <div class="row">
@@ -39,23 +38,36 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="teacher" method="post" role="form">
+                            <form action="#" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Họ tên</label>
-                                    <input type="text" class="form-control" name="name" value="{{Auth::User()->name}}">
+                                    <label>Mã lớp học</label>
+                                    <input type="text" class="form-control" name="class_code" value="{{$teacher_editclass->class_code}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Địa chỉ mail</label>
-                                    <input type="email" class="form-control" name="email" value="{{Auth::User()->email}}">
+                                    <label>Tên lớp học</label>
+                                    <input type="text" class="form-control" name="class_name" value="{{$teacher_editclass->class_name}}">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                <div class="form-group">
+                                    <label>Môn học</label>
+                                    <select name="subject_code" class="form-control">
+                                        @foreach ($hk as $hk)
+                                            <option value="{{$hk->subject_code}}" @if ($hk->subject_code == $teacher_editclass->subject_code) selected  
+                                            @endif>{{$hk->subject_code}} - {{$hk->subject_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Giáo viên</label>
+                                    <input type="text" class="form-control" name="teacher_code" value="{{Auth()->User()->name}}" readonly>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 @csrf
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- <hr class="invis"> --}}
+            <hr class="invis">
         </div>
     </section>
-@endsection --}}
+@endsection

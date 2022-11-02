@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <h1>Danh sách ngành học</h1>
+                        <h1>Danh sách ngành học của học kỳ: {{$semester->semester_name}}</h1>
                     </div>
                 </div>
             </div>
