@@ -94,5 +94,7 @@ Route::post('/account', [studentController::class, 'account_update'])->middlewar
 
 Route::get('/myclass', [studentController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/reupload', [studentController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/reupload', [studentController::class, 'reupload_'])->middleware(['auth', 'verified'])->name('dashboard');
+
 //
 require __DIR__.'/auth.php';

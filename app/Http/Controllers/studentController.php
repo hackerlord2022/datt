@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Class_Lop;
 use App\Models\ClassStudent_;
-
+use App\Models\Resubmit;
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +38,7 @@ class studentController extends Controller
             }
             $data->save();
 
-      
+    //   Huy bị Khùng
         $alert = 'Cập nhật thông tin thành công!';
         return redirect()->back()->with('alert',$alert);
         return view("student.page.account");
@@ -56,6 +56,18 @@ class studentController extends Controller
     }
     function reupload(){
         return view("student.page.reupload");
+    }
+    function reupload_(){
+        $data = new Resubmit();
+            $data->status = $_POST['status'];
+            $data->content = $_POST['content'];
+            $data->name = $_POST['name'];
+            $data->user_code = $_POST['user_code'];
+            $data->save();
+
+
+        $alert = 'Cập nhật thông tin thành công!';
+        return redirect()->back()->with('alert',$alert);
     }
     // đường dẫn vào giao diện sau khi có layout
     // return view("student.page.index");

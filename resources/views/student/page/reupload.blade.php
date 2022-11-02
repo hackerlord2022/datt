@@ -33,18 +33,24 @@
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
                     <div class="edit-profile">
-                        <form action="" method="post" role="form">
+                        <form action="reupload" method="post" role="form">
+                            @csrf
+                            @if(session('alert'))
+                               <section class='alert alert-success'>{{session('alert')}}</section>
+                           @endif
                             <div class="form-group">
                                 <label>Tên</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="name" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label>Bài lab xin nộp lại</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="status" class="form-control" placeholder="">
                             </div>
+
+                            <input type="hidden" name="user_code" class="form-control" placeholder="" value="{{(Auth()->User()->id)}}">
                             <div class="form-group">
                                 <label>Lý do xin nộp lại</label>
-                                <textarea name="" id="" class="col-md-12"></textarea>
+                                <textarea name="content" id="" class="col-md-12"></textarea>
                             </div>
                             
                             <button type="submit" class="btn btn-primary" style="margin-top: 5px">Gửi</button>
