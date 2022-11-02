@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Archives;
 use App\Models\User;
 use App\Models\Class_Lop;
 use App\Models\ClassStudent_;
-
+use App\Models\Resubmit;
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,19 +46,46 @@ class studentController extends Controller
         return view("student.page.account");
     }
     function myclass(){      
-      
         $Class = DB::table('class_students')
         ->join('class', 'class_students.class_code', '=', 'class.class_code')
         ->select('class_students.*', 'class.class_name')
         ->where('user_code', '=', (Auth()->User()->id))
         ->get();
-        
+         return view("student.page.myclass", ['Class' => $Class]);
+    }
 
-        return view("student.page.myclass", ['Class' => $Class]);
-    }
     function reupload(){
-        return view("student.page.reupload");
+        $Class = DB::table('class_students')
+        ->join('class', 'class_students.class_code', '=', 'class.class_code')
+        ->select('class_students.*', 'class.class_name')
+        ->where('user_code', '=', (Auth()->User()->id))
+        ->get();
+        return view("student.page.myclassR", ['Class' => $Class]);
     }
+    function myclass_reupload($id){
+        $lab = Archives::where('class_code', "=" ,$id)->get();
+        // dd($lab);
+        return view("student.page.myclass_reupload", ['lab' => $lab]);
+    }
+    function resubmit($id){
+        $lab = Archives::where('archives_code', "=" ,$id)->first();
+        // dd($lab);
+        return view("student.page.reupload", ['lab' => $lab]);
+    }
+    function resubmit_($id){
+        $resubmit = new Resubmit();
+        $resubmit->resubmit_code = 'RSM'.mt_rand(1, 10000);
+        $resubmit->status = "0";
+        $resubmit->content = $_POST["content"];
+        $resubmit->archives_code = $id;
+        $resubmit->user_code = Auth()->User()->id;
+        $resubmit->save();
+        $alert = 'Yêu cầu xin nộp lại đã thành công!';
+        return redirect()->back()->with('alert',$alert);
+        // dd($re)
+
+    }
+
     // đường dẫn vào giao diện sau khi có layout
     // return view("student.page.index");
 

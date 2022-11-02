@@ -23,22 +23,23 @@ Lớp của tôi
                 <section class="course-meta">
                     <p>{{Auth::User()->name}}</p>
                     <hr>
-                    <p><a href="/teacher">Tài khoản của tôi</a></p>
-                    <hr>
-                    <p><a href="/teacher_myclass">Lớp học của tôi</a></p>
-                    <hr>
-                    <p><a href="/teacher_addclass">Thêm lớp học</a></p>
-                    <hr>
-                    <p><a href="/teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher">Tài khoản của tôi</a></p>
+                        <hr>
+                        <p><a href="../teacher_myclass">Lớp học của tôi</a></p>
+                        <hr>
+                        <p><a href="../teacher_addclass">Thêm lớp học</a></p>
+                        <hr>
+                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <hr>
                 </section>
             </div>
             <div id="course-content" class="col-md-9">
                     @if(session('alert'))
                         <section class='alert alert-success'>{{session('alert')}}</section>
                     @endif
-                <div class="course-description">
+                    <div class="course-description">
                     <div class="edit-profile">
-                        <h4><a href="teacher_addclass" class="btn btn-warning">Thêm lớp học mới</a></h4>
+                        <h4><a href="../teacher_addclass" class="btn btn-warning">Thêm lớp học mới</a></h4>
                         <!--  -->
                         @foreach ($myClass as $item)
                             <div class="row course-list">
@@ -47,7 +48,7 @@ Lớp của tôi
                                         <h4>
                                             <div class="row" >
                                                 <div class="col col-lg-11" style="margin-top:-2px">
-                                                    <a href="teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
+                                                    <a href="/teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
                                                 </div>
                                                 <div class="col" style="margin-top:-12px">
                                                 <a href="teacher_editclass/{{$item->id}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Edit">

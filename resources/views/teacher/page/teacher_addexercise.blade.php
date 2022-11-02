@@ -22,13 +22,13 @@
                     <div class="course-meta">
                         <p>{{Auth::User()->name}}</p>
                         <hr>
-                        <p><a href="teacher">Tài khoản của tôi</a></p>
+                        <p><a href="../teacher">Tài khoản của tôi</a></p>
                         <hr>
-                        <p><a href="teacher_myclass">Lớp học của tôi</a></p>
+                        <p><a href="../teacher_myclass">Lớp học của tôi</a></p>
                         <hr>
-                        <p><a href="teacher_addclass">Thêm lớp học</a></p>
+                        <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
                         <hr>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="teacher_addexercise" method="post" enctype="multipart/form-data">
+                            <form action="/teacher_addexercise" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Mã Lab</label>
                                     <input type="text" class="form-control" name="archives_code" placeholder="Mã Lab">
@@ -49,11 +49,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Lớp học</label>
-                                    <select name="class_code" class="form-control">
-                                        @foreach ($classCode as $item)
-                                        <option value="{{$item->class_code}}">{{$item->class_code}} - {{$item->class_name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" placeholder="{{$classCode->class_code.'-'.$classCode->class_name}}" readonly>
+                                    <input type="hidden" class="form-control" name="class_code" value="{{$classCode->class_code}}" readonly >
                                 </div>
                                 <div class="form-group">
                                     <label>Deadline</label>
@@ -68,7 +65,7 @@
                                     <textarea class="form-control" name="note" rows="4" cols="50"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Tạo lab</button>
-                                <a href="/teacher_listexercise" class="btn btn-primary">Danh sách bài lab</a>
+                                <a href="/teacher_listexercise/{{$classCode->class_code}}" class="btn btn-primary">Danh sách bài lab</a>
                                 @csrf
                             </form>
                         </div>
