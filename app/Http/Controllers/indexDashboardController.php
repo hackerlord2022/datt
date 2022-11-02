@@ -131,6 +131,13 @@ class indexDashboardController extends Controller
         );
         return Response::download($file, $filename, $headers);
     }
+
+
+    function searchClass(){
+
+    }
+
+    
     function downloadLabAll(){
         $fileLabAll = Submission::where('archives_code', $_POST['archives'])->get();
         foreach($fileLabAll as $item){
