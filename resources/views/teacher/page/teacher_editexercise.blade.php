@@ -1,13 +1,13 @@
 @extends('student.layout.index')
 @section('titel')
-    Thêm lớp học mới
+    Chỉnh sửa
 @endsection
 @section('main')
     <section class="grey page-title">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h1>Thêm lớp học mới</h1>
+                    <h1>Cập nhật Lab</h1>
                 </div>
             </div>
         </div>
@@ -38,28 +38,38 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="teacher_addclass" method="post" enctype="multipart/form-data">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Mã lớp học</label>
-                                    <input type="text" class="form-control" name="class_code" placeholder="Mã lớp học">
+                                    <label>Mã Lab</label>
+                                    <input type="text" class="form-control" name="archives_code" value="{{$editexercise->archives_code}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Tên lớp học</label>
-                                    <input type="text" class="form-control" name="class_name" placeholder="Tên lớp học">
+                                    <label>Tên Lab</label>
+                                    <input type="text" class="form-control" name="archives_name" value="{{$editexercise->archives_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Môn học</label>
-                                    <select name="subject_code" class="form-control">
-                                        @foreach ($hk as $item)
-                                        <option value="{{$item->subject_code}}">{{$item->subject_code}} - {{$item->subject_name}}</option>
+                                    <label>Lớp học</label>
+                                    <select name="class_code" class="form-control">
+                                        @foreach ($classCode as $classCode)
+                                            <option value="{{$classCode->class_code}}" @if ($classCode->class_code == $editexercise->class_code) selected  
+                                            @endif>{{$classCode->class_code}} - {{$classCode->class_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Giáo viên</label>
-                                    <input type="text" class="form-control" name="teacher_code" value="{{Auth()->User()->name}}" readonly>
+                                    <label>Deadline</label>
+                                    <input type="date" class="form-control" name="deadline" value="{{$editexercise->deadline}}" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Tạo lớp học</button>
+                                <div class="form-group">
+                                    <label>Deadline Time</label>
+                                    <input type="time" class="form-control" name="deadlinetime" value="{{$editexercise->deadlinetime}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ghi chú</label>
+                                    <textarea class="form-control" name="note" rows="4" cols="50">{{$editexercise->note}}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Cập nhật lab</button>
+                                <a href="/teacher_listexercise" class="btn btn-primary">Danh sách bài lab</a>
                                 @csrf
                             </form>
                         </div>

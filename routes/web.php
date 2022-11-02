@@ -28,9 +28,12 @@ Route::get('/', function () {
 Route::get('/dashboard', [indexDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/list_majors/{id}', [indexDashboardController::class, 'majors'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/list_class/{id}', [indexDashboardController::class, 'class'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/class_detail', [indexDashboardController::class, 'classdetail'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/class_join', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/uploadfile', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/class_detail/{id}', [indexDashboardController::class, 'classdetail'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/joinclass/{id}', [indexDashboardController::class, 'joinclass'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/joinclass/{id}', [indexDashboardController::class, 'joinclass_'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile_'])->middleware(['auth', 'verified'])->name('dashboard');
+
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){
@@ -72,21 +75,45 @@ Route::group(['prefix'=>'admin'],function(){
     });
 });
 //
-// giảng viên
+// giảng viên 
 Route::get('/teacher', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/teacher', [techerController::class, 'account_'])->middleware(['auth', 'verified'])->name('dashboard');
-// Route::get('/teacher_account', [techerController::class, 'teacher_account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_reupload_detail/{id}', [techerController::class, 'reuploadclass'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_listReupload/{id}', [techerController::class, 'reuploadclassD'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_listReuploadT/{id}', [techerController::class, 'reuploadclassD_'])->middleware(['auth', 'verified'])->name('dashboard');
+// Class
 Route::get('/teacher_addclass', [techerController::class, 'teacher_addclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/teacher_addclass', [techerController::class, 'teacher_addclass_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_myclass', [techerController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_myclass_list/{id}', [techerController::class, 'list_student'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/teacher_myclass_list', [techerController::class, 'list_student_'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_editclass/{id}', [techerController::class, 'teacher_editclass'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/teacher_editclass/{id}', [techerController::class, 'teacher_editclass_'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_deleteclass/{id}', [techerController::class, 'teacher_deleteclass'])->middleware(['auth', 'verified'])->name('dashboard');
+// Lab
+Route::get('/teacher_listexercise/{id}', [techerController::class, 'teacher_listexercise'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_listexercise', [techerController::class, 'teacher_listexercise'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/teacher_addexercise/{id}', [techerController::class, 'teacher_addexercise'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/teacher_addexercise', [techerController::class, 'teacher_addexercise_'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/teacher_editexercise/{id}', [techerController::class, 'teacher_editexercise'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/teacher_editexercise/{id}', [techerController::class, 'teacher_editexercise_'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher_deleteexercise/{id}', [techerController::class, 'teacher_deleteexercise'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+//test download
+Route::get('/download/{id}', [indexDashboardController::class, 'downloadLab'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/downloadall/', [indexDashboardController::class, 'downloadLabAll'])->middleware(['auth', 'verified'])->name('dashboard');
 //
 // học sinh
 Route::get('/account', [studentController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/account', [studentController::class, 'account_update'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/myclass', [studentController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/reupload', [studentController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/myclass_reupload/{id}', [studentController::class, 'myclass_reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/resubmit/{id}', [studentController::class, 'resubmit'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/resubmit/{id}', [studentController::class, 'resubmit_'])->middleware(['auth', 'verified'])->name('dashboard');
 //
 require __DIR__.'/auth.php';

@@ -1,4 +1,4 @@
-{{-- @extends('student.layout.index')
+@extends('student.layout.index')
 @section('titel')
     Chỉnh sửa
 @endsection
@@ -7,12 +7,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h1>Tài khoản cá nhân</h1>
+                    <h1>Thêm Lab mới</h1>
                 </div>
             </div>
         </div>
     </section>
-    
     <section class="white section">
         <div class="container">
             <div class="row">
@@ -39,23 +38,41 @@
                     @endif
                     <div class="course-description">
                         <div class="edit-profile">
-                            <form action="teacher" method="post" role="form">
+                            <form action="/teacher_addexercise" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Họ tên</label>
-                                    <input type="text" class="form-control" name="name" value="{{Auth::User()->name}}">
+                                    <label>Mã Lab</label>
+                                    <input type="text" class="form-control" name="archives_code" placeholder="Mã Lab">
                                 </div>
                                 <div class="form-group">
-                                    <label>Địa chỉ mail</label>
-                                    <input type="email" class="form-control" name="email" value="{{Auth::User()->email}}">
+                                    <label>Tên Lab</label>
+                                    <input type="text" class="form-control" name="archives_name" placeholder="Tên Lab">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                <div class="form-group">
+                                    <label>Lớp học</label>
+                                    <input type="text" class="form-control" placeholder="{{$classCode->class_code.'-'.$classCode->class_name}}" readonly>
+                                    <input type="hidden" class="form-control" name="class_code" value="{{$classCode->class_code}}" readonly >
+                                </div>
+                                <div class="form-group">
+                                    <label>Deadline</label>
+                                    <input type="date" class="form-control" name="deadline" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Deadline Time</label>
+                                    <input type="time" class="form-control" name="deadlinetime" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ghi chú</label>
+                                    <textarea class="form-control" name="note" rows="4" cols="50"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tạo lab</button>
+                                <a href="/teacher_listexercise/{{$classCode->class_code}}" class="btn btn-primary">Danh sách bài lab</a>
                                 @csrf
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- <hr class="invis"> --}}
+            <hr class="invis">
         </div>
     </section>
-@endsection --}}
+@endsection

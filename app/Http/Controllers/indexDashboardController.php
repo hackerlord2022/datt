@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
-use App\Models\Class_Lop;
+use App\Models\Classes;
 use App\Models\User;
 use App\Models\ClassStudent;
 use App\Models\Semester;
+use App\Models\Archives;
+use App\Models\Submission;
 use Illuminate\Http\Request;
+use Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,18 +23,130 @@ class indexDashboardController extends Controller
     }
     function majors($id){
         $subject = Subject::where('semester_code', "=" ,$id)->get();
-        return view("student.page.listmajors", ["subject" => $subject]);// ngành học
+        $semester = Semester::where('semester_code', "=" ,$id)->first();
+        return view("student.page.listmajors", ['subject' => $subject, 'semester' => $semester]);// ngành học
     }
-    function class(){
-        return view("student.page.listclass");// lớp hoc
+    function class($id){
+        $class = Classes::where('subject_code', "=" ,$id)->join('users', 'users.id', 'teacher_code')->get();
+        $SubjectName = Subject::where('subject_code', "=" ,$id)->first();
+        return view("student.page.listclass", ['class' => $class, 'SubjectName' => $SubjectName]);// lớp hoc
     }
-    function joinclass(){ // tham gia lớp học
-        return view("student.page.joinclass");
+    function joinclass($id){ // tham gia lớp học
+        //Thêm gì đó để push main
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->first();
+        if($checkUser == null){
+            $class = Classes::where('class_code', $id)->join('users', 'users.id', 'class.teacher_code')->first();
+            return view("student.page.joinclass", ['class' => $class]);
+        }
+        else{
+            return redirect('/class_detail/'.$id);
+        }
     }
-    function classdetail(){ // danh sách bài lab
-        return view("student.page.detailclass");
+    function joinclass_($id){
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->first();
+        if($checkUser == null){
+            $joinclass = new ClassStudent;
+            $joinclass->class_code = $id;
+            $joinclass->user_code = auth()->user()->id;
+            $joinclass->save();
+            return redirect('/class_detail/'.$id);
+        }
+        else{
+            return redirect('/joinclass/'.$id);
+        }
     }
-    function uploadfile(){
-        return view("student.page.upload");
+    function classdetail($id){ // danh sách bài lab
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->first();
+        if($checkUser == null){
+            return redirect('/joinclass/'.$id);
+        }
+        else{
+            $lab = Archives::where('class_code', "=" ,$id)->get();
+            $className = Classes::where('class_code', "=" ,$id)
+                                ->join('users', 'users.id', 'teacher_code')->first();
+            return view("student.page.detailclass", ['lab' => $lab, 'className' => $className]);
+        }
+    }
+    function uploadfile($id){
+        // 
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $formatTime = "G:i:s";
+        $formatDate = "Y-m-d";
+        $dateNow = date($formatDate, time());
+        $timeNow = date($formatTime, time());
+        // 
+        $checkUser = ClassStudent::where('user_code', auth()->user()->id)
+                                 ->where('class_code', $id)->get();
+        if($checkUser == null){
+            return redirect('/joinclass');
+        }
+        else{
+            $labdeatail = Archives::where('archives_code', $id)->first();
+            $className = Classes::where('class_code', $labdeatail->class_code)
+                                ->join('users', 'users.id', 'teacher_code')->first();
+            $labUploaded = Submission::join('archives', 'archives.archives_code', 'submission.archives_code')
+                                ->where('archives.class_code', $labdeatail->class_code)->first();
+            return view("student.page.upload", ['labdeatail' => $labdeatail, 'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
+        }
+    }
+
+    function uploadfile_($id, Request $request){
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $formatTime = "G:i:s";
+        $formatDate = "Y-m-d";
+        $dateNow = date($formatDate, time());
+        if(!isset($_POST['btn'])){
+            $submission = new Submission;
+            $submission->submission_code = 'SM'.mt_rand(1, 10000);
+            //
+            $submission->submission = $_FILES['file']['name'];
+            $submission->archives_code = $id;
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                $file_name = $file->getClientOriginalName();
+                $file->move(public_path('/upload/filelab'),$file_name);
+            
+                $file_path = "/upload/imgNews/" . $file_name;
+            }
+            //
+            $submission->user_code = auth()->user()->id;
+            $submission->deadline = $dateNow;
+            $submission->resubmit = 0;
+            $submission->save();
+            return redirect('/uploadfile/'.$id);
+        }
+        else{
+            return "thiếu file";
+        }
+    }
+    function downloadLab($id){
+        $fileLab = Submission::find($id);
+        $file = public_path(). "/upload/filelab/".$fileLab->submission;
+        $filename = $fileLab->submission;
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::download($file, $filename, $headers);
+    }
+
+
+    function searchClass(){
+
+    }
+
+    
+    function downloadLabAll(){
+        $fileLabAll = Submission::where('archives_code', $_POST['archives'])->get();
+        foreach($fileLabAll as $item){
+            $file = public_path(). "/upload/filelab/".$item->submission;
+            $filename = $item->submission;
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+            Response::download($file, $filename, $headers);
+        }
     }
 }

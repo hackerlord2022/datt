@@ -24,8 +24,8 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã học kỳ</th>
-                                    <th class="text-center text-dark">Giảng Viên</th>
+                                    <th class="text-center text-dark">Mã môn học</th>
+                                    <th class="text-center text-dark">Giảng viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -36,22 +36,26 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã Học kỳ</th>
-                                    <th class="text-center text-dark">Giảng Viên</th>
+                                    <th class="text-center text-dark">Mã môn học</th>
+                                    <th class="text-center text-dark">Giảng viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
 
                             </tfoot>
                             <tbody>
-                                @foreach ($class as $i=>$lh)
+                                @foreach ($lophoc as $i=>$lh)
                                 <tr>
                                     <td class="text-center">{{$i++}}</td>
                                     <td>{{$lh->class_code}}</td>
                                     <td>{{$lh->class_name}}</td>
                                     <td class="text-center ">{{$lh->subject_code}}</td>
                                     <td class="text-center ">
-                                        {{$lh->name}}
+                                        @foreach ($user as $u)
+                                        @if ($lh->teacher_code == $u->id)
+                                            {{$u->name}}
+                                        @endif
+                                        @endforeach
                                     </td>
                                     <td class="text-center text-primary"><a href="admin/lophoc/sua/{{$lh->id}}"><i class="fas fa-edit"></i></a></td>
                                     <td class="text-center text-primary"><a href="admin/lophoc/xoa/{{$lh->id}}"><i class="fa fa-trash"></i></a></td>

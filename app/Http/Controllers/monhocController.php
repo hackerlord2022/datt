@@ -35,5 +35,10 @@ class monhocController extends Controller
         $monhoc = mh::all();
         return view('admin.page.ql_mon.danhsach',['monhoc'=>$monhoc]);
     }
+    function xoa($id){
+        $monhoc = mh::find($id);
+        $monhoc->delete();
+        return redirect('admin/monhoc/ds')->with('thongbao','Xóa Thành Công');
+    }
 }
 ?>

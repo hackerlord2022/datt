@@ -18,6 +18,7 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="asset/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="asset/css/style2.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="asset/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
@@ -126,6 +127,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="asset/js/sb-admin-2.min.js"></script>
+    <script src="asset/js/js.js"></script>
 
     <!-- Page level plugins -->
     <script src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
