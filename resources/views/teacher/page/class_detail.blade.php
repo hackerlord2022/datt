@@ -38,11 +38,11 @@
                 
                 <h3>Lớp: {{$className->class_name}} | Số lượng: {{$classCount}}</h3>
                 <div class="course-description">
-                <ul class="list-group">
-                    @foreach ($classDeatail as $item)
-                <li class="list-group-item">{{$item->name}}</li>
-                    @endforeach
-                </ul>
+                    <ul class="list-group">
+                        @foreach ($classDeatail as $item)
+                            <li class="list-group-item">{{$item->name}}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
