@@ -12,7 +12,15 @@ class userController extends Controller
     }
     function them_(){
         $user = new user ;
-        $user->name = $_POST['hoten'];
+        $name = $_POST['hoten'];
+        if($name > 0 ){
+            $user->name = $_POST['hoten'];
+
+        }else{
+            $alert = 'Họ tên không được bỏ trống!';
+            return redirect()->back()->with('alert',$alert);
+        }
+
         $user->email = $_POST['email'];
         $user->password = Hash::make($_POST['password']);
         $user->role = $_POST['role'];
