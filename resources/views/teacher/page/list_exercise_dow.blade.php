@@ -50,7 +50,7 @@ Lớp của tôi
                             <ul class="list-group">
                                 @foreach ($submission as $item)
                                     <li class="list-group-item">
-                                        {{$item->submission}} - {{$item->name}} - Ngày nộp: {{$item->deadline}}
+                                        {{$item->submission}} - {{$item->name}} - Ngày nộp: {{$item->deadline}} || Nộp lại @if($item->resubmit == 1) 1 @else 0 @endif
                                         <a href="../download/{{$item->submission_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
                                     </li>
                                 @endforeach

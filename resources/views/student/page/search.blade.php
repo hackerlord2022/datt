@@ -8,15 +8,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <h1>Danh sách lớp học chuyên ngành: {{$SubjectName->subject_name}}</h1>
+                        <h1>Danh sách lớp học được tìm theo: </h1>
                     </div>
                 </div>
             </div>
 </section>
 <section class="white section">
 <div class="container">
-    <a class="btn btn-info" href="../list_majors/{{$SubjectName->semester_code}}">Trở lại</a>
-    <hr>
     <!--  -->
     @foreach ($class as $item)
     <div class="row course-list">

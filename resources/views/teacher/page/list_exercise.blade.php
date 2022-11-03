@@ -45,7 +45,7 @@ Lớp của tôi
                                 <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                     <div class="shop-list-desc">
                                         <h4>
-                                            <a href="#">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
+                                            <a href="../teacher_list_exercise/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
                                             ||
                                             <a href="../teacher_list_exercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
                                             <a href="../teacher_editexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
