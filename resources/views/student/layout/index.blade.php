@@ -72,14 +72,17 @@
                             </div>
                         </div>
                         <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav col-md-6">
-                                <div class="">
-                                <input type="search" class="form-control " placeholder="Tìm kiếm lớp học" aria-label="Search" aria-describedby="search-addon" />
-                                </div>
-                            </ul>
-                            <ul class="nav navbar-nav">
-                                <button type="button" class="btn btn-outline-primary">Tìm kiếm</button>
-                            </ul>
+                        <form action="/search" method="post">
+                            @csrf
+                                <ul class="nav navbar-nav col-md-6">
+                                    <div class="">
+                                    <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm lớp học" aria-label="Search" aria-describedby="search-addon" />
+                                    </div>
+                                </ul>
+                                <ul class="nav navbar-nav">
+                                    <button type="submit" name="btn" class="btn btn-outline-primary">Tìm kiếm</button>
+                                </ul>
+                            </form>
                         <ul class="nav navbar-nav navbar-right" style="margin-left:5px">
                                 <li>
                                     @if (auth()->user()->role == 0)
