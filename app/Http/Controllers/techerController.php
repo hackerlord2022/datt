@@ -9,9 +9,13 @@ use App\Models\Classes;
 use App\Models\User;
 use App\Models\ClassStudent;
 use App\Models\Resubmit;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Response;
+use File;
+use ZipArchive;
 
 class techerController extends Controller
 {
@@ -81,7 +85,13 @@ class techerController extends Controller
         ->where('class_students.class_code', '=', $id)->count();
         $className = ClassStudent::join('class', 'class.class_code', '=', 'class_students.class_code')
         ->where('class_students.class_code', '=', $id)->first();
-        return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
+        if($className == null){
+            $alert = 'Lớp hiện chưa có sinh viên!';
+            return redirect()->back()->with('alert',$alert);
+        }
+        else{
+            return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
+        }
     }
     function teacher_listexercise($id){
         // $list = Archives::all();
@@ -150,6 +160,43 @@ class techerController extends Controller
                             ->update(['status' => 1]);
         $alert = 'Đã duyệt!';
         return redirect()->back()->with('alert',$alert);
+    }
+    function listdownload($id){
+        $submission = Submission::where('archives_code', $id)
+                    ->join('users', 'users.id', 'submission.user_code')->get();
+        $archives = Archives::where("archives_code", $id)->first();
+        $submissionCount = Submission::where('archives_code', $id)
+                    ->join('users', 'users.id', 'submission.user_code')->count();
+        return view("teacher.page.list_exercise_dow", ['submission' => $submission, 'archives' => $archives, 'submissionCount' => $submissionCount]);
+    }
+
+    function downloadLab($id){
+        $fileLab = Submission::where('submission_code' ,$id)->first();
+        //dd($fileLab->submission);
+        $file = public_path(). "/upload/filelab/".$fileLab->submission;
+        $filename = $fileLab->submission;
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::download($file, $filename, $headers);
+    }
+
+
+    function downloadLabAll($id){
+        dd("dang thử nghiệm");
+        $fileLabAll = Submission::where('archives_code', $id)->get();
+        // $filename = [];
+        foreach($fileLabAll as $item){
+            $file = public_path(). "/upload/filelab/".$item->submission;
+            $filename = $item->submission;
+            // $headers = array(
+            //     'Content-Type: application/pdf',
+            // );
+            $url=$item->submission;
+            $pathToFile = public_path('/upload/filelab//'.$url);
+            response()->download($pathToFile);
+        }
+        return Response::download(["file_1.txt","file_2.txt"]);   
     }
     // đường dẫn vào giao diện sau khi có layout || 
     // return view("techer.page.index");

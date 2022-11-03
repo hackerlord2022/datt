@@ -9,8 +9,8 @@ use App\Models\ClassStudent;
 use App\Models\Semester;
 use App\Models\Archives;
 use App\Models\Submission;
+use App\Models\Resubmit;
 use Illuminate\Http\Request;
-use Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -73,7 +73,7 @@ class indexDashboardController extends Controller
     function uploadfile($id){
         // 
         date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $formatTime = "G:i:s";
+        $formatTime = "G:i:s Y-m-d";
         $formatDate = "Y-m-d";
         $dateNow = date($formatDate, time());
         $timeNow = date($formatTime, time());
@@ -85,11 +85,15 @@ class indexDashboardController extends Controller
         }
         else{
             $labdeatail = Archives::where('archives_code', $id)->first();
+
             $className = Classes::where('class_code', $labdeatail->class_code)
                                 ->join('users', 'users.id', 'teacher_code')->first();
             $labUploaded = Submission::join('archives', 'archives.archives_code', 'submission.archives_code')
-                                ->where('archives.class_code', $labdeatail->class_code)->first();
-            return view("student.page.upload", ['labdeatail' => $labdeatail, 'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
+                                ->where('submission.archives_code', $labdeatail->archives_code)->first();
+            $checkResubmit = Resubmit::where('user_code', auth()->user()->id)
+                                     ->where('archives_code', $id)->first();
+            return view("student.page.upload", ['checkResubmit' => $checkResubmit ,'labdeatail' => $labdeatail,
+            'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
         }
     }
 
@@ -98,6 +102,8 @@ class indexDashboardController extends Controller
         $formatTime = "G:i:s";
         $formatDate = "Y-m-d";
         $dateNow = date($formatDate, time());
+        $checkResubmit = Resubmit::where('user_code', auth()->user()->id)
+                                     ->where('archives_code', $id)->first();
         if(!isset($_POST['btn'])){
             $submission = new Submission;
             $submission->submission_code = 'SM'.mt_rand(1, 10000);
@@ -114,7 +120,12 @@ class indexDashboardController extends Controller
             //
             $submission->user_code = auth()->user()->id;
             $submission->deadline = $dateNow;
-            $submission->resubmit = 0;
+            if($checkResubmit){
+                $submission->resubmit = 1;
+            }
+            else{
+                $submission->resubmit = 0;
+            }
             $submission->save();
             return redirect('/uploadfile/'.$id);
         }
@@ -122,31 +133,10 @@ class indexDashboardController extends Controller
             return "thiếu file";
         }
     }
-    function downloadLab($id){
-        $fileLab = Submission::find($id);
-        $file = public_path(). "/upload/filelab/".$fileLab->submission;
-        $filename = $fileLab->submission;
-        $headers = array(
-            'Content-Type: application/pdf',
-        );
-        return Response::download($file, $filename, $headers);
-    }
-
-
     function searchClass(){
-
-    }
-
-    
-    function downloadLabAll(){
-        $fileLabAll = Submission::where('archives_code', $_POST['archives'])->get();
-        foreach($fileLabAll as $item){
-            $file = public_path(). "/upload/filelab/".$item->submission;
-            $filename = $item->submission;
-            $headers = array(
-                'Content-Type: application/pdf',
-            );
-            Response::download($file, $filename, $headers);
-        }
-    }
+        $class = Classes::where('class_code', "like" ,'%'.$_POST['keyword'].'%')
+                        ->orWhere('class_name', "like" ,'%'.$_POST['keyword'].'%')
+                        ->join('users', 'users.id', 'teacher_code')->get();
+        return view('student.page.search',['class' => $class, 'keyword' => $_POST['keyword']]);
+    }  
 }

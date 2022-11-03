@@ -9,6 +9,7 @@ class hockyController extends Controller
         return view('admin.page.ql_hk.them');
     }
     function them_(){
+        
         $hocky = new hk ;
         $hocky->semester_code = $_POST['mahk'];
         $hocky->semester_name = $_POST['tenhk'];

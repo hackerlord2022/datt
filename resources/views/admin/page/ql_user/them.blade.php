@@ -5,6 +5,7 @@ Thêm người dùng
 @section('noidung')
 <div class="container-fluid">
     <!-- Page Heading -->
+<<<<<<< HEAD
     <div class="toast__container">
         <div class="toast__cell">
         <div class="toast toast--green">
@@ -27,7 +28,15 @@ Thêm người dùng
           </div>
         </div>
         </div>
+=======
+    <!-- Page Heading -->
+    @if (session('thongbao'))
+    <div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Success!</strong> {{session('thongbao')}}.
+>>>>>>> 6bf538d46a847e87c724ed230819ad19ccac4836
     </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <!-- Circle Buttons -->
@@ -41,6 +50,9 @@ Thêm người dùng
                           <label>Họ Tên</label>
                           <input type="text" class="form-control"placeholder="Họ tên" name="hoten" required>
                         </div>
+                        @if(session('alert'))
+                        <section class='alert alert-success'>{{session('alert')}}</section>
+                    @endif
                         <div class="form-group">
                           <label>Email</label>
                           <input type="email" class="form-control"placeholder="Email" name="email"required>

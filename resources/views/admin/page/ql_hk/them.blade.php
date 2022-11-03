@@ -5,6 +5,7 @@ Thêm học kỳ
 @section('noidung')
 <div class="container-fluid">
     <!-- Page Heading -->
+<<<<<<< HEAD
     <div class="toast__container">
         <div class="toast__cell">
         <div class="toast toast--green">
@@ -27,7 +28,14 @@ Thêm học kỳ
           </div>
         </div>
         </div>
+=======
+    @if (session('thongbao'))
+    <div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong><i class=""></i></strong> {{session('thongbao')}}.
+>>>>>>> 6bf538d46a847e87c724ed230819ad19ccac4836
     </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <!-- Circle Buttons -->
@@ -45,7 +53,7 @@ Thêm học kỳ
                           <label>Mã học kỳ</label>
                           <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="submit"  class="btn btn-primary">Thêm</button>
                         @csrf
                         <a href="admin/hocky/ds" type="submit" class="btn btn-primary">Danh sách</a>
                     </form>
@@ -54,9 +62,7 @@ Thêm học kỳ
                 </div>
             </div>
         </div>
-        </div>
     </div>
-</div>
-<!-- /.container-fluid -->
+
 </div>
 @endsection
