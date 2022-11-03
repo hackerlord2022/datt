@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <h1>Danh sách lớp học được tìm theo: </h1>
+                        <h1>Danh sách lớp học được tìm theo: {{$keyword}}</h1>
                     </div>
                 </div>
             </div>
