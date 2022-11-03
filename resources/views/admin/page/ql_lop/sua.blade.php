@@ -9,7 +9,7 @@ Sửa lớp học: A
     @if (session('thongbao'))
     <div class="alert alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Success!</strong> {{session('thongbao')}}.
+        <strong><i class="fa fa-check"></strong> {{session('thongbao')}}.
     </div>
     @endif
     <div class="row">

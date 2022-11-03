@@ -5,9 +5,58 @@ Lớp của tôi
 @section('main')
 <section class="grey page-title">
     <div class="container">
-        <div class="row">
+        <div class="row ">
             <div class="col-md-6 text-left">
                 <h1>Lớp học</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <li class="nav-item dropdown hidden-caret submenu">
+                    <a class="nav-link1 dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-envelope"></i>
+                        <span class="notification">4</span>
+                    </a>
+                    <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
+                        <li>
+                            <div class="dropdown-title d-flex justify-content-between align-items-center submenu">
+                                Thông báo:
+                                <a href="#" class="small"> Nộp lại bài</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="scroll-wrapper message-notif-scroll scrollbar-outer" style="position: relative;"><div class="message-notif-scroll scrollbar-outer scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 250px;">
+                                <div class="notif-center submenu">
+                                    <a href="#">
+                                        <div class="notif-img">
+                                            <img src="./images/a1a61ba9222de673bf3c.jpg" alt="Img Profile">
+                                        </div>
+                                        <div class="notif-content">
+                                            <span class="subject">Jimmy Denis</span>
+                                            <span class="block">
+                                                How are you ?
+                                            </span>
+                                            <span class="time">5 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div><div class="scroll-element scroll-x scroll-scrolly_visible">
+                                <div class="scroll-element_outer">
+                                    <div class="scroll-element_size"></div>
+                                    <div class="scroll-element_track"></div>
+                                    <div class="scroll-bar ui-draggable ui-draggable-handle" style="width: 86px;"></div>
+                                </div>
+                            </div>
+                            <div class="scroll-element scroll-y scroll-scrolly_visible">
+                                <div class="scroll-element_outer">
+                                    <div class="scroll-element_size"></div>
+                                <div class="scroll-element_track"></div>
+                                <div class="scroll-bar ui-draggable ui-draggable-handle" style="height: 194px; top: 0px;">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        </li>
+                    </ul>
+                </li>
             </div>
         </div>
     </div>
@@ -33,6 +82,10 @@ Lớp của tôi
                         <hr>
                 </section>
             </div>
+
+
+
+
             <div id="course-content" class="col-md-9">
                     @if(session('alert'))
                         <section class='alert alert-success'>{{session('alert')}}</section>
@@ -40,6 +93,8 @@ Lớp của tôi
                     <div class="course-description">
                     <div class="edit-profile">
                         <h4><a href="../teacher_addclass" class="btn btn-warning">Thêm lớp học mới</a></h4>
+
+
                         <!--  -->
                         @foreach ($myClass as $item)
                             <div class="row course-list">
@@ -47,10 +102,13 @@ Lớp của tôi
                                     <div class="shop-list-desc">
                                         <h4>
                                             <div class="row" >
-                                                <div class="col col-lg-11" style="margin-top:-2px">
+                                                <div class="col col-lg-10" style="margin-top:-2px">
                                                     <a href="/teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
                                                     ||
-                                                    <span class="col">
+                                                </div>
+                                                    <div class="col">
+
+                                                    <span >
                                                         <a href="teacher_listexercise/{{$item->class_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Edit">
                                                             <i class="fa fa-download"></i>
                                                         </a>
@@ -62,6 +120,7 @@ Lớp của tôi
                                                         </a>
                                                     </span>
                                                 </div>
+
                                             </div>
                                         </h4>
                                     </div>

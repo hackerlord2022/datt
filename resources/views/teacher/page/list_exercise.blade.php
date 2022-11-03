@@ -33,6 +33,11 @@ Lớp của tôi
                         <hr>
                 </section>
             </div>
+
+
+
+
+
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
                     @if(session('alert'))
@@ -49,9 +54,9 @@ Lớp của tôi
                                             ||
                                             <a href="../teacher_list_exercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
                                             <a href="../teacher_editexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
-                                            <a href="../teacher_deleteexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a> 
-                                        </h4>    
-                                        
+                                            <a href="../teacher_deleteexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a>
+                                        </h4>
+
                                     </div>
                                 </div>
                             </div>

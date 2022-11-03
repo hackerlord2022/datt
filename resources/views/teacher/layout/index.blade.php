@@ -40,6 +40,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{asset('A.fonts%2c%2c_font-awesome-4.3.0%2c%2c_css%2c%2c_font-awesome.min.css%2bcss%2c%2c_bootstrap.css%2bcss%2c%2c_animate.css%2cMcc.kSNwpaaMDX.css.pagespeed.cf.w2G3xGgFf0.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/A.menu.css.pagespeed.cf.0_hLwXzYkZ.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/A.carousel.css.pagespeed.cf.VktteGiLwl.css')}}">
     <link rel="stylesheet" type="text/css"
         href="{{asset('A.style.css%2bcss%2c%2c_custom.css%2cMcc.HvWh1qoob-.css.pagespeed.cf.pWH5huNcWh.css')}}" />
@@ -82,7 +83,7 @@
                                 <ul class="nav navbar-nav">
                                     <button type="submit" name="btn" class="btn btn-outline-primary">Tìm kiếm</button>
                                 </ul>
-                            </form>   
+                            </form>
                         <ul class="nav navbar-nav navbar-right" style="margin-left:5px">
                                 <li><li>
                                 @if (auth()->user()->role == 0)

@@ -8,7 +8,7 @@ Thêm học kỳ
     @if (session('thongbao'))
     <div class="alert alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong><i class=""></i></strong> {{session('thongbao')}}.
+        <strong><i class="fa fa-check"></i></strong> {{session('thongbao')}}.
     </div>
     @endif
     <div class="row">
@@ -22,11 +22,11 @@ Thêm học kỳ
                     <form action="admin/hocky/them" method="post">
                         <div class="form-group">
                           <label>Tên học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk">
+                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk" required>
                         </div>
                         <div class="form-group">
                           <label>Mã học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk">
+                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" required>
                         </div>
                         <button type="submit"  class="btn btn-primary">Thêm</button>
                         @csrf
