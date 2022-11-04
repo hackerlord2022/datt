@@ -9,7 +9,7 @@ Thêm môn học
 @if (session('thongbao'))
 <div class="alert alert-success alert-dismissible fade show">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Success!</strong> {{session('thongbao')}}.
+    <strong><i class="fa fa-check"></strong> {{session('thongbao')}}.
 </div>
 @endif
     <div class="row">
@@ -30,13 +30,14 @@ Thêm môn học
                             </select>
                           </div>
                         <div class="form-group">
-                          <label>Tên môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="tenmh">
-                        </div>
+                            <label>Mã môn học</label>
+                            <input type="text" class="form-control"placeholder="môn học" name="mamh" required>
+                          </div>
                         <div class="form-group">
-                          <label>Mã môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="mamh">
+                          <label>Tên môn học</label>
+                          <input type="text" class="form-control"placeholder="môn học" name="tenmh" required>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Thêm</button>
                         @csrf
                         <a href="admin/monhoc/ds" type="submit" class="btn btn-primary">Danh sách</a>

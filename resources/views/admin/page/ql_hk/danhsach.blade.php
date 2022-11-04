@@ -9,8 +9,8 @@ Danh sách học kỳ
     <div id="content">
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
             <!-- Page Heading -->
+
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -61,7 +61,6 @@ Danh sách học kỳ
             </div>
         </div>
         <!-- /.container-fluid -->
-
     </div>
     <!-- End of Main Content -->
 

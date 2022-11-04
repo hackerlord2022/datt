@@ -23,22 +23,37 @@ Danh sách bài nộp
                                 <tr style="background-color: cornflowerblue">
                                     <th class=" text-center text-dark">STT</th>
                                     <th class=" text-center text-dark">Mã bài nộp</th>
-                                    <th class=" text-center text-dark">Tên bài nộp</th>
+                                    <th class=" text-center text-dark">Tình trạng</th>
+                                    <th class=" text-center text-dark">Nội dung</th>
+                                    <th class=" text-center text-dark">Mã Kho nộp</th>
+                                    <th class=" text-center text-dark">Tên người nộp lại</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr style="background-color: cornflowerblue">
                                     <th class=" text-center text-dark">STT</th>
-                                    <th class=" text-center text-dark">Mã bài nộp</th>
-                                    <th class=" text-center text-dark">Tên bài nộp</th>
+                                    <th class=" text-center text-dark">Mã bài nộp lại</th>
+                                    <th class=" text-center text-dark">Tình trạng</th>
+                                    <th class=" text-center text-dark">Nội dung</th>
+                                    <th class=" text-center text-dark">Mã Kho nộp</th>
+                                    <th class=" text-center text-dark">Tên người nộp lại</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 @foreach ($bainop as $i=>$bn)
                                 <tr>
                                     <td class=" text-center">{{$i++}}</td>
-                                    <td>{{$bn->submission_code}}</td>
-                                    <td>{{$bn->submission}}</td>
+                                     <td>{{$bn->resubmit_code}}</td>
+                                    <td>{{$bn->status}}</td>
+                                    <td>{{$bn->content}}</td>
+                                    <td>{{$bn->archives_code}}</td>
+                                    <td>
+                                        @foreach ($user as $u)
+                                        @if ($bn->user_code == $u->id)
+                                            {{$u->name}}
+                                        @endif
+                                        @endforeach
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

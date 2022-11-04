@@ -9,7 +9,6 @@ Danh sách Username
     <div id="content">
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -22,7 +21,6 @@ Danh sách Username
                             <thead>
                                 <tr style="background-color: cornflowerblue">
                                     <th class="text-center text-dark">STT</th>
-                                    <th class="text-center text-dark">Mã Username</th>
                                     <th class="text-center text-dark">Họ tên</th>
                                     <th class="text-center text-dark">Email</th>
                                     <th class="text-center text-dark">Vai trò</th>
@@ -34,7 +32,6 @@ Danh sách Username
                             <tfoot>
                                 <tr style="background-color: cornflowerblue">
                                     <th class="text-center text-dark">STT</th>
-                                    <th class="text-center text-dark">Mã Username</th>
                                     <th class="text-center text-dark">Họ tên</th>
                                     <th class="text-center text-dark">Email</th>
                                     <th class="text-center text-dark">Vai trò</th>
@@ -46,7 +43,6 @@ Danh sách Username
                                 @foreach ($user as $i=>$u)
                                 <tr>
                                     <td class="text-center">{{$i++}}</td>
-                                    <td>{{$u->id}}</td>
                                     <td>{{$u->name}}</td>
                                     <td class="text-center">{{$u->email}}</td>
                                     <td class="text-center">

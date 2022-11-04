@@ -8,6 +8,6 @@ class adminController extends Controller
 {
     //
     function admin(){
-        return view('admin.page.home.home');
+        return view('admin.page.ql_hk.them');
     }
 }

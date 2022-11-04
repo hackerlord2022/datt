@@ -75,7 +75,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Thanh Lộc</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::User()->name}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="https://th.bing.com/th/id/R.bae2d37c4317140a408aef6671346186?rik=X1vYbxH6nQxCcA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_218090.png&ehk=poXsiWmpbb3%2b%2bK%2blj8H9AQprCYsoz4kt%2bU4rFFKbOCo%3d&risl=&pid=ImgRaw&r=0">
                             </a>
@@ -85,6 +85,10 @@
                                 <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đăng xuất
+                                </a>
+                                <a class="dropdown-item" href="/dashboard" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-arrow-left fa-sm fa-fw mr-2 text-gray-400"></i>
+                                   Về trang chủ
                                 </a>
                             </div>
                         </li>

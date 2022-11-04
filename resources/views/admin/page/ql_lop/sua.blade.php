@@ -9,7 +9,7 @@ Sửa lớp học: A
     @if (session('thongbao'))
     <div class="alert alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Success!</strong> {{session('thongbao')}}.
+        <strong><i class="fa fa-check"></strong> {{session('thongbao')}}.
     </div>
     @endif
     <div class="row">
@@ -21,14 +21,15 @@ Sửa lớp học: A
                 </div>
                 <div class="card-body">
                     <form action="/admin/lophoc/sua/{{$lophoc->id}}" method="POST">
-                    <div class="form-group">
+                        <div class="form-group">
+                            <label>Mã lớp học</label>
+                            <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->class_code}}">
+                          </div>
+                        <div class="form-group">
                           <label>Tên lớp học</label>
                           <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" value="{{$lophoc->class_name}}">
                         </div>
-                        <div class="form-group">
-                          <label>Mã lớp học</label>
-                          <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->class_code}}">
-                        </div>
+
                         <div class="form-group">
                             <label>Môn học</label>
                             <select class="custom-select tm-select-accounts" id="" name="monhoc">
