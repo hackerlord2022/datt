@@ -22,13 +22,14 @@ Thêm lớp học
                 <div class="card-body">
                     <form action="/admin/lophoc/them" method="POST">
                         <div class="form-group">
+                            <label>Mã lớp học</label>
+                            <input type="text" class="form-control"placeholder="Lớp học" name="malh" required>
+                          </div>
+                        <div class="form-group">
                           <label>Tên lớp học</label>
                           <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" required>
                         </div>
-                        <div class="form-group">
-                          <label>Mã lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học" name="malh" required>
-                        </div>
+
                         <div class="form-group">
                             <label>Môn học</label>
                             <select class="custom-select tm-select-accounts" name="monhoc" id="hocky" required>

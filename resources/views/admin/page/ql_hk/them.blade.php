@@ -21,12 +21,12 @@ Thêm học kỳ
                 <div class="card-body">
                     <form action="admin/hocky/them" method="post">
                         <div class="form-group">
+                            <label>Mã học kỳ</label>
+                            <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" required>
+                          </div>
+                        <div class="form-group">
                           <label>Tên học kỳ</label>
                           <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk" required>
-                        </div>
-                        <div class="form-group">
-                          <label>Mã học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" required>
                         </div>
                         <button type="submit"  class="btn btn-primary">Thêm</button>
                         @csrf
