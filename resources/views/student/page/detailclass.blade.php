@@ -1,6 +1,6 @@
 @extends('student.layout.index')
 @section('titel')
-    Lớp
+    {{$className->class_name}}
 @endsection
 @section('main')
 
