@@ -86,6 +86,10 @@
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đăng xuất
                                 </a>
+                                <a class="dropdown-item" href="/dashboard" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-arrow-left fa-sm fa-fw mr-2 text-gray-400"></i>
+                                   Về trang chủ
+                                </a>
                             </div>
                         </li>
                     </ul>

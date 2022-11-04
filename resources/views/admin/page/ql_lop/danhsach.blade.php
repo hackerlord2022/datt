@@ -9,7 +9,6 @@ Danh sách lớp học
     <div id="content">
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
