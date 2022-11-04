@@ -25,6 +25,9 @@ Thêm người dùng
                           <label>Họ Tên</label>
                           <input type="text" class="form-control"placeholder="Họ tên" name="hoten" required>
                         </div>
+                        @if(session('alert'))
+                        <section class='alert alert-success'>{{session('alert')}}</section>
+                    @endif
                         <div class="form-group">
                           <label>Email</label>
                           <input type="email" class="form-control"placeholder="Email" name="email" required>

@@ -11,6 +11,8 @@ use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class studentController extends Controller
 {
     //
@@ -33,7 +35,7 @@ class studentController extends Controller
             $confirm_passwword = $_POST['confirm_new_password'];
 
             if($passwword == $confirm_passwword){
-                $data->password =  $_POST['new_password'];
+                $data->password = Hash::make($_POST['new_password']);
             }else{
                 $alert = 'Mật khẩu không trùng khớp!';
                 return redirect()->back()->with('alert',$alert);
