@@ -24,15 +24,16 @@ Sửa học kỳ: A
                         <div class="form-group">
                             <label>Id</label>
                             <input type="text" class="form-control"disabled value="{{$hocky->id}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Mã học kỳ</label>
+                            <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" value="{{$hocky->semester_code}}">
                           </div>
                         <div class="form-group">
                           <label>Tên học kỳ</label>
                           <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk" value="{{$hocky->semester_name}}">
                         </div>
-                        <div class="form-group">
-                          <label>Mã học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" value="{{$hocky->semester_code}}">
-                        </div>
+
                         <button type="submit" class="btn btn-primary">Sửa</button>
                         @csrf
                         <a href="admin/hocky/ds" type="submit" class="btn btn-primary">Danh sách</a>

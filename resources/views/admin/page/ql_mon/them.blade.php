@@ -30,13 +30,14 @@ Thêm môn học
                             </select>
                           </div>
                         <div class="form-group">
+                            <label>Mã môn học</label>
+                            <input type="text" class="form-control"placeholder="môn học" name="mamh" required>
+                          </div>
+                        <div class="form-group">
                           <label>Tên môn học</label>
                           <input type="text" class="form-control"placeholder="môn học" name="tenmh" required>
                         </div>
-                        <div class="form-group">
-                          <label>Mã môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="mamh" required>
-                        </div>
+
                         <button type="submit" class="btn btn-primary">Thêm</button>
                         @csrf
                         <a href="admin/monhoc/ds" type="submit" class="btn btn-primary">Danh sách</a>
