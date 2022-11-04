@@ -89,7 +89,8 @@ class indexDashboardController extends Controller
             $className = Classes::where('class_code', $labdeatail->class_code)
                                 ->join('users', 'users.id', 'teacher_code')->first();
             $labUploaded = Submission::join('archives', 'archives.archives_code', 'submission.archives_code')
-                                ->where('submission.archives_code', $labdeatail->archives_code)->first();
+                                ->where('submission.archives_code', $labdeatail->archives_code)
+                                ->where('submission.user_code',auth()->user()->id )->first();
             $checkResubmit = Resubmit::where('user_code', auth()->user()->id)
                                      ->where('archives_code', $id)->first();
             return view("student.page.upload", ['checkResubmit' => $checkResubmit ,'labdeatail' => $labdeatail,
