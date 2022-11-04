@@ -102,8 +102,8 @@ class techerController extends Controller
     }
     function teacher_addexercise($id){
         // $classCode = Classes::all();
-        $classCode = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
-        ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->first();
+        $classCode = Classes::where('class_code', $id)
+        ->where('teacher_code', '=', Auth()->User()->id)->first();
         return view("teacher.page.teacher_addexercise", ['classCode' => $classCode]);
     }
     function teacher_addexercise_(){
