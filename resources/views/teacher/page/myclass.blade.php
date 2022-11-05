@@ -9,7 +9,6 @@ Lớp của tôi
             <div class="col-md-6 text-left">
                 <h1>Lớp học</h1>
             </div>
-
         </div>
     </div>
 </section>
@@ -34,10 +33,6 @@ Lớp của tôi
                         <hr>
                 </section>
             </div>
-
-
-
-
             <div id="course-content" class="col-md-9">
                     @if(session('alert'))
                         <section class='alert alert-success'>{{session('alert')}}</section>
@@ -52,7 +47,11 @@ Lớp của tôi
                                 <li class="nav-item dropdown hidden-caret submenu">
                                     <a class="nav-link1 dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-envelope"></i>
-                                        <span class="notification">4</span>
+                                        <span class="notification">
+                                            @if(session('count'))
+                                                {{session('count')}}
+                                            @endif
+                                        </span>
                                     </a>
                                     <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
                                         <li>
@@ -61,6 +60,7 @@ Lớp của tôi
                                                 <a href="#" class="small"> Nộp lại bài</a>
                                             </div>
                                         </li>
+                                        {{-- @foreach ($resubmit as $r) --}}
                                         <li>
                                             <div class="scroll-wrapper message-notif-scroll scrollbar-outer" style="position: relative;"><div class="message-notif-scroll scrollbar-outer scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 250px;">
                                                 <div class="notif-center submenu">
@@ -69,11 +69,17 @@ Lớp của tôi
                                                             <img src="./images/a1a61ba9222de673bf3c.jpg" alt="Img Profile">
                                                         </div>
                                                         <div class="notif-content">
-                                                            <span class="subject">Jimmy Denis</span>
-                                                            <span class="block">
-                                                                How are you ?
+                                                            {{-- <span class="subject">
+                                                                @foreach ($user as $u)
+                                                                    @if ($r->user_code == $u->id)
+                                                                        {{$u->name}}
+                                                                    @endif
+                                                                 @endforeach
                                                             </span>
-                                                            <span class="time">5 minutes ago</span>
+                                                            <span class="block">
+                                                                {{$r->content}}
+                                                            </span>
+                                                            <span class="time">{{$r->created_att}}</span> --}}
                                                         </div>
                                                     </a>
                                                 </div>
@@ -94,6 +100,7 @@ Lớp của tôi
                                             </div>
                                         </div>
                                         </li>
+                                        {{-- @endforeach --}}
                                     </ul>
                                 </li>
                             </div>
@@ -107,9 +114,9 @@ Lớp của tôi
                                     <div class="shop-list-desc">
                                         <h4>
                                             <div class="row" >
-                                                <div class="col-md-10" style="margin-top:-2px">
+                                                <div class="col-md-10" style="margin-top:-3px">
                                                     <a href="/teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
-                                                    
+
                                                 </div>
                                                     <div class="col-md-2">
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
+use App\Models\Resubmit as nl;
+use  \App\Models\User as user;
 class bainopController extends Controller
 {
     function ds(){
-        $bainop = \App\Models\Resubmit::all();
-        $user= \App\Models\User::all();
+        $bainop =nl::all();
+        $user =user::all();
         return view('admin.page.ql_bainop.danhsach',['bainop'=>$bainop,'user'=>$user]);
     }
 }

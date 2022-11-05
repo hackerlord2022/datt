@@ -39,7 +39,7 @@ Route::get('/student_deletelab/{id}', [indexDashboardController::class, 'student
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){
-    Route::get('/', [adminController::class, 'admin']);
+    Route::get('/', [adminController::class, 'admin'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::group(['prefix'=>'bainop'],function(){
         Route::get('ds', [bainopController::class, 'ds']);
     });
@@ -77,7 +77,7 @@ Route::group(['prefix'=>'admin'],function(){
     });
 });
 //
-// giảng viên 
+// giảng viên
 Route::get('/teacher', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/teacher', [techerController::class, 'account_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');

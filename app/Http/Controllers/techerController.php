@@ -44,7 +44,7 @@ class techerController extends Controller
     function teacher_addclass(){
         $hk = Subject::all();
         // dd($hk);
-        return view("teacher.page.teacher_addclass", ['hk'=> $hk]); 
+        return view("teacher.page.teacher_addclass", ['hk'=> $hk]);
     }
     function teacher_addclass_(){
         $addClass = new Class_Lop();
@@ -59,7 +59,7 @@ class techerController extends Controller
         $hk = Subject::all();
         $teacher_editclass = Class_Lop::where('class_code', $id)->first();
         // dd($teacher_editclass);
-       return view("teacher.page.teacher_editclass", ['teacher_editclass' => $teacher_editclass, 'hk'=> $hk]); 
+       return view("teacher.page.teacher_editclass", ['teacher_editclass' => $teacher_editclass, 'hk'=> $hk]);
     }
     function teacher_editclass_($id){
         $teacher_editclass = Class_Lop::where('class_code', $id)->first();
@@ -196,8 +196,9 @@ class techerController extends Controller
             $pathToFile = public_path('/upload/filelab//'.$url);
             response()->download($pathToFile);
         }
-        return Response::download(["file_1.txt","file_2.txt"]);   
+        return Response::download(["file_1.txt","file_2.txt"]);
     }
-    // đường dẫn vào giao diện sau khi có layout || 
+
+    // đường dẫn vào giao diện sau khi có layout ||
     // return view("techer.page.index");
 }
