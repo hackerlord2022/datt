@@ -107,7 +107,7 @@ Lớp của tôi
                                     <div class="shop-list-desc">
                                         <h4>
                                             <div class="row" >
-                                                <div class="col-md-10" style="margin-top:-2px">
+                                                <div class="col-md-10" style="margin-top:-3px">
                                                     <a href="/teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
                                                     ||
                                                 </div>
