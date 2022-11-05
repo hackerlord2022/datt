@@ -61,6 +61,7 @@
                                     <input type="text" class="form-control" name="teacher_code" value="{{Auth()->User()->name}}" readonly>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                <a href="/teacher_myclass" class="btn btn-primary">Danh sách bài lab</a>
                                 @csrf
                             </form>
                         </div>

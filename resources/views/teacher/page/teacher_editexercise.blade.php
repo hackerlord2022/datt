@@ -48,13 +48,9 @@
                                     <input type="text" class="form-control" name="archives_name" value="{{$editexercise->archives_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Lớp học</label>
-                                    <select name="class_code" class="form-control">
-                                        @foreach ($classCode as $classCode)
-                                            <option value="{{$classCode->class_code}}" @if ($classCode->class_code == $editexercise->class_code) selected  
-                                            @endif>{{$classCode->class_code}} - {{$classCode->class_name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <label>Lớp học nè</label>
+                                    <input type="text" class="form-control" placeholder="{{$editexercise->class_code.'-'.$classCode->class_name}}" readonly>
+                                    <input type="hidden" class="form-control" name="class_code" value="{{$editexercise->class_code}}" readonly >
                                 </div>
                                 <div class="form-group">
                                     <label>Deadline</label>
@@ -69,14 +65,13 @@
                                     <textarea class="form-control" name="note" rows="4" cols="50">{{$editexercise->note}}</textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Cập nhật lab</button>
-                                <a href="/teacher_listexercise" class="btn btn-primary">Danh sách bài lab</a>
+                                <a href="/teacher_listexercise/{{$editexercise->class_code}}" class="btn btn-primary">Danh sách bài lab</a>
                                 @csrf
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr class="invis">
         </div>
     </section>
 @endsection

@@ -57,12 +57,12 @@ class techerController extends Controller
     }
     function teacher_editclass($id){
         $hk = Subject::all();
-        $teacher_editclass = Class_Lop::find($id);
+        $teacher_editclass = Class_Lop::where('class_code', $id)->first();
         // dd($teacher_editclass);
        return view("teacher.page.teacher_editclass", ['teacher_editclass' => $teacher_editclass, 'hk'=> $hk]); 
     }
     function teacher_editclass_($id){
-        $teacher_editclass = Class_Lop::find($id);
+        $teacher_editclass = Class_Lop::where('class_code', $id)->first();
         $teacher_editclass->class_code = $_POST['class_code'];
         $teacher_editclass->class_name = $_POST['class_name'];
         $teacher_editclass->subject_code = $_POST['subject_code'];
@@ -72,7 +72,7 @@ class techerController extends Controller
         $alert='Cập nhật thành công!';return redirect()->back()->with('alert',$alert);
     }
     function teacher_deleteclass($id){
-        $teacher_deleteclass = Class_Lop::find($id);
+        $teacher_deleteclass = Class_Lop::where('class_code', $id)->first();
         $teacher_deleteclass->delete();
         $alert = 'Xóa thành công!';return redirect()->back()->with('alert',$alert);
         return redirect('teacher.page.myclass');
@@ -118,12 +118,12 @@ class techerController extends Controller
         $alert = 'Thêm Lab thành công!';return redirect()->back()->with('alert',$alert);
     }
     function teacher_editexercise($id){
-        $editexercise = Archives::find($id);
-        $classCode = Classes::all();
+        $editexercise = Archives::where('archives_code', $id)->first();
+        $classCode = Classes::where('class_code', $editexercise->class_code)->first();
         return view("teacher.page.teacher_editexercise", ['editexercise' => $editexercise, 'classCode' => $classCode]);
     }
     function teacher_editexercise_($id){
-        $editexercise = Archives::find($id);
+        $editexercise = Archives::where('archives_code', $id)->first();
         $editexercise->archives_code = $_POST['archives_code'];
         $editexercise->archives_name = $_POST['archives_name'];
         $editexercise->deadline = $_POST['deadline'];
@@ -134,7 +134,7 @@ class techerController extends Controller
         $alert = 'Cập nhật thành công!';return redirect()->back()->with('alert',$alert);
     }
     function teacher_deleteexercise($id){
-        $editexercise = Archives::find($id);
+        $editexercise =  Archives::where('archives_code', $id)->first();
         $editexercise->delete();
         $alert = 'Xóa thành công!';return redirect()->back()->with('alert',$alert);
         return redirect('teacher.page.teacher_listexercise');

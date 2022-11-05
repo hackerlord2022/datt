@@ -109,7 +109,7 @@ Lớp của tôi
                                             <div class="row" >
                                                 <div class="col-md-10" style="margin-top:-2px">
                                                     <a href="/teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
-                                                    ||
+                                                    
                                                 </div>
                                                     <div class="col-md-2">
 
@@ -117,10 +117,10 @@ Lớp của tôi
                                                         <a href="teacher_listexercise/{{$item->class_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Edit">
                                                             <i class="fa fa-download"></i>
                                                         </a>
-                                                        <a href="teacher_editclass/{{$item->id}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Edit">
+                                                        <a href="teacher_editclass/{{$item->class_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Edit">
                                                             <i class="fa fa-pencil font-20"></i>
                                                         </a>
-                                                        <a href="teacher_deleteclass/{{$item->id}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
+                                                        <a href="teacher_deleteclass/{{$item->class_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                         </a>
                                                     </span>

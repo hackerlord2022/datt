@@ -71,7 +71,7 @@ class indexDashboardController extends Controller
         }
     }
     function uploadfile($id){
-        // 
+        
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $formatTime = "G:i:s Y-m-d";
         $formatDate = "Y-m-d";
@@ -93,9 +93,17 @@ class indexDashboardController extends Controller
                                 ->where('submission.user_code',auth()->user()->id )->first();
             $checkResubmit = Resubmit::where('user_code', auth()->user()->id)
                                      ->where('archives_code', $id)->first();
+            // dd($labUploaded);
             return view("student.page.upload", ['checkResubmit' => $checkResubmit ,'labdeatail' => $labdeatail,
             'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
+            
         }
+    }
+
+    function student_deletelab($id){
+        $student_deletelab = Submission::where('submission_code', $id)->first();
+        $student_deletelab->delete();
+        $alert = 'Xóa File nộp thành công!';return redirect()->back()->with('alert',$alert);
     }
 
     function uploadfile_($id, Request $request){

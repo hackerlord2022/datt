@@ -1,13 +1,13 @@
 @extends('student.layout.index')
 @section('titel')
-Lớp của tôi
+Xin nộp lại
 @endsection
 @section('main')
 <section class="grey page-title">
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Tài khoản cá nhân</h1>
+                <h1>Xin nộp lại bài</h1>
             </div>
         </div>
     </div>
@@ -51,7 +51,6 @@ Lớp của tôi
                 </div>
             </div>
         </div>
-        <hr class="invis">
     </div>
 </section>
 @endsection
