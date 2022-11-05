@@ -44,9 +44,8 @@ display: inline-block;
     color: #4d585f;
 }
 .messages-notif-box .notif-center a .notif-img img, .notif-box .notif-center a .notif-img img {
-    width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 .messages-notif-box .notif-center a .notif-content {
     padding: 7px 15px 7px 5px;
@@ -100,7 +99,6 @@ display: inline-block;
 .messages-notif-box .notif-center a .notif-content .block, .notif-box .notif-center a .notif-content .block {
     font-size: 13px;
     line-height: 20px;
-    display: block;
 }
 .messages-notif-box .notif-center a .notif-content .time, .notif-box .notif-center a .notif-content .time {
     color: #7d8c95;
@@ -137,4 +135,12 @@ display: inline-block;
 }
 .messages-notif-box .see-all i, .notif-box .see-all i {
     float: right;
+}
+
+.an {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;  /* số dòng hiển thị */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

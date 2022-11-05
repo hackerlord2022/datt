@@ -87,13 +87,7 @@ class studentController extends Controller
         // dd($re)
 
     }
-    function notification(){
-        $count = Resubmit::count();
-        $resubmit = Resubmit::all();
-        $user = User::all();
-        return view("teacher.page.myclass", ['count' => $count , 'resubmit' => $resubmit , 'user' => $user]);
-    }
-
+   
     // đường dẫn vào giao diện sau khi có layout
     // return view("student.page.index");
 
