@@ -13,6 +13,7 @@ use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 use Response;
 use File;
 use ZipArchive;
@@ -37,9 +38,12 @@ class techerController extends Controller
         return view("teacher.page.account");
     }
     function myclass(){
+        $count = Resubmit::count();
+        $resubmit = Resubmit::all();
+        $user = User::all();
         $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
         //dd($myClass);
-        return view("teacher.page.myclass", ['myClass' => $myClass]);
+        return view("teacher.page.myclass", ['myClass' => $myClass , 'count'=>$count  , 'resubmit'=>$resubmit  , 'user'=>$user]);
     }
     function teacher_addclass(){
         $hk = Subject::all();

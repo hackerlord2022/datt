@@ -48,9 +48,7 @@ Lớp của tôi
                                     <a class="nav-link1 dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-envelope"></i>
                                         <span class="notification">
-                                            @if(session('count'))
-                                                {{session('count')}}
-                                            @endif
+                                            {{$count}}
                                         </span>
                                     </a>
                                     <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
@@ -60,26 +58,26 @@ Lớp của tôi
                                                 <a href="#" class="small"> Nộp lại bài</a>
                                             </div>
                                         </li>
-                                        {{-- @foreach ($resubmit as $r) --}}
+                                        @foreach ($resubmit as $r)
                                         <li>
                                             <div class="scroll-wrapper message-notif-scroll scrollbar-outer" style="position: relative;"><div class="message-notif-scroll scrollbar-outer scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 250px;">
                                                 <div class="notif-center submenu">
-                                                    <a href="#">
-                                                        <div class="notif-img">
+                                                    <a href="/teacher_reupload_detail/{id}">
+                                                        <div class="notif-img ">
                                                             <img src="./images/a1a61ba9222de673bf3c.jpg" alt="Img Profile">
                                                         </div>
                                                         <div class="notif-content">
-                                                            {{-- <span class="subject">
+                                                            <span class="subject">
                                                                 @foreach ($user as $u)
                                                                     @if ($r->user_code == $u->id)
                                                                         {{$u->name}}
                                                                     @endif
                                                                  @endforeach
                                                             </span>
-                                                            <span class="block">
-                                                                {{$r->content}}
+                                                            <span class="an block">
+                                                             {{$r->content}}
                                                             </span>
-                                                            <span class="time">{{$r->created_att}}</span> --}}
+                                                            <span class="time">{{$r->created_at}}</span>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -100,7 +98,7 @@ Lớp của tôi
                                             </div>
                                         </div>
                                         </li>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </ul>
                                 </li>
                             </div>
@@ -146,4 +144,6 @@ Lớp của tôi
         {{-- <hr class="invis"> --}}
     </div>
 </section>
+
 @endsection
+
