@@ -51,7 +51,6 @@ Lớp của tôi
                                     <div class="shop-list-desc">
                                         <h4>
                                             <a href="../teacher_list_exercise/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
-                                            ||
                                             <a href="../teacher_list_exercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
                                             <a href="../teacher_editexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
                                             <a href="../teacher_deleteexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a>

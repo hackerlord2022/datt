@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <hr class="invis">
+        {{-- <hr class="invis"> --}}
     </div>
 </section>
 @endsection

@@ -109,7 +109,7 @@ Lớp của tôi
                                             <div class="row" >
                                                 <div class="col-md-10" style="margin-top:-2px">
                                                     <a href="/teacher_myclass_list/{{$item->class_code}}">{{$item->class_name}}</a>
-                                                    ||
+                                                    
                                                 </div>
                                                     <div class="col-md-2">
 
