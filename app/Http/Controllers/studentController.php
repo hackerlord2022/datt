@@ -27,10 +27,10 @@ class studentController extends Controller
     }
     function account_update(){
         $data = User::find(Auth()->User()->id);
-         
+
             $data->name = $_POST['name'];
             $data->email = $_POST['email'];
-            
+
             $passwword = $_POST['new_password'];
             $confirm_passwword = $_POST['confirm_new_password'];
 
@@ -42,12 +42,12 @@ class studentController extends Controller
             }
             $data->save();
 
-      
+
         $alert = 'Cập nhật thông tin thành công!';
         return redirect()->back()->with('alert',$alert);
         return view("student.page.account");
     }
-    function myclass(){      
+    function myclass(){
         $Class = DB::table('class_students')
         ->join('class', 'class_students.class_code', '=', 'class.class_code')
         ->select('class_students.*', 'class.class_name')
@@ -86,6 +86,12 @@ class studentController extends Controller
         return redirect()->back()->with('alert',$alert);
         // dd($re)
 
+    }
+    function notification(){
+        $count = Resubmit::count();
+        $resubmit = Resubmit::all();
+        $user = User::all();
+        return view("teacher.page.myclass", ['count' => $count , 'resubmit' => $resubmit , 'user' => $user]);
     }
 
     // đường dẫn vào giao diện sau khi có layout

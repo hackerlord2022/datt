@@ -50,6 +50,7 @@ Lớp của tôi
                                 <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                     <div class="shop-list-desc">
                                         <h4>
+<<<<<<< HEAD
                                             <div class="row">
                                                 <div class="col-md-10" style="margin-top: -3px">
                                                     <a href="../teacher_list_exercise/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
@@ -61,6 +62,12 @@ Lớp của tôi
                                                     <a href="../teacher_deleteexercise/{{$item->id}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a>
                                                 </div>
                                             </div>
+=======
+                                            <a href="../teacher_list_exercise/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
+                                            <a href="../teacher_list_exercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                            <a href="../teacher_editexercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
+                                            <a href="../teacher_deleteexercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a>
+>>>>>>> d489ebfd56d1abda4012a24b18c3e77270e56fbe
                                         </h4>
 
                                     </div>

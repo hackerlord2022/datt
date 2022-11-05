@@ -54,13 +54,12 @@
                                 <label>Nhập lại mật khẩu</label>
                                 <input type="password" name="confirm_new_password" class="form-control" placeholder="************">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit Changes</button>
+                            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="invis">
     </div>
 </section>
 @endsection
