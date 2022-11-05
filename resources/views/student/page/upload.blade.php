@@ -31,24 +31,27 @@ Tải file lên
                         @csrf
                         @if ($labUploaded != null)
                         <div class="mb-3" style="margin-bottom: 5px">
+                            @if (strtotime($timeNow) <= strtotime($labdeatail->deadlinetime.' '.$labdeatail->deadline))  
                             <label class="form-label">File bạn đã nộp:</label> 
-                            
-                            <input class="form-control" name="file" type="text" value="{{$labUploaded->submission}}"  required>
-                            <a href="/student_deletelab/{{$labUploaded->submission_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
+                                    <input class="form-control" name="file" type="text" value="{{$labUploaded->submission}}"  required>
+                                    <a href="/student_deletelab/{{$labUploaded->submission_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a>
+                                @else
+                                {{-- <a href="#" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a> --}}
+
+                            @endif
                         </div>
                         <div class="mb-3" style="margin-bottom: 5px">
                             <label for="formFile" class="form-label">Tải lên file của bạn</label>
                             <input class="form-control" name="file" type="text"
                                 placeholder="{{$labUploaded->submission}}" id="formFile" readonly>
                         </div>
-                        <a href="#" class="btn btn-success col-md-12 col-md-12" style="margin-bottom: 5px">Bạn đã nộp
-                            bài</a>
+                        <a href="#" class="btn btn-success col-md-12 col-md-12" style="margin-bottom: 5px">Bạn đã nộp bài</a>
                             
                         @elseif ( strtotime($timeNow) <= strtotime($labdeatail->deadlinetime.' '.$labdeatail->deadline))
-
-                                
                                 <div class="mb-3" style="margin-bottom: 5px">
                                     <label for="formFile" class="form-label">Tải lên file của bạn</label>
                                     <input class="form-control" name="file" type="file" id="formFile" required>
