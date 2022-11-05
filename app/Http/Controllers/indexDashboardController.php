@@ -103,9 +103,7 @@ class indexDashboardController extends Controller
     function student_deletelab($id){
         $student_deletelab = Submission::where('submission_code', $id)->first();
         $student_deletelab->delete();
-        // dd($student_deletelab);
         $alert = 'Xóa File nộp thành công!';return redirect()->back()->with('alert',$alert);
-        // return redirect('/class_detail');
     }
 
     function uploadfile_($id, Request $request){
