@@ -27,6 +27,7 @@ Danh sách bài nộp
                                     <th class=" text-center text-dark">Nội dung</th>
                                     <th class=" text-center text-dark">Mã Kho nộp</th>
                                     <th class=" text-center text-dark">Tên người nộp lại</th>
+                                    <th class=" text-center text-dark">Xóa</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -37,6 +38,7 @@ Danh sách bài nộp
                                     <th class=" text-center text-dark">Nội dung</th>
                                     <th class=" text-center text-dark">Mã Kho nộp</th>
                                     <th class=" text-center text-dark">Tên người nộp lại</th>
+                                    <th class=" text-center text-dark">Xóa</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -53,6 +55,9 @@ Danh sách bài nộp
                                             {{$u->name}}
                                         @endif
                                         @endforeach
+                                    </td>
+                                    <td class=" text-center">
+                                        <a href="admin/bainop/xoa/{{$bn->id}}"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
