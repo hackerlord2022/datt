@@ -39,9 +39,10 @@ Route::get('/student_deletelab/{id}', [indexDashboardController::class, 'student
 //
 // admin
 Route::group(['prefix'=>'admin'],function(){
-    Route::get('/', [adminController::class, 'admin']);
+    Route::get('/', [adminController::class, 'admin'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::group(['prefix'=>'bainop'],function(){
         Route::get('ds', [bainopController::class, 'ds']);
+        Route::get('/xoa/{id}', [bainopController::class, 'deleteResubmit']);
     });
     Route::group(['prefix'=>'hocky'],function(){
         Route::get('ds', [hockyController::class, 'ds']);
@@ -77,8 +78,10 @@ Route::group(['prefix'=>'admin'],function(){
     });
 });
 //
-// giảng viên 
+// giảng viên
 Route::get('/teacher', [techerController::class, 'account'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher/delete/{id}', [techerController::class, 'deleteResubmit'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::post('/teacher', [techerController::class, 'account_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/teacher_reupload_detail/{id}', [techerController::class, 'reuploadclass'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -116,6 +119,7 @@ Route::post('/account', [studentController::class, 'account_update'])->middlewar
 Route::get('/myclass', [studentController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/reupload', [studentController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/myclass_reupload/{id}', [studentController::class, 'myclass_reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/resubmit/{id}', [studentController::class, 'resubmit'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/resubmit/{id}', [studentController::class, 'resubmit_'])->middleware(['auth', 'verified'])->name('dashboard');
 //

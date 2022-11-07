@@ -31,12 +31,18 @@ Tải file lên
                         @csrf
                         @if ($labUploaded != null)
                         <div class="mb-3" style="margin-bottom: 5px">
-                            @if (strtotime($timeNow) <= strtotime($labdeatail->deadlinetime.' '.$labdeatail->deadline))  
-                            <label class="form-label">File bạn đã nộp:</label> 
-                                    <input class="form-control" name="file" type="text" value="{{$labUploaded->submission}}"  required>
-                                    <a href="/student_deletelab/{{$labUploaded->submission_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    </a>
+                            @if (strtotime($timeNow) <= strtotime($labdeatail->deadlinetime.' '.$labdeatail->deadline))
+                            <label class="form-label">File bạn đã nộp:</label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="file" type="text" value="{{$labUploaded->submission}}"  required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="/student_deletelab/{{$labUploaded->submission_code}}" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
                                 @else
                                 {{-- <a href="#" class="btn btn-default btn-xs m-r-5" style="font-size:20px;" role="button" data-original-title="Delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -50,7 +56,7 @@ Tải file lên
                                 placeholder="{{$labUploaded->submission}}" id="formFile" readonly>
                         </div>
                         <a href="#" class="btn btn-success col-md-12 col-md-12" style="margin-bottom: 5px">Bạn đã nộp bài</a>
-                            
+
                         @elseif ( strtotime($timeNow) <= strtotime($labdeatail->deadlinetime.' '.$labdeatail->deadline))
                                 <div class="mb-3" style="margin-bottom: 5px">
                                     <label for="formFile" class="form-label">Tải lên file của bạn</label>
@@ -69,7 +75,7 @@ Tải file lên
                                     hết thời gian nộp bài</a>
                                 @endif
                     </form>
-                    
+
                     <hr>
                     <button class="btn btn-warning col-md-12 col-md-12" style="margin-bottom: 5px">Thời gian nộp bài:
                         {{$labdeatail->deadlinetime}} - {{$labdeatail->deadline}}</button>
@@ -83,7 +89,7 @@ Tải file lên
                 <div class="shop-list-desc">
                     <h4><a href="#">{{$labdeatail->archives_name}}</a></h4>
                     <p>{{$labdeatail->note}}</p>
-                    
+
                     <form action="../uploadfile/{{$labdeatail->archives_code}}" method="post"
                         enctype="multipart/form-data">
                         @csrf

@@ -10,6 +10,12 @@ Danh sách Username
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <!-- Page Heading -->
+            @if (session('thongbao'))
+            <div class="alert alert-success alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{session('thongbao')}}.
+            </div>
+            @endif
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">

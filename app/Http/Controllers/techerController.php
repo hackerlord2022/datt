@@ -13,6 +13,7 @@ use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 use Response;
 use File;
 use ZipArchive;
@@ -37,14 +38,17 @@ class techerController extends Controller
         return view("teacher.page.account");
     }
     function myclass(){
+        $count = Resubmit::count();
+        $resubmit = Resubmit::all();
+        $user = User::all();
         $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
         //dd($myClass);
-        return view("teacher.page.myclass", ['myClass' => $myClass]);
+        return view("teacher.page.myclass", ['myClass' => $myClass , 'count'=>$count  , 'resubmit'=>$resubmit  , 'user'=>$user]);
     }
     function teacher_addclass(){
         $hk = Subject::all();
         // dd($hk);
-        return view("teacher.page.teacher_addclass", ['hk'=> $hk]); 
+        return view("teacher.page.teacher_addclass", ['hk'=> $hk]);
     }
     function teacher_addclass_(){
         $addClass = new Class_Lop();
@@ -59,7 +63,7 @@ class techerController extends Controller
         $hk = Subject::all();
         $teacher_editclass = Class_Lop::where('class_code', $id)->first();
         // dd($teacher_editclass);
-       return view("teacher.page.teacher_editclass", ['teacher_editclass' => $teacher_editclass, 'hk'=> $hk]); 
+       return view("teacher.page.teacher_editclass", ['teacher_editclass' => $teacher_editclass, 'hk'=> $hk]);
     }
     function teacher_editclass_($id){
         $teacher_editclass = Class_Lop::where('class_code', $id)->first();
@@ -151,15 +155,21 @@ class techerController extends Controller
         $myArchives = Archives::where("class_code", $id)->get();
         return view("teacher.page.reuploadR", ['myArchives' => $myArchives]);
     }
+
     function reuploadclassD($id){
-        $resubmit = Resubmit::where("archives_code", $id)->join('users', 'users.id','resubmit.user_code')->orderBy('resubmit.created_at', 'ASC')->get();
+        $resubmit = Resubmit::where("archives_code", $id)
+        ->join('users', 'users.id','resubmit.user_code')
+        ->orderBy('resubmit.created_at', 'ASC')
+        ->get();
         return view("teacher.page.reupload", ['resubmit' => $resubmit]);
     }
     function reuploadclassD_($id){
         $resubmit = Resubmit::where('resubmit_code', $id)
                             ->update(['status' => 1]);
         $alert = 'Đã duyệt!';
-        return redirect()->back()->with('alert',$alert);
+        return redirect('')
+        ->back()
+        ->with('alert',$alert);
     }
     function listdownload($id){
         $submission = Submission::where('archives_code', $id)
@@ -196,8 +206,9 @@ class techerController extends Controller
             $pathToFile = public_path('/upload/filelab//'.$url);
             response()->download($pathToFile);
         }
-        return Response::download(["file_1.txt","file_2.txt"]);   
+        return Response::download(["file_1.txt","file_2.txt"]);
     }
-    // đường dẫn vào giao diện sau khi có layout || 
+
+    // đường dẫn vào giao diện sau khi có layout ||
     // return view("techer.page.index");
 }
