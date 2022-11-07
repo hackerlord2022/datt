@@ -11,5 +11,10 @@ class bainopController extends Controller
         $user =user::all();
         return view('admin.page.ql_bainop.danhsach',['bainop'=>$bainop,'user'=>$user]);
     }
+    function deleteResubmit($id){
+        $resubmit = nl::find($id);
+        $resubmit->delete();
+        return redirect('admin/bainop/ds')->with('thongbao','Xóa Thành Công');
+    }
 }
 ?>

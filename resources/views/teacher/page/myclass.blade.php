@@ -62,7 +62,7 @@ Lớp của tôi
                                         <li>
                                             <div class="scroll-wrapper message-notif-scroll scrollbar-outer" style="position: relative;"><div class="message-notif-scroll scrollbar-outer scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 250px;">
                                                 <div class="notif-center submenu">
-                                                    <a href="/teacher_reupload_detail/{{$r->class_code}}">
+                                                    <a href="/teacher_listReupload/{{$r->id}}">
                                                         <div class="notif-img ">
                                                             <img src="./images/a1a61ba9222de673bf3c.jpg" alt="Img Profile">
                                                         </div>
@@ -75,7 +75,7 @@ Lớp của tôi
                                                                  @endforeach
                                                             </span>
                                                             <span class="an block">
-                                                             {{$r->content}}
+                                                                {{$r->content}}
                                                             </span>
                                                             <span class="time">{{$r->created_at}}</span>
                                                         </div>
