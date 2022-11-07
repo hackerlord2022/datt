@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 class indexDashboardController extends Controller
 {
     //
-    function index(){   
+    function index(){
         $semester = Semester::all();
         return view("student.page.listsemester",['semester'=>$semester]);
     }
@@ -71,13 +71,13 @@ class indexDashboardController extends Controller
         }
     }
     function uploadfile($id){
-        
+
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $formatTime = "G:i:s Y-m-d";
         $formatDate = "Y-m-d";
         $dateNow = date($formatDate, time());
         $timeNow = date($formatTime, time());
-        // 
+        //
         $checkUser = ClassStudent::where('user_code', auth()->user()->id)
                                  ->where('class_code', $id)->get();
         if($checkUser == null){
@@ -92,11 +92,12 @@ class indexDashboardController extends Controller
                                 ->where('submission.archives_code', $labdeatail->archives_code)
                                 ->where('submission.user_code',auth()->user()->id )->first();
             $checkResubmit = Resubmit::where('user_code', auth()->user()->id)
+                                     ->where('status', 1)
                                      ->where('archives_code', $id)->first();
             // dd($labUploaded);
             return view("student.page.upload", ['checkResubmit' => $checkResubmit ,'labdeatail' => $labdeatail,
             'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
-            
+
         }
     }
 
@@ -123,7 +124,7 @@ class indexDashboardController extends Controller
                 $file = $request->file('file');
                 $file_name = $file->getClientOriginalName();
                 $file->move(public_path('/upload/filelab'),$file_name);
-            
+
                 $file_path = "/upload/imgNews/" . $file_name;
             }
             //
@@ -147,5 +148,5 @@ class indexDashboardController extends Controller
                         ->orWhere('class_name', "like" ,'%'.$_POST['keyword'].'%')
                         ->join('users', 'users.id', 'teacher_code')->get();
         return view('student.page.search',['class' => $class, 'keyword' => $_POST['keyword']]);
-    }  
+    }
 }
