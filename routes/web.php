@@ -116,6 +116,7 @@ Route::post('/account', [studentController::class, 'account_update'])->middlewar
 Route::get('/myclass', [studentController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/reupload', [studentController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/myclass_reupload/{id}', [studentController::class, 'myclass_reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/resubmit/{id}', [studentController::class, 'resubmit'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/resubmit/{id}', [studentController::class, 'resubmit_'])->middleware(['auth', 'verified'])->name('dashboard');
 //

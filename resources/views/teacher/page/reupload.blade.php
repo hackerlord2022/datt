@@ -33,6 +33,7 @@ Xin nộp bài lại
                         <hr>
                 </div>
             </div>
+            
             <div id="course-content" class="col-md-9">
                 <div class="course-description">
                     <div class="list-group">
@@ -44,7 +45,7 @@ Xin nộp bài lại
                          <?php if($item->status == 0){ echo 'active';} ?>">
                             <div class="d-flex w-100 justify-content-between">
                                 <h4 class="mb-1">Xin nộp lại bài</h4>
-                                <small>{{$item->create_at}}</small>
+                                <small>{{$item->created_at}}</small>
                             </div>
                             <p class="mb-1">{{$item->content}}</p>
                             <small>{{$item->name}}</small>

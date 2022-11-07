@@ -155,6 +155,7 @@ class techerController extends Controller
         $myArchives = Archives::where("class_code", $id)->get();
         return view("teacher.page.reuploadR", ['myArchives' => $myArchives]);
     }
+    
     function reuploadclassD($id){
         $resubmit = Resubmit::where("archives_code", $id)->join('users', 'users.id','resubmit.user_code')->orderBy('resubmit.created_at', 'ASC')->get();
         return view("teacher.page.reupload", ['resubmit' => $resubmit]);
@@ -163,7 +164,12 @@ class techerController extends Controller
         $resubmit = Resubmit::where('resubmit_code', $id)
                             ->update(['status' => 1]);
         $alert = 'Đã duyệt!';
-        return redirect()->back()->with('alert',$alert);
+        return redirect()->back()->with('alert',$alert);ok 
+    }
+    function deleteResubmit($id){
+        $resubmit = Resubmit::find($id);
+        $resubmit->delete();
+        return redirect('.........')->with('thongbao','Xóa Thành Công');
     }
     function listdownload($id){
         $submission = Submission::where('archives_code', $id)
