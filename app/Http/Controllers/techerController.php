@@ -39,8 +39,8 @@ class techerController extends Controller
     }
     // class
     function myclass(){
-        $count = Resubmit::count();
-        $resubmit = Resubmit::all();
+        $count = Resubmit::where('status', 0)->count();
+        $resubmit = Resubmit::where('status', 0)->get();
         $user = User::all();
         $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
         return view("teacher.page.myclass", ['myClass' => $myClass , 'count'=>$count  , 'resubmit'=>$resubmit  , 'user'=>$user]);
