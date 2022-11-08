@@ -31,8 +31,8 @@ class indexDashboardController extends Controller
         $SubjectName = Subject::where('subject_code', "=" ,$id)->first();
         return view("student.page.listclass", ['class' => $class, 'SubjectName' => $SubjectName]);// lớp hoc
     }
-    function joinclass($id){ // tham gia lớp học
-        //Thêm gì đó để push main
+    // tham gia lớp học
+    function joinclass($id){
         $checkUser = ClassStudent::where('user_code', auth()->user()->id)
                                  ->where('class_code', $id)->first();
         if($checkUser == null){
@@ -57,7 +57,8 @@ class indexDashboardController extends Controller
             return redirect('/joinclass/'.$id);
         }
     }
-    function classdetail($id){ // danh sách bài lab
+    // danh sách bài lab
+    function classdetail($id){ 
         $checkUser = ClassStudent::where('user_code', auth()->user()->id)
                                  ->where('class_code', $id)->first();
         if($checkUser == null){
@@ -71,7 +72,6 @@ class indexDashboardController extends Controller
         }
     }
     function uploadfile($id){
-
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $formatTime = "G:i:s Y-m-d";
         $formatDate = "Y-m-d";
@@ -94,19 +94,16 @@ class indexDashboardController extends Controller
             $checkResubmit = Resubmit::where('user_code', auth()->user()->id)
                                      ->where('status', 1)
                                      ->where('archives_code', $id)->first();
-            // dd($labUploaded);
             return view("student.page.upload", ['checkResubmit' => $checkResubmit ,'labdeatail' => $labdeatail,
             'dateNow' => $dateNow, 'timeNow' => $timeNow, 'className' => $className, 'labUploaded' => $labUploaded]);
-
         }
     }
-
     function student_deletelab($id){
         $student_deletelab = Submission::where('submission_code', $id)->first();
         $student_deletelab->delete();
         $alert = 'Xóa File nộp thành công!';return redirect()->back()->with('alert',$alert);
     }
-
+    
     function uploadfile_($id, Request $request){
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $formatTime = "G:i:s";
