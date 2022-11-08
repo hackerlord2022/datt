@@ -122,7 +122,7 @@ class indexDashboardController extends Controller
                 $file_name = $file->getClientOriginalName();
                 $file->move(public_path('/upload/filelab'),$file_name);
 
-                $file_path = "/upload/imgNews/" . $file_name;
+                $file_path = "/upload/filelab/" . $file_name;
             }
             //
             $submission->user_code = auth()->user()->id;
