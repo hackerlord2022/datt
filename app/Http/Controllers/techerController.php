@@ -191,14 +191,12 @@ class techerController extends Controller
         foreach($fileLabAll as $item){
             $file = public_path(). "/upload/filelab/".$item->submission;
             $filename = $item->submission;
-            // $headers = array(
-            //     'Content-Type: application/pdf',
-            // );
-            $url=$item->submission;
-            $pathToFile = public_path('/upload/filelab//'.$url);
-            response()->download($pathToFile);
-        }
-        return Response::download(["file_1.txt","file_2.txt"]);
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+            $array = Response::download($file, $filename, $headers);
+            }
+        // return Response::download(["file_1.txt","file_2.txt"]);
     }
 
     // đường dẫn vào giao diện sau khi có layout ||
