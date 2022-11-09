@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('resubmit', function (Blueprint $table) {
             $table->id();
-            $table->varchar('resubmit_code');
+            $table->string('resubmit_code');
             $table->string('status');
             $table->text('content');
             $table->string('archives_code');
