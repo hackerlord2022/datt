@@ -35,6 +35,7 @@ Route::get('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile'])-
 Route::post('/uploadfile/{id}', [indexDashboardController::class, 'uploadfile_'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/search', [indexDashboardController::class, 'searchClass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/student_deletelab/{id}', [indexDashboardController::class, 'student_deletelab'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/laveClass/{id}', [indexDashboardController::class, 'laveClass'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //
 // admin

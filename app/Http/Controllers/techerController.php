@@ -98,8 +98,9 @@ class techerController extends Controller
     function teacher_listexercise($id){
         $list = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
         ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->get();
+        $classCode = Classes::where('class_code', $id)->first();
         $class_code_class = $id;
-        return view("teacher.page.list_exercise", ['list' => $list, 'class_code_class' => $class_code_class]);
+        return view("teacher.page.list_exercise", ['classCode' => $classCode, 'list' => $list, 'class_code_class' => $class_code_class]);
     }
     function teacher_addexercise($id){
         $classCode = Classes::where('class_code', $id)
@@ -172,7 +173,9 @@ class techerController extends Controller
         $archives = Archives::where("archives_code", $id)->first();
         $submissionCount = Submission::where('archives_code', $id)
                     ->join('users', 'users.id', 'submission.user_code')->count();
-        return view("teacher.page.list_exercise_dow", ['submission' => $submission, 'archives' => $archives, 'submissionCount' => $submissionCount]);
+        $studentNumber = ClassStudent::where('class_code', $archives->class_code)->count();
+        $className = Archives::join('class', 'class.class_code', 'archives.class_code')->where('archives.archives_code', $id)->first();
+        return view("teacher.page.list_exercise_dow", ['className' => $className, 'studentNumber' => $studentNumber,'submission' => $submission, 'archives' => $archives, 'submissionCount' => $submissionCount]);
     }
     function downloadLab($id){
         $fileLab = Submission::where('submission_code' ,$id)->first();

@@ -29,7 +29,7 @@ Lớp của tôi
                         <hr>
                         <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Yêu cầu nộp bài của sinh viên</a></p>
                         <hr>
                 </section>
             </div>
@@ -77,7 +77,7 @@ Lớp của tôi
                                                             <span class="an block">
                                                                 {{$r->content}}
                                                             </span>
-                                                            <span class="time">{{$r->created_at}}</span>
+                                                            <span class="time">{{date('H:i:s d-m-Y',strtotime($r->created_at))}}</span>
                                                         </div>
                                                     </a>
                                                 </div>

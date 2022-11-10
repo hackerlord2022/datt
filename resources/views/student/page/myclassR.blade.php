@@ -21,7 +21,7 @@ Xin nộp lại
                         alt="" class="img-responsive">
                 </div>
                 <div class="course-meta">
-                    <p>{{Auth::User()->name}}</p>
+                    <p>Xin chào: {{Auth::User()->name}}</p>
                     <hr>
                     <p><a href="account">Tài khoản của tôi</a></p>
                     <hr>

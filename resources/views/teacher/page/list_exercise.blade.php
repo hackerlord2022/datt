@@ -7,7 +7,7 @@ Lớp của tôi
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Bài Lab</h1>
+                <h1>Bài Lab: {{$classCode->class_name}}</h1>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@ Lớp của tôi
                         <hr>
                         <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Yêu cầu nộp bài của sinh viên</a></p>
                         <hr>
                 </section>
             </div>
@@ -50,10 +50,12 @@ Lớp của tôi
                                 <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
                                     <div class="shop-list-desc">
                                         <h4>
-                                            <a href="../teacher_list_exercise/{{$item->archives_code}}">{{$item->archives_name}} - Deadline:{{$item->deadline}}</a>
-                                            <a href="../teacher_list_exercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
-                                            <a href="../teacher_editexercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
-                                            <a href="../teacher_deleteexercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>    </a>
+                                            <a href="../teacher_list_exercise/{{$item->archives_code}}">{{$item->archives_name}} - Deadline: {{date('H:i:s',strtotime($item->deadlinetime))}} | {{date('d-m-Y',strtotime($item->deadline))}}</a>
+                                            <span style="float:right">
+                                                <a href="../teacher_list_exercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                                <a href="../teacher_editexercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></a>
+                                                <a href="../teacher_deleteexercise/{{$item->archives_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </span>
                                         </h4>
 
                                     </div>

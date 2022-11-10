@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Tài khoản cá nhân</h1>
+                <h1>Danh sách sinh viên</h1>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                         <hr>
                         <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Yêu cầu nộp bài của sinh viên</a></p>
                         <hr>
                 </div>
             </div>
@@ -36,11 +36,11 @@
                 
                 <h4><a href="/teacher_listexercise/{{$className->class_code}}" class="btn btn-warning">Danh sách bài lab</a></h4>
                 
-                <h3>Lớp: {{$className->class_name}} | Số lượng: {{$classCount}}</h3>
+                <h3>Lớp: {{$className->class_name}} | Số lượng sinh viên: {{$classCount}}</h3>
                 <div class="course-description">
                     <ul class="list-group">
                         @foreach ($classDeatail as $item)
-                            <li class="list-group-item">{{$item->name}}</li>
+                            <li class="list-group-item">Sinh viên: <b>{{$item->name}}</b> | Email: <b>{{$item->email}}</b></li>
                         @endforeach
                     </ul>
                 </div>
