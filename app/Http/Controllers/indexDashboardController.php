@@ -146,4 +146,10 @@ class indexDashboardController extends Controller
                         ->join('users', 'users.id', 'teacher_code')->get();
         return view('student.page.search',['class' => $class, 'keyword' => $_POST['keyword']]);
     }
+    function laveClass($id){
+        $data = ClassStudent::where('class_code', $id)
+                            ->where('user_code', auth()->user()->id)->delete();
+        $alert = "Đã rời khỏi lớp thành công";
+        return redirect('/joinclass/'.$id)->with('alert',$alert);
+    }
 }

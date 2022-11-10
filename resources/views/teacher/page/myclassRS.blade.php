@@ -29,7 +29,7 @@ Lớp của tôi
                         <hr>
                         <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Yêu cầu nộp bài của sinh viên</a></p>
                         <hr>
                 </section>
             </div>
