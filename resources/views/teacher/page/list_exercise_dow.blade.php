@@ -7,7 +7,7 @@ Lớp của tôi
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Bài Lab</h1>
+                <h1>Lớp: {{$className->class_name}} - {{$archives->archives_name}}<b></b></h1>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@ Lớp của tôi
                         <hr>
                         <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Yêu cầu nộp bài của sinh viên</a></p>
                         <hr>
                 </section>
             </div>
@@ -39,7 +39,7 @@ Lớp của tôi
                         <section class='alert alert-success'>{{session('alert')}}</section>
                     @endif
                     <div class="edit-profile">
-                        <h4>{{$archives->archives_name}} || Tổng bài lab hiện có: {{$submissionCount}}</h4>
+                        <h4>Lớp: <b>{{$className->class_name}} - {{$archives->archives_name}}</b> || Tổng bài lab hiện có: <b>{{$submissionCount}}</b> | Tổng sinh viên của lớp: <b>{{$studentNumber}}</b></h4>
                         <hr>
                             <form action="../downloadall/{{$archives->archives_code}}" method="post">
                                 <button class="btn btn-warning" type="submit">Tải tất cả</button>
@@ -50,7 +50,7 @@ Lớp của tôi
                             <ul class="list-group">
                                 @foreach ($submission as $item)
                                     <li class="list-group-item">
-                                        {{$item->submission}} - {{$item->name}} - Ngày nộp: {{$item->deadline}} || Nộp lại @if($item->resubmit == 1) 1 @else 0 @endif
+                                        <b>Sinh Viên:</b> {{$item->name}}|<b>File: </b> {{$item->submission}} |<b>Ngày nộp:</b> {{date('d-m-Y',strtotime($item->deadline))}} || Nộp lại @if($item->resubmit == 1) 1 @else 0 @endif
                                         <a href="../download/{{$item->submission_code}}" class="btn btn-default btn-xs m-r-5" role="button" data-original-title="Edit"><i class="fa fa-download" aria-hidden="true"></i></a>
                                     </li>
                                 @endforeach

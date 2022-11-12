@@ -19,8 +19,7 @@ class studentController extends Controller
     function index(){
         return "đây là trang quản lý tài khoản cá nhân sinh viên";
     }
-
-
+    // account
     function account(){
         $User = Auth()->User()->id;
         return view("student.page.account");
@@ -47,6 +46,7 @@ class studentController extends Controller
         return redirect()->back()->with('alert',$alert);
         return view("student.page.account");
     }
+    // class
     function myclass(){
         $Class = DB::table('class_students')
         ->join('class', 'class_students.class_code', '=', 'class.class_code')
@@ -55,7 +55,7 @@ class studentController extends Controller
         ->get();
          return view("student.page.myclass", ['Class' => $Class]);
     }
-
+    // resubmit
     function reupload(){
         $Class = DB::table('class_students')
         ->join('class', 'class_students.class_code', '=', 'class.class_code')
@@ -66,12 +66,10 @@ class studentController extends Controller
     }
     function myclass_reupload($id){
         $lab = Archives::where('class_code', "=" ,$id)->get();
-        // dd($lab);
         return view("student.page.myclass_reupload", ['lab' => $lab]);
     }
     function resubmit($id){
         $lab = Archives::where('archives_code', "=" ,$id)->first();
-        // dd($lab);
         return view("student.page.reupload", ['lab' => $lab]);
     }
     function resubmit_($id){
@@ -84,8 +82,6 @@ class studentController extends Controller
         $resubmit->save();
         $alert = 'Yêu cầu xin nộp lại đã thành công!';
         return redirect()->back()->with('alert',$alert);
-        // dd($re)
-
     }
    
     // đường dẫn vào giao diện sau khi có layout

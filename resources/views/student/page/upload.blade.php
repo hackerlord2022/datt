@@ -8,7 +8,7 @@ Tải file lên
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h1>Đây là lớp: {{$className->class_name}} - {{$className->name}}</h1>
+                <h1>Đây là lớp: {{$className->class_name}} || Giảng viên: {{$className->name}}</h1>
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@ Tải file lên
 
                     <hr>
                     <button class="btn btn-warning col-md-12 col-md-12" style="margin-bottom: 5px">Thời gian nộp bài:
-                        {{$labdeatail->deadlinetime}} - {{$labdeatail->deadline}}</button>
+                        {{$labdeatail->deadlinetime}} - {{date('d-m-Y',strtotime($labdeatail->deadline))}}</button>
                 </div>
             </div>
         </div>

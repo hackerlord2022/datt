@@ -8,14 +8,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <h1>Đây là lớp: {{$className->class_name}} - {{$className->name}}</h1>
+                        <h1>Đây là lớp: <b>{{$className->class_name}}</b> || Giảng viên: <b>{{$className->name}}</b></h1>
                     </div>
                 </div>
             </div>
 </section>
 <section class="white section">
 <div class="container">
-    <a class="btn btn-info" href="../list_class/{{$className->subject_code}}">Trở lại</a>
+    <div class="row">
+        <div class="col-md-12 col-md-12">
+            <a class="btn btn-info" href="../list_class/{{$className->subject_code}}">Trở lại</a>
+            <a class="btn btn-warning" href="/laveClass/{{$className->class_code}}" style="float: right">Rời khỏi lớp</a>
+        </div>
+    </div>
     <hr>
     <!--  -->
     @foreach ($lab as $item)
@@ -25,7 +30,7 @@
                 <h4><a href="../../uploadfile/{{$item->archives_code}}">{{$item->archives_name}}</a></h4>
                 <p>{{$item->note}}</p>
                 <a href="../../uploadfile/{{$item->archives_code}}" class="btn btn-success col-md-12 col-md-12" style="margin-bottom: 5px">Nộp bài</a>
-                <button class="btn btn-warning col-md-12 col-md-12" style="margin-bottom: 5px">Thời gian nộp bài: {{$item->deadlinetime}} - {{$item->deadline}}</button>
+                <button class="btn btn-warning col-md-12 col-md-12" style="margin-bottom: 5px">Thời gian nộp bài: {{$item->deadlinetime}} - {{date('d-m-Y',strtotime($item->deadline))}}</button>
             </div>
         </div>
     </div>

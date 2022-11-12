@@ -20,7 +20,7 @@
                     <img src="https://scontent.fvca1-1.fna.fbcdn.net/v/t39.30808-6/311382810_2257046454472957_445878385869231417_n.jpg?stp=dst-jpg_s640x640&_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=mKPkiIlWzH4AX-O1SFU&_nc_ht=scontent.fvca1-1.fna&oh=00_AT8bwKRmF2iw6-PvzW-MiyO_ry4HWAgZIfMpzV6No4qviA&oe=634CB245" alt="" class="img-responsive">
                 </div>
                 <div class="course-meta">
-                    <p>{{Auth()->User()->name}}</p>
+                    <p>Xin chào: {{Auth::User()->name}}</p>
                     <hr>
                     <p><a href="../account">Tài khoản của tôi</a></p>
                     <hr>
