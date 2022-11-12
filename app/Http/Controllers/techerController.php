@@ -166,7 +166,18 @@ class techerController extends Controller
         $alert = 'Đã duyệt!';
         return redirect()->back()->with('alert',$alert);   
     }
-    // download lab
+    // function reuploadclassF($id){
+    //     $resubmit = Resubmit::where("archives_code", $id)
+    //     ->join('users', 'users.id','resubmit.user_code')
+    //     ->orderBy('resubmit.created_at', 'ASC')
+    //     ->get();
+    //     return view("teacher.page.reupload", ['resubmit' => $resubmit]);
+    // }
+    function reuploadclassF_($id){
+        $resubmit = Resubmit::where('resubmit_code', $id)->update(['status' => 2]);                
+        $alert = 'Đã từ chối!';
+        return redirect()->back()->with('alert',$alert);   
+    }
     function listdownload($id){
         $submission = Submission::where('archives_code', $id)
                     ->join('users', 'users.id', 'submission.user_code')->get();

@@ -64,6 +64,11 @@ class studentController extends Controller
         ->get();
         return view("student.page.myclassR", ['Class' => $Class]);
     }
+    function list_reupload(){
+        $list_reupload = DB::table('resubmit')->where('user_code', '=', (Auth::user()->id))->get();
+        // dd($list_reupload);
+        return view("teacher.page.list_reupload", ['list_reupload' => $list_reupload]);
+    }
     function myclass_reupload($id){
         $lab = Archives::where('class_code', "=" ,$id)->get();
         return view("student.page.myclass_reupload", ['lab' => $lab]);

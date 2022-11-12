@@ -32,6 +32,7 @@ Xin nộp lại
                 </div>
             </div>
             <div id="course-content" class="col-md-9">
+                    <h4><a href="/list_reupload" class="btn btn-warning">Danh sách yêu cầu xin nộp lại</a></h4>
                 <div class="course-description">
                     <div class="edit-profile">
                         <!--  -->

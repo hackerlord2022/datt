@@ -88,6 +88,7 @@ Route::get('/teacher_reupload', [techerController::class, 'reupload'])->middlewa
 Route::get('/teacher_reupload_detail/{id}', [techerController::class, 'reuploadclass'])->middleware(['teacher', 'verified'])->name('dashboard');
 Route::get('/teacher_listReupload/{id}', [techerController::class, 'reuploadclassD'])->middleware(['teacher', 'verified'])->name('dashboard');
 Route::get('/teacher_listReuploadT/{id}', [techerController::class, 'reuploadclassD_'])->middleware(['teacher', 'verified'])->name('dashboard');
+Route::get('/teacher_listReuploadF/{id}', [techerController::class, 'reuploadclassF_'])->middleware(['teacher', 'verified'])->name('dashboard');
 // Class
 Route::get('/teacher_addclass', [techerController::class, 'teacher_addclass'])->middleware(['teacher', 'verified'])->name('dashboard');
 Route::post('/teacher_addclass', [techerController::class, 'teacher_addclass_'])->middleware(['teacher', 'verified'])->name('dashboard');
@@ -119,6 +120,7 @@ Route::post('/account', [studentController::class, 'account_update'])->middlewar
 
 Route::get('/myclass', [studentController::class, 'myclass'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/reupload', [studentController::class, 'reupload'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/list_reupload', [studentController::class, 'list_reupload'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/myclass_reupload/{id}', [studentController::class, 'myclass_reupload'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/resubmit/{id}', [studentController::class, 'resubmit'])->middleware(['auth', 'verified'])->name('dashboard');
