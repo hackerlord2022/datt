@@ -20,7 +20,7 @@
     <div class="row course-list">
         <div class="col-md-12 col-md-12" style="background-color: #f2f2f2; border-radius: 10px;">
             <div class="shop-list-desc">
-                <h4><a href="list_majors/{{$item->semester_code}}">{{$item->semester_name}}</a></h4>                 
+                <h4><a href="list_majors/{{$item->semester_code}}"><span>Học kì: <u>{{$item->semester_name}}</u></span><span style="float:right">Ngày bắt đầu: {{date_format($item->created_at, 'd-m-Y')}}</span></a></h4>                 
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ class techerController extends Controller
     function index(){
         return "đây là tranh quản lý tài khoản cá nhân của giảng viên";
     }
-
+    // account
     function account(){
         $id_User = Auth()->User()->id;
         return view("teacher.page.account");
@@ -37,17 +37,16 @@ class techerController extends Controller
         $alert = 'Cập nhật thông tin thành công!';return redirect()->back()->with('alert',$alert);
         return view("teacher.page.account");
     }
+    // class
     function myclass(){
-        $count = Resubmit::count();
-        $resubmit = Resubmit::all();
+        $count = Resubmit::where('status', 0)->count();
+        $resubmit = Resubmit::where('status', 0)->get();
         $user = User::all();
         $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
-        //dd($myClass);
         return view("teacher.page.myclass", ['myClass' => $myClass , 'count'=>$count  , 'resubmit'=>$resubmit  , 'user'=>$user]);
     }
     function teacher_addclass(){
         $hk = Subject::all();
-        // dd($hk);
         return view("teacher.page.teacher_addclass", ['hk'=> $hk]);
     }
     function teacher_addclass_(){
@@ -62,7 +61,6 @@ class techerController extends Controller
     function teacher_editclass($id){
         $hk = Subject::all();
         $teacher_editclass = Class_Lop::where('class_code', $id)->first();
-        // dd($teacher_editclass);
        return view("teacher.page.teacher_editclass", ['teacher_editclass' => $teacher_editclass, 'hk'=> $hk]);
     }
     function teacher_editclass_($id){
@@ -72,7 +70,6 @@ class techerController extends Controller
         $teacher_editclass->subject_code = $_POST['subject_code'];
         $teacher_editclass->teacher_code = Auth()->User()->id;
         $teacher_editclass->save();
-        // dd($teacher_editclass);
         $alert='Cập nhật thành công!';return redirect()->back()->with('alert',$alert);
     }
     function teacher_deleteclass($id){
@@ -81,8 +78,8 @@ class techerController extends Controller
         $alert = 'Xóa thành công!';return redirect()->back()->with('alert',$alert);
         return redirect('teacher.page.myclass');
     }
+    // list student in class
     function list_student($id){
-        // liệt kê danh sách sinh viên của lớp
         $classDeatail = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
         ->where('class_students.class_code', '=', $id)->get();
         $classCount = ClassStudent::join('users', 'users.id', '=', 'class_students.user_code')
@@ -97,15 +94,15 @@ class techerController extends Controller
             return view("teacher.page.class_detail", ['classDeatail' => $classDeatail, 'className' => $className, 'classCount' => $classCount]);
         }
     }
+    // lab
     function teacher_listexercise($id){
-        // $list = Archives::all();
         $list = Archives::join('class', 'class.class_code', '=', 'archives.class_code')
         ->where('archives.class_code', '=', $id)->where('class.teacher_code', '=', Auth()->User()->id)->get();
+        $classCode = Classes::where('class_code', $id)->first();
         $class_code_class = $id;
-        return view("teacher.page.list_exercise", ['list' => $list, 'class_code_class' => $class_code_class]);
+        return view("teacher.page.list_exercise", ['classCode' => $classCode, 'list' => $list, 'class_code_class' => $class_code_class]);
     }
     function teacher_addexercise($id){
-        // $classCode = Classes::all();
         $classCode = Classes::where('class_code', $id)
         ->where('teacher_code', '=', Auth()->User()->id)->first();
         return view("teacher.page.teacher_addexercise", ['classCode' => $classCode]);
@@ -143,10 +140,11 @@ class techerController extends Controller
         $alert = 'Xóa thành công!';return redirect()->back()->with('alert',$alert);
         return redirect('teacher.page.teacher_listexercise');
     }
-
+    // ?
     function addclass(){
         return view("teacher.page.addclass");
     }
+    // lab resubmit
     function reupload(){
         $myClass = Class_Lop::whereTeacher_code(Auth()->User()->id)->get();
         return view("teacher.page.myclassRS", ['myClass' => $myClass]);
@@ -164,25 +162,23 @@ class techerController extends Controller
         return view("teacher.page.reupload", ['resubmit' => $resubmit]);
     }
     function reuploadclassD_($id){
-        $resubmit = Resubmit::where('resubmit_code', $id)
-                            ->update(['status' => 1]);
+        $resubmit = Resubmit::where('resubmit_code', $id)->update(['status' => 1]);                
         $alert = 'Đã duyệt!';
-        return redirect('')
-        ->back()
-        ->with('alert',$alert);
+        return redirect()->back()->with('alert',$alert);   
     }
+    // download lab
     function listdownload($id){
         $submission = Submission::where('archives_code', $id)
                     ->join('users', 'users.id', 'submission.user_code')->get();
         $archives = Archives::where("archives_code", $id)->first();
         $submissionCount = Submission::where('archives_code', $id)
                     ->join('users', 'users.id', 'submission.user_code')->count();
-        return view("teacher.page.list_exercise_dow", ['submission' => $submission, 'archives' => $archives, 'submissionCount' => $submissionCount]);
+        $studentNumber = ClassStudent::where('class_code', $archives->class_code)->count();
+        $className = Archives::join('class', 'class.class_code', 'archives.class_code')->where('archives.archives_code', $id)->first();
+        return view("teacher.page.list_exercise_dow", ['className' => $className, 'studentNumber' => $studentNumber,'submission' => $submission, 'archives' => $archives, 'submissionCount' => $submissionCount]);
     }
-
     function downloadLab($id){
         $fileLab = Submission::where('submission_code' ,$id)->first();
-        //dd($fileLab->submission);
         $file = public_path(). "/upload/filelab/".$fileLab->submission;
         $filename = $fileLab->submission;
         $headers = array(
@@ -190,8 +186,7 @@ class techerController extends Controller
         );
         return Response::download($file, $filename, $headers);
     }
-
-
+    // error
     function downloadLabAll($id){
         dd("dang thử nghiệm");
         $fileLabAll = Submission::where('archives_code', $id)->get();
@@ -199,14 +194,12 @@ class techerController extends Controller
         foreach($fileLabAll as $item){
             $file = public_path(). "/upload/filelab/".$item->submission;
             $filename = $item->submission;
-            // $headers = array(
-            //     'Content-Type: application/pdf',
-            // );
-            $url=$item->submission;
-            $pathToFile = public_path('/upload/filelab//'.$url);
-            response()->download($pathToFile);
-        }
-        return Response::download(["file_1.txt","file_2.txt"]);
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+            $array = Response::download($file, $filename, $headers);
+            }
+        // return Response::download(["file_1.txt","file_2.txt"]);
     }
 
     // đường dẫn vào giao diện sau khi có layout ||

@@ -29,7 +29,7 @@ Lớp của tôi
                         <hr>
                         <p><a href="../teacher_addclass">Thêm lớp học</a></p>
                         <hr>
-                        <p><a href="../teacher_reupload">Nộp lại bài</a></p>
+                        <p><a href="../teacher_reupload">Yêu cầu nộp bài của sinh viên</a></p>
                         <hr>
                 </section>
             </div>
@@ -62,7 +62,7 @@ Lớp của tôi
                                         <li>
                                             <div class="scroll-wrapper message-notif-scroll scrollbar-outer" style="position: relative;"><div class="message-notif-scroll scrollbar-outer scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 250px;">
                                                 <div class="notif-center submenu">
-                                                    <a href="/teacher_listReupload/{{$r->id}}">
+                                                    <a href="/teacher_listReupload/{{$r->archives_code}}">
                                                         <div class="notif-img ">
                                                             <img src="./images/a1a61ba9222de673bf3c.jpg" alt="Img Profile">
                                                         </div>
@@ -77,7 +77,7 @@ Lớp của tôi
                                                             <span class="an block">
                                                                 {{$r->content}}
                                                             </span>
-                                                            <span class="time">{{$r->created_at}}</span>
+                                                            <span class="time">{{date('H:i:s d-m-Y',strtotime($r->created_at))}}</span>
                                                         </div>
                                                     </a>
                                                 </div>
