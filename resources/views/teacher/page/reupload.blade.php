@@ -45,11 +45,15 @@ Xin nộp bài lại
                          <?php if($item->status == 0){ echo 'active';} ?>">
                             <div class="d-flex w-100 justify-content-between">
                                 <h4 class="mb-1">Xin nộp lại bài</h4>
-                                <small>{{$item->created_at}}</small>
+                                <small>Thời gian: {{$item->created_at}}</small>
                             </div>
-                            <p class="mb-1">{{$item->content}}</p>
-                            <small>{{$item->name}}</small>
-                            <?php if($item->status == 0){ echo '<a href="../teacher_listReuploadT/'.$item->resubmit_code.'" class="btn btn-primary">Duyệt</a>';}
+                            <p class="mb-1">Lí do: {{$item->content}}</p>
+                            <small>Sinh viên: {{$item->name}}</small>
+                            <?php if($item->status == 0){ echo '<a href="../teacher_listReuploadT/'.$item->resubmit_code.'" class="btn btn-primary">Duyệt</a>
+                                                                <a href="../teacher_listReuploadF/'.$item->resubmit_code.'" class="btn btn-primary">Từ chối</a>';
+                                    }elseif ($item->status == 2) {
+                                       echo '<button class="btn btn-primary">Từ chối</button>';
+                                        }                            
                                   else{ echo '<button class="btn btn-primary">Đã duyệt</button>';} ?>
                             
                         </div>
