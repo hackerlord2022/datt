@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('tieudetrang')
-Danh sách Username
+Danh sách người dùng
 @endsection
 @section('noidung')
 <div id="content-wrapper" class="d-flex flex-column">
@@ -19,7 +19,7 @@ Danh sách Username
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Danh sách Username</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Danh sách người dùng</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
