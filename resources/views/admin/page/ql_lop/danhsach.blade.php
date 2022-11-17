@@ -29,7 +29,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã môn học</th>
+                                    <th class="text-center text-dark">Mã ngành học</th>
                                     <th class="text-center text-dark">Giảng viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
@@ -41,7 +41,7 @@ Danh sách lớp học
                                     <th class="text-center text-dark">STT</th>
                                     <th class="text-center text-dark">Mã lớp học</th>
                                     <th class="text-center text-dark">Tên lớp học</th>
-                                    <th class="text-center text-dark">Mã môn học</th>
+                                    <th class="text-center text-dark">Mã ngành học</th>
                                     <th class="text-center text-dark">Giảng viên</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>

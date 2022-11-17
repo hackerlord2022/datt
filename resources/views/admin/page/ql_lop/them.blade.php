@@ -23,15 +23,15 @@ Thêm lớp học
                     <form action="/admin/lophoc/them" method="POST">
                         <div class="form-group">
                             <label>Mã lớp học</label>
-                            <input type="text" class="form-control"placeholder="Lớp học" name="malh" required>
+                            <input type="text" class="form-control" placeholder="Nhập mã lớp học" name="malh" required>
                           </div>
                         <div class="form-group">
                           <label>Tên lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" required>
+                          <input type="text" class="form-control" placeholder="Nhập tên lớp học" name="tenlh" required>
                         </div>
 
                         <div class="form-group">
-                            <label>Môn học</label>
+                            <label>Ngành học</label>
                             <select class="custom-select tm-select-accounts" name="monhoc" id="hocky" required>
                                 @foreach ($monhoc as $mh)
                                 <option value="{{$mh->subject_code}}">{{$mh->subject_name}}</option>

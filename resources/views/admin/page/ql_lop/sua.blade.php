@@ -23,15 +23,15 @@ Sửa lớp học: A
                     <form action="/admin/lophoc/sua/{{$lophoc->id}}" method="POST">
                         <div class="form-group">
                             <label>Mã lớp học</label>
-                            <input type="text" class="form-control"placeholder="Mã Lớp học" name="malh" value="{{$lophoc->class_code}}">
+                            <input type="text" class="form-control" placeholder="Nhập mã lớp học" name="malh" value="{{$lophoc->class_code}}">
                           </div>
                         <div class="form-group">
                           <label>Tên lớp học</label>
-                          <input type="text" class="form-control"placeholder="Lớp học" name="tenlh" value="{{$lophoc->class_name}}">
+                          <input type="text" class="form-control" placeholder="Nhập tên lớp học" name="tenlh" value="{{$lophoc->class_name}}">
                         </div>
 
                         <div class="form-group">
-                            <label>Môn học</label>
+                            <label>Ngành học</label>
                             <select class="custom-select tm-select-accounts" id="" name="monhoc">
                                 @foreach ($monhoc as $mh)
                                 <option

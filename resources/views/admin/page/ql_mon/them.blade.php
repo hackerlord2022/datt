@@ -17,7 +17,7 @@ Thêm môn học
             <!-- Circle Buttons -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Thêm môn học</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Thêm ngành học</h3>
                 </div>
                 <div class="card-body">
                     <form action="/admin/monhoc/them" method="POST">
@@ -30,12 +30,12 @@ Thêm môn học
                             </select>
                           </div>
                         <div class="form-group">
-                            <label>Mã môn học</label>
-                            <input type="text" class="form-control"placeholder="môn học" name="mamh" required>
+                            <label>Mã ngành học</label>
+                            <input type="text" class="form-control"placeholder="Nhập mã ngành học" name="mamh" required>
                           </div>
                         <div class="form-group">
-                          <label>Tên môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="tenmh" required>
+                          <label>Tên ngành học</label>
+                          <input type="text" class="form-control"placeholder="Nhập tên ngành học" name="tenmh" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Thêm</button>
