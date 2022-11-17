@@ -43,7 +43,7 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/', [adminController::class, 'admin'])->middleware(['admin', 'verified'])->name('dashboard');
     Route::group(['prefix'=>'bainop'],function(){
         Route::get('ds', [bainopController::class, 'ds'])->middleware(['admin', 'verified'])->name('dashboard');
-        Route::get('/xoa/{id}', [bainopController::class, 'deleteResubmit'])->middleware(['admin', 'verified'])->name('dashboard');
+        // Route::get('/xoa/{id}', [bainopController::class, 'deleteResubmit'])->middleware(['admin', 'verified'])->name('dashboard');
     });
     Route::group(['prefix'=>'hocky'],function(){
         Route::get('ds', [hockyController::class, 'ds'])->middleware(['admin', 'verified'])->name('dashboard');
