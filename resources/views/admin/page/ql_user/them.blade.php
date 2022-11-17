@@ -23,18 +23,18 @@ Thêm người dùng
                     <form action="admin/user/them" method="Post">
                         <div class="form-group">
                           <label>Họ Tên</label>
-                          <input type="text" class="form-control"placeholder="Họ tên" name="hoten" required>
+                          <input type="text" class="form-control" placeholder="Nhập họ tên người dùng" name="hoten" required>
                         </div>
                         @if(session('alert'))
                         <section class='alert alert-success'>{{session('alert')}}</section>
                     @endif
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="email" class="form-control"placeholder="Email" name="email" required>
+                          <input type="email" class="form-control" placeholder="Nhập email người dùng" name="email" required>
                         </div>
                         <div class="form-group">
                           <label>Password</label>
-                          <input type="password" class="form-control"placeholder="Pasword" name="password" required>
+                          <input type="password" class="form-control" placeholder="Nhập password người dùng" name="password" required>
                         </div>
                         <div class="form-group ">
                             <label>Vai trò :</label><br>

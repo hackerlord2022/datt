@@ -17,7 +17,7 @@ Sửa môn học: A
             <!-- Circle Buttons -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa môn học: {{$monhoc->academics_name}}</h3>
+                    <h3 class="m-0 font-weight-bold text-primary text-center">Sửa ngành học: {{$monhoc->academics_name}}</h3>
                 </div>
                 <div class="card-body">
                     <form action="/admin/monhoc/sua/{{$monhoc->id}}" method="POST">
@@ -26,12 +26,12 @@ Sửa môn học: A
                             <input type="text" class="form-control" disabled value=" {{$monhoc->id}}">
                           </div>
                         <div class="form-group">
-                            <label>Mã môn học</label>
-                            <input type="text" class="form-control" name="mamh" value=" {{$monhoc->subject_code}}">
+                            <label>Mã ngành học</label>
+                            <input type="text" class="form-control" name="mamh" placeholder="Nhập mã ngành học"  value=" {{$monhoc->subject_code}}">
                           </div>
                         <div class="form-group">
-                          <label>Tên môn học</label>
-                          <input type="text" class="form-control"placeholder="môn học" name="tenmh" value=" {{$monhoc->subject_name}}">
+                          <label>Tên ngành học</label>
+                          <input type="text" class="form-control" placeholder="Nhập tên ngành học" name="tenmh" value=" {{$monhoc->subject_name}}">
                         </div>
                         <div class="form-group">
                             <label>Học kỳ</label>

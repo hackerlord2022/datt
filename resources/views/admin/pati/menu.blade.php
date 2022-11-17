@@ -36,7 +36,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Quản lý môn
+        Quản lý ngành học
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -44,11 +44,11 @@
         <a class="nav-link collapsed" href="admin/monhoc/them" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Môn Học</span>
+            <span>Ngành Học</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Quản lý môn học:</h6>
+                <h6 class="collapse-header">Quản lý ngành học:</h6>
                 <a class="collapse-item" href="admin/monhoc/them">Thêm</a>
                 <a class="collapse-item" href="admin/monhoc/ds">Danh Sách</a>
             </div>

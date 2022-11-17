@@ -27,8 +27,8 @@ Danh sách môn học
                             <thead>
                                 <tr style="background-color: cornflowerblue">
                                     <th class="text-center text-dark">STT</th>
-                                    <th class="text-center text-dark">Mã môn học</th>
-                                    <th class="text-center text-dark">Tên môn học</th>
+                                    <th class="text-center text-dark">Mã ngành học</th>
+                                    <th class="text-center text-dark">Tên ngành học</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>
@@ -37,8 +37,8 @@ Danh sách môn học
                             <tfoot>
                                 <tr style="background-color: cornflowerblue">
                                     <th class="text-center text-dark">STT</th>
-                                    <th class="text-center text-dark">Mã môn học</th>
-                                    <th class="text-center text-dark">Tên môn học</th>
+                                    <th class="text-center text-dark">Mã ngành học</th>
+                                    <th class="text-center text-dark">Tên ngành học</th>
                                     <th class="text-center text-dark">Sửa</th>
                                     <th class="text-center text-dark">Xóa</th>
                                   </tr>

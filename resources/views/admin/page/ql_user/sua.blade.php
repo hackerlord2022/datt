@@ -27,15 +27,15 @@ Sửa người dùng
                           </div>
                         <div class="form-group">
                           <label>Họ Tên</label>
-                          <input type="text" class="form-control" placeholder="Họ tên" name="hoten" value="{{$user->name}}">
+                          <input type="text" class="form-control" placeholder="Nhập họ tên người dùng" name="hoten" value="{{$user->name}}">
                         </div>
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="email" class="form-control" placeholder="Email" name="email" value="{{$user->email}}">
+                          <input type="email" class="form-control" placeholder="Nhập email người dùng" name="email" value="{{$user->email}}">
                         </div>
                         <div class="form-group">
                           <label>Password</label>
-                          <input type="password" class="form-control" placeholder="Pasword" name="password">
+                          <input type="password" class="form-control" placeholder="Nhập password người dùng" name="password" value="{{$user->password}}">
                         </div>
                         <div class="form-group ">
                             <label>Vai trò :</label><br>

@@ -27,11 +27,11 @@ Sửa học kỳ: A
                         </div>
                         <div class="form-group">
                             <label>Mã học kỳ</label>
-                            <input type="text" class="form-control"placeholder="Mã học kỳ" name="mahk" value="{{$hocky->semester_code}}">
+                            <input type="text" class="form-control" placeholder="Nhập mã học kỳ" name="mahk" value="{{$hocky->semester_code}}">
                           </div>
                         <div class="form-group">
                           <label>Tên học kỳ</label>
-                          <input type="text" class="form-control"placeholder="Học kỳ" name="tenhk" value="{{$hocky->semester_name}}">
+                          <input type="text" class="form-control" placeholder="Nhập tên học kỳ" name="tenhk" value="{{$hocky->semester_name}}">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Sửa</button>
