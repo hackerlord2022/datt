@@ -52,9 +52,9 @@ Xin nộp bài lại
                             <?php if($item->status == 0){ echo '<a href="../teacher_listReuploadT/'.$item->resubmit_code.'" class="btn btn-primary">Duyệt</a>
                                                                 <a href="../teacher_listReuploadF/'.$item->resubmit_code.'" class="btn btn-primary">Từ chối</a>';
                                     }elseif ($item->status == 2) {
-                                       echo '<button class="btn btn-primary">Từ chối</button>';
+                                       echo '<button class="btn btn-primary"> Đã từ chối yêu cầu nộp lại cho bạn</button>';
                                         }                            
-                                  else{ echo '<button class="btn btn-primary">Đã duyệt</button>';} ?>
+                                  else{ echo '<button class="btn btn-primary">Đã duyệt yêu cầu nộp lại cho bạn</button>';} ?>
                             
                         </div>
                         @endforeach
